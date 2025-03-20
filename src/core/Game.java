@@ -6,6 +6,9 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import resources.Fonts;
+import resources.Images;
+import resources.Sounds;
 
 public class Game extends BasicGameState 
 {	
@@ -23,7 +26,11 @@ public class Game extends BasicGameState
 	
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException 
 	{
-		// This code happens when you enter a game state for the *first time.*
+		Sounds.loadMusic();
+		Sounds.loadSounds();
+		Images.loadImages();
+		Images.loadSymbols();
+		Fonts.loadFonts();
 		gc.setShowFPS(true);
 	}
 
