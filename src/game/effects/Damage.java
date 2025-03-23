@@ -6,7 +6,7 @@ import game.entity.Entity;
 public class Damage extends Effect{
     private final int damage;
 
-    public Damage(Entity owner, Entity target, int damage) {
+    public Damage(int damage) {
         super(1);
         this.damage = damage;
         name = "";

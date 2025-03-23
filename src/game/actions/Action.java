@@ -4,8 +4,8 @@ import game.effects.Effect;
 
 import java.util.ArrayList;
 
-public class Action {
-    private ArrayList<Effect> effects;
+public abstract class Action {
+    private final ArrayList<Effect> effects;
 
     public Action(ArrayList<Effect> effects) {
         this.effects = effects;

@@ -1,8 +1,11 @@
 package game.managers;
 
 import game.World;
+import game.entity.Enemy;
 import game.entity.Entity;
+import game.entity.TestEnemy;
 import game.entity.player.Player;
+import org.newdawn.slick.Graphics;
 
 import java.util.ArrayList;
 
@@ -16,6 +19,10 @@ public class EntityManager {
     public EntityManager() {
         enemies = new ArrayList<>();
         player = new Player();
+
+        enemies.add(new TestEnemy());
+        enemies.add(new TestEnemy());
+        enemies.add(new TestEnemy());
     }
 
     public void myTurn() {
@@ -25,6 +32,10 @@ public class EntityManager {
     public void enemyTurn() {
         currEntityAnimationID = 0;
         enemyTurnFinished = false;
+    }
+
+    public boolean enemyAnimationsFinished() {
+        return enemyTurnFinished;
     }
 
     public void update() {
@@ -59,6 +70,12 @@ public class EntityManager {
         player.endTurn();
         for(Entity e : enemies) {
             e.endTurn();
+        }
+    }
+
+    public void render(Graphics g) {
+        for(int i=0; i<enemies.size(); i++) {
+            enemies.get(i).render(g);
         }
     }
 }

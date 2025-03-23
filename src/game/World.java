@@ -1,6 +1,5 @@
 package game;
 
-import game.entity.player.Player;
 import game.managers.CardManager;
 import game.managers.EntityManager;
 import org.newdawn.slick.GameContainer;
@@ -9,14 +8,15 @@ import org.newdawn.slick.Input;
 
 public class World {
 
-    private CardManager cardManager;
-    private EntityManager entityManager;
+    private final CardManager cardManager;
+    private final EntityManager entityManager;
 
     private static String gameStage;
 
     public World(GameContainer gc) {
         cardManager = new CardManager(gc);
         entityManager = new EntityManager();
+        gameStage = "My Turn";
     }
 
     public void keyPressed(int key, char c) {
@@ -47,10 +47,14 @@ public class World {
     public void update() {
         cardManager.update();
         entityManager.update();
+        if(entityManager.enemyAnimationsFinished()) {
+            startMyTurn();
+        }
     }
 
     public void render(Graphics g) {
-
+        cardManager.render(g);
+        entityManager.render(g);
     }
 
 }

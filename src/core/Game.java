@@ -29,11 +29,6 @@ public class Game extends BasicGameState
 	
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException 
 	{
-		Sounds.loadMusic();
-		Sounds.loadSounds();
-		Images.loadImages();
-		Images.loadSymbols();
-		Fonts.loadFonts();
 		gc.setShowFPS(true);
 
 		world = new World(gc);
@@ -48,10 +43,9 @@ public class Game extends BasicGameState
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException 
 	{
 		// This code renders shapes and images every frame.
-		world.render(g);
 
 		g.setColor(Color.white);
-		g.drawString("Hello World!", Main.getScreenWidth() * .5f, Main.getScreenHeight() * .5f);
+		world.render(g);
 	}
 	
 	public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException 

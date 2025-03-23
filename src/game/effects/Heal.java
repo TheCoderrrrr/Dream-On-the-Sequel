@@ -6,7 +6,7 @@ import resources.Images;
 public class Heal extends Effect{
     private final int healStrength;
 
-    public Heal(Entity owner, Entity target, int healStrength, int duration) {
+    public Heal(int healStrength, int duration) {
         super(duration);
         this.healStrength = healStrength;
         name = "Healing";

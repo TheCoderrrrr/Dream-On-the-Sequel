@@ -7,7 +7,7 @@ public class Poison extends Effect {
     private final int POISON_STRENGTH;
 
 
-    public Poison(Entity owner, Entity target, int poisonStrength, int duration) {
+    public Poison(int poisonStrength, int duration) {
         super(duration);
         this.POISON_STRENGTH = poisonStrength;
         name = "Poisoned";

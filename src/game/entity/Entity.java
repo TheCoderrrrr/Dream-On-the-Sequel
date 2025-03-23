@@ -1,6 +1,7 @@
 package game.entity;
 
 import game.effects.Effect;
+import org.newdawn.slick.Graphics;
 
 import java.util.ArrayList;
 
@@ -22,6 +23,7 @@ public abstract class Entity {
     }
 
     abstract public void action(); //call this method only once per turn
+    abstract public void render(Graphics g);
 
     public void update() {
 
