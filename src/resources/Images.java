@@ -1,11 +1,13 @@
 package resources;
 
 import core.Main;
+import core.TitleScreen;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 
 public class Images {
+    public static Image TITLESCREEN_BACKGROUND;
 
     public static Image PLACEHOLDERCARD;
     public static Image BACKGROUND;
@@ -72,6 +74,8 @@ public class Images {
     {
         try
         {
+            TITLESCREEN_BACKGROUND = new Image("res/images/backgrounds/TitleScreen.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
+
             PLACEHOLDERCARD = new Image("res/images/cards/card_template.png");
             BACKGROUND = new Image("res/images/backgrounds/background.png");
             HAPPYBACKGROUND = new Image("res/images/backgrounds/happyBackground.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
