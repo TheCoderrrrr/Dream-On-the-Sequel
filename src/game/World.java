@@ -56,5 +56,11 @@ public class World {
         cardManager.render(g);
         entityManager.render(g);
     }
+    public void mousePressed(int button, int x, int y){
+        cardManager.mousePressed(button, x, y);
+    }
+    public void mouseReleased(int button, int x, int y){
+        cardManager.mouseReleased(button, x, y);
+    }
 
 }

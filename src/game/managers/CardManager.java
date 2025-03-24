@@ -37,6 +37,8 @@ public class CardManager {
         deck.add(new PlushPerfection());
         deck.add(new Sewing());
 
+        resetHand();
+
     }
 
     public void update() {
@@ -72,7 +74,7 @@ public class CardManager {
         }
     }
 
-    public static void mousePressed(int button, int x, int y) {
+    public void mousePressed(int button, int x, int y) {
         if (button == 0) {
             for (Card c : hand) {
                 if (c.isOver(x, y)) {
@@ -82,7 +84,7 @@ public class CardManager {
             }
         }
     }
-    public static void mouseReleased(int button, int x, int y){
+    public void mouseReleased(int button, int x, int y){
         for (Card c : hand) {
             if (c.isSelected() && button == 0) {
                 c.unselect(x, y);

@@ -67,7 +67,11 @@ public class Game extends BasicGameState
 	
 	public void mousePressed(int button, int x, int y)
 	{
-		// This code happens every time the user presses the mouse
+		world.mousePressed(button,x , y);
+	}
+	public void mouseReleased(int button, int x, int y)
+	{
+		world.mouseReleased(button,x , y);
 	}
 	
 	
