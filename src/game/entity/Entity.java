@@ -14,6 +14,7 @@ public abstract class Entity {
     protected float defenseMultiplier;
     protected int currAnimationFrame = 0;
     protected final int animationFrame = 15;
+    protected boolean isdead;
 
 
     public Entity(int maxHealth) {
@@ -22,6 +23,7 @@ public abstract class Entity {
         this.defenseMultiplier = 1;
         this.attackMultiplier = 1;
         this.blockPercent = 0;
+        isdead = false;
     }
 
     abstract public void action(); //call this method only once per turn
@@ -90,5 +92,8 @@ public abstract class Entity {
 
     public boolean finishedAnimation() {
         return currAnimationFrame == animationFrame;
+    }
+    public boolean isDead(){
+        return health == 0;
     }
 }

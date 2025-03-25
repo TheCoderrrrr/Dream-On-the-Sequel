@@ -4,6 +4,7 @@ import game.actions.enemyActions.Bonk;
 import game.actions.enemyActions.Punch;
 import game.actions.enemyActions.Slap;
 import game.entity.enemy.Enemy;
+import resources.Images;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,6 +15,7 @@ public class TestEnemy extends Enemy {
         super((int) (Math.random() * 200));
         allMoves = new ArrayList<>(Arrays.asList(new Bonk(), new Punch(), new Slap()));
         super.initializeMoves();
+        image = Images.ENEMY2;
     }
 
     @Override

@@ -60,7 +60,10 @@ public class CardManager {
 
     public static void render(Graphics g) {
         for (Card c : hand) {
-            c.render(g);
+            if(!c.isDragging()) c.render(g);
+        }
+        for (Card c : hand) {
+            if(c.isDragging()) c.render(g);
         }
     }
 
@@ -83,7 +86,7 @@ public class CardManager {
         int zeroPos = Main.getScreenWidth() / 2;
         int firstCardX = zeroPos - totalCardWidth / 2;
         for (int i = 0; i < hand.size(); i++) {
-            hand.get(i).initializePosition(firstCardX + i * Card.getCardWidth(), (int) (Main.getScreenHeight() - Card.getCardLength() * 0.6));
+            hand.get(i).initializePosition(firstCardX + i * Card.getCardWidth(), (int) (Main.getScreenHeight() - Card.getCardLength()));
         }
     }
 

@@ -76,4 +76,7 @@ public class HitBox {
         curColor = colors.get(curColorNumber);
 
     }
+    public void killEnemy(){
+        enemy = null;
+    }
 }

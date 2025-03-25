@@ -78,6 +78,7 @@ public class EntityManager {
 
 
     public void update() {
+
         if(World.isEnemyTurn()) {
             if(currEntityAnimationID < hitBoxes.size()) {
                 //make sure we stay within array bounds
@@ -109,6 +110,15 @@ public class EntityManager {
         }
         for(HitBox hitBox : hitBoxes){
             hitBox.chroma();
+        }
+        cleanUp();
+    }
+    public void cleanUp(){
+        for(int i = hitBoxes.size() - 1; i >= 0; i--)
+        {
+            if(hitBoxes.get(i).hasEnemy() && hitBoxes.get(i).getEnemy().isDead()){
+                hitBoxes.get(i).killEnemy();
+            }
         }
     }
 
