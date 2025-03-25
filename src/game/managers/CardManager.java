@@ -23,6 +23,8 @@ public class CardManager {
     private static ArrayList<Card> hand;
     private static ArrayList<Card> deck;
 
+    private EntityManager entityManager;
+
     public CardManager(GameContainer gc) {
         Card.setGC(gc);
         hand = new ArrayList<>();
@@ -42,8 +44,18 @@ public class CardManager {
 
     }
 
-    public static void update() {
+    public void setEntityManager(EntityManager e) {
+        this.entityManager = e;
+    }
 
+    public static void update() {
+        for(int i=hand.size() - 1; i>=0; i--) {
+            if(hand.get(i).isUsed()) {
+                hand.remove(i);
+            }
+        }
+        updateTotalCardWidth();
+        initializeHand();
     }
 
     public static void render(Graphics g) {
@@ -88,8 +100,9 @@ public class CardManager {
     public void mouseReleased(int button, int x, int y){
         if(button == 0) {
             for (Card c : hand) {
-                if (c.isDragging()) {
-                    c.reslot(x, y);
+                if(c.isDragging()) {
+                    entityManager.cardReleased(c, x, y);
+                    c.reslot();
                     selectionMode = false;
                 }
             }

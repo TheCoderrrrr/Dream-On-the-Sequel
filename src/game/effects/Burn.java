@@ -12,7 +12,7 @@ public class Burn extends Effect {
     }
 
     @Override
-    public void action() {
+    public void apply() {
 
     }
 }

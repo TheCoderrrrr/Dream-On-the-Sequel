@@ -31,5 +31,5 @@ abstract public class Effect {
         return durationLeft == 0;
     }
 
-    abstract public void action();
+    abstract public void apply();
 }

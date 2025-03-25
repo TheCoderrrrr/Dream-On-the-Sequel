@@ -4,7 +4,7 @@ import game.effects.Effect;
 
 import java.util.ArrayList;
 
-public abstract class Action {
+public class Action {
     private final ArrayList<Effect> effects;
     protected String description;
     protected String name;
@@ -17,7 +17,7 @@ public abstract class Action {
 
     public void action() {
         for(Effect e : effects) {
-            e.action();
+            e.apply();
         }
     }
     public ArrayList<Effect> getEffects(){

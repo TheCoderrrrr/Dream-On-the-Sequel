@@ -2,6 +2,7 @@ package game.managers;
 
 import core.Main;
 import game.World;
+import game.card.Card;
 import game.entity.Entity;
 import game.entity.TestEnemy;
 import game.entity.enemy.HitBox;
@@ -23,48 +24,81 @@ public class EntityManager {
         player = new Player();
 
         hitBoxes = new ArrayList<>();
-        for(int i=0; i<6; i++) {
-            hitBoxes.add(new HitBox(null));
+        for(int i=0; i<3; i++) {
+            hitBoxes.add(new HitBox((int) (Main.getScreenWidth()*0.75f + i * Main.getScreenWidth()/12f), Main.getScreenHeight()/2));
+        }
+        for(int i=0; i<2; i++) {
+            hitBoxes.add(new HitBox((int) (Main.getScreenWidth()*0.80f + i * Main.getScreenWidth()/12f), Main.getScreenHeight()/2 - Main.getScreenHeight()/10));
         }
 
-        enemies.add(new TestEnemy());
-        enemies.add(new TestEnemy());
-        enemies.add(new TestEnemy());
+        for(HitBox h : hitBoxes) {
+            h.setPlayer(player);
+        }
+        addEnemy(new TestEnemy());
+        addEnemy(new TestEnemy());
+        addEnemy(new TestEnemy());
 
 
+    }
+    public void addEnemy(Enemy e) {
+        for(HitBox h : hitBoxes) {
+            if(!h.hasEnemy()) {
+                h.setEnemy(e);
+                enemies.add(e);
+                return;
+            }
+        }
     }
 
     public void myTurn() {
         player.action();
     }
-
     public void enemyTurn() {
         currEntityAnimationID = 0;
         enemyTurnFinished = false;
+    }
+    public void endTurn() {
+        player.endTurn();
+        for(Entity e : enemies) {
+            e.endTurn();
+        }
     }
 
     public boolean enemyAnimationsFinished() {
         return enemyTurnFinished;
     }
 
+    public void cardReleased(Card c, int x, int y) {
+        for(HitBox h : hitBoxes) {
+            if(h.isMouseOver(x, y) && h.hasEnemy()) {
+                h.useCard(c);
+            }
+        }
+    }
+
+
     public void update() {
         if(World.isEnemyTurn()) {
-            if(currEntityAnimationID < enemies.size()) {
+            if(currEntityAnimationID < hitBoxes.size()) {
                 //make sure we stay within array bounds
 
-                if(enemies.get(currEntityAnimationID).finishedAnimation()) {
+                HitBox currHitBox = hitBoxes.get(currEntityAnimationID);
+                if(currHitBox.hasEnemy() && currHitBox.getEnemy().finishedAnimation()) {
                     //if the current enemy finished the animation, then call action() for that enemy
 
-                    enemies.get(currEntityAnimationID).action();
+                    if(currHitBox.hasEnemy()) {
+                        currHitBox.getEnemy().action();
 
-                    //then, move to the next enemy
-                    enemies.get(currEntityAnimationID).resetAnimation();
+                        //then, move to the next enemy
+                        currHitBox.getEnemy().resetAnimation();
+                    }
+
                     currEntityAnimationID++;
 
                 } else {
 
                     //otherwise, move to the next frame within the enemy animation
-                    enemies.get(currEntityAnimationID).nextAnimationFrame();
+                    currHitBox.getEnemy().nextAnimationFrame();
                 }
             } else {
 
@@ -74,18 +108,10 @@ public class EntityManager {
 
         }
     }
-    
-    public void endTurn() {
-        player.endTurn();
-        for(Entity e : enemies) {
-            e.endTurn();
-        }
-    }
 
     public void render(Graphics g) {
-        for(int i = 0; i < enemies.size(); i++){
-            Entity enemy = enemies.get(i);
-            enemy.render(g, (int) (Main.getScreenWidth() * .75 + (i % 2 == 0 ? 0 : Main.getScreenWidth() * .1)), (int) (Main.getScreenHeight() * .5));
+        for(HitBox hitbox : hitBoxes){
+            hitbox.render(g);
         }
     }
 }

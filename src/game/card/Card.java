@@ -25,6 +25,7 @@ abstract public class Card {
     protected int translationalX;
     protected int translationalY;
     protected boolean dragging;
+    protected boolean isUsed;
     protected static GameContainer gc;
 
     protected static final int CARD_WIDTH = 200;
@@ -33,6 +34,7 @@ abstract public class Card {
     public Card() {
         energyCost = 0;
         dragging = false;
+        isUsed = false;
         updateEnergyImage();
     }
     public static void setGC(GameContainer gc){
@@ -60,6 +62,14 @@ abstract public class Card {
                 System.out.println("No energy cost put in " + this.getClass().getSimpleName());
         }
     }
+
+    public void markAsUsed() {
+        isUsed = true;
+    }
+    public boolean isUsed() {
+        return isUsed;
+    }
+
     public void update(){
         updateEnergyImage();
     }

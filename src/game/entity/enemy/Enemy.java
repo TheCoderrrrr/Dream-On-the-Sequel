@@ -39,9 +39,10 @@ public abstract class Enemy extends Entity {
     @Override
     public void render(Graphics g, int x, int y) {
         g.drawImage(image, x, y);
-        g.drawString(this + "", x, y);
+        g.drawString(this.getClass().getSimpleName(), x, y);
         for(int i=0; i<nextMoves.size(); i++) {
-            g.drawString(nextMoves.get(i).toString(), 0, -20*i);
+            g.drawString(nextMoves.get(i).getClass().getSimpleName(), x, y -20*(i+1));
         }
+        g.drawString(health + " ", x, y+20);
     }
 }

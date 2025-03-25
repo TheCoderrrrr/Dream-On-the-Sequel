@@ -15,7 +15,7 @@ public class Heal extends Effect{
     }
 
     @Override
-    public void action() {
+    public void apply() {
         target.heal(healStrength);
         durationLeft--;
     }

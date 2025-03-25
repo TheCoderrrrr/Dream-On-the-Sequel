@@ -17,6 +17,6 @@ public class Player extends Entity {
 
     @Override
     public void render(Graphics g, int x, int y) {
-        g.drawString("player", -1000, 0);
+        g.drawString("player", 1000, 0);
     }
 }

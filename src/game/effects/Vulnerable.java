@@ -25,7 +25,7 @@ public class Vulnerable extends Effect{
     }
 
     @Override
-    public void action() {
+    public void apply() {
 
     }
 

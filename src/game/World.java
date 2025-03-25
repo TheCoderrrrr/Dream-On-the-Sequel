@@ -23,6 +23,9 @@ public class World {
         gameStage = "My Turn";
         background = Images.CREEPYBACKGROUND;
         round = 1;
+
+
+        cardManager.setEntityManager(entityManager);
     }
 
     public void keyPressed(int key, char c) {

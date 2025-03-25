@@ -15,7 +15,7 @@ public class Strength extends Effect{
     }
 
     @Override
-    public void action() {
+    public void apply() {
         target.modifyAttack(attackMultiplier);
         durationLeft--;
     }

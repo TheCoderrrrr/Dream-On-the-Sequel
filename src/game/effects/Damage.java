@@ -14,7 +14,7 @@ public class Damage extends Effect{
     }
 
     @Override
-    public void action() {
+    public void apply() {
         target.takeDamage(damage);
         durationLeft--;
     }

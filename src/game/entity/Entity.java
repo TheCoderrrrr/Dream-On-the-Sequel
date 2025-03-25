@@ -19,6 +19,9 @@ public abstract class Entity {
     public Entity(int maxHealth) {
         this.maxHealth = maxHealth;
         this.health = maxHealth;
+        this.defenseMultiplier = 1;
+        this.attackMultiplier = 1;
+        this.blockPercent = 0;
     }
 
     abstract public void action(); //call this method only once per turn
@@ -35,7 +38,7 @@ public abstract class Entity {
 
 
         for(Effect e : activeEffects) {
-            e.action();
+            e.apply();
         }
 
         for(int i=activeEffects.size()-1; i>=0; i--) {

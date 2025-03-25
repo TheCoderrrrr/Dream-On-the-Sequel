@@ -1,6 +1,8 @@
 package game.card;
 
+import game.entity.Entity;
+
 public interface MultiTarget {
 
-    void use();
+    void use(Entity owner);
 }

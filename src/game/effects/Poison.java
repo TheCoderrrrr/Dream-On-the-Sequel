@@ -16,7 +16,7 @@ public class Poison extends Effect {
     }
 
     @Override
-    public void action() {
+    public void apply() {
         target.takeDamage(POISON_STRENGTH);
         durationLeft--;
     }
