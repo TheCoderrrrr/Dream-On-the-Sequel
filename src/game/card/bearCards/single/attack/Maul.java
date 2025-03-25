@@ -2,6 +2,7 @@ package game.card.bearCards.single.attack;
 
 import game.card.Card;
 import game.card.SingleTarget;
+import game.effects.Effect;
 import game.entity.Entity;
 import resources.Images;
 
@@ -17,7 +18,7 @@ public class Maul extends Card implements SingleTarget{
     }
 
 
-    public void use(Entity e) {
+    public void use(Entity owner, Entity e) {
 
     }
 }

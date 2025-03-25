@@ -14,7 +14,7 @@ public class FallacyOfReturn extends Card implements SingleTarget {
         description = "Increase dmg by 20 for 3 rounds";
 
     }
-    public void use(Entity e) {
+    public void use(Entity owner, Entity e) {
 
     }
 }

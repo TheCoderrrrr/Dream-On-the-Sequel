@@ -1,15 +1,20 @@
-package game.entity.enemy;
+package game.managers;
 
-import game.entity.Entity;
+import game.card.Card;
+import game.card.MultiTarget;
+import game.card.SingleTarget;
+import game.entity.enemy.Enemy;
+import game.entity.player.Player;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class HitBox {
     private int x;
     private int y;
-    private int width;
-    private int height;
     private final int OFFSET = 25; //extends the hitbox 25 pixels on each side of the entity
     private Enemy enemy;
     private Player player;
@@ -19,8 +24,15 @@ public class HitBox {
     public HitBox(int x, int y){
         this.x = x - OFFSET;
         this.y = y - OFFSET;
-        this.height = height + OFFSET;
-        this.width = width + OFFSET;
+        for (int r=0; r<100; r++) colors.add(new Color(r*255/100,       255,         0));
+        for (int g=100; g>0; g--) colors.add(new Color(      255, g*255/100,         0));
+        for (int b=0; b<100; b++) colors.add(new Color(      255,         0, b*255/100));
+        for (int r=100; r>0; r--) colors.add(new Color(r*255/100,         0,       255));
+        for (int g=0; g<100; g++) colors.add(new Color(        0, g*255/100,       255));
+        for (int b=100; b>0; b--) colors.add(new Color(        0,       255, b*255/100));
+        colors.add(new Color(        0,       255,         0));
+        curColorNumber = 0;
+        curColor = Color.white;
     }
 
     public void setEnemy(Enemy enemy) {
@@ -54,5 +66,14 @@ public class HitBox {
             g.setColor(curColor);
             g.drawRect(x - OFFSET, y - OFFSET, enemy.getImage().getWidth() + OFFSET, enemy.getImage().getHeight() + OFFSET);
         }
+    }
+    public void chroma(){
+        if(curColorNumber - 1 >= colors.size()){
+            curColorNumber = 0;
+        }else{
+            curColorNumber++;
+        }
+        curColor = colors.get(curColorNumber);
+
     }
 }

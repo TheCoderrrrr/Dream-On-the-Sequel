@@ -45,4 +45,9 @@ public abstract class Enemy extends Entity {
         }
         g.drawString(health + " ", x, y+20);
     }
+    public Image getImage(){
+        if(image != null) return image;
+        else return null;
+    }
+
 }

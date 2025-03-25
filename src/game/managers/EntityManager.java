@@ -5,7 +5,7 @@ import game.World;
 import game.card.Card;
 import game.entity.Entity;
 import game.entity.TestEnemy;
-import game.entity.enemy.HitBox;
+import game.entity.enemy.Enemy;
 import game.entity.player.Player;
 import org.newdawn.slick.Graphics;
 
@@ -106,6 +106,9 @@ public class EntityManager {
 
             }
 
+        }
+        for(HitBox hitBox : hitBoxes){
+            hitBox.chroma();
         }
     }
 

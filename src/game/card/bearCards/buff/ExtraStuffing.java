@@ -15,7 +15,7 @@ public class ExtraStuffing extends Card implements SingleTarget {
         description = "Reduce incoming dmg by 25%";
     }
 
-    public void use(Entity e) {
+    public void use(Entity owner, Entity e) {
 
     }
 }

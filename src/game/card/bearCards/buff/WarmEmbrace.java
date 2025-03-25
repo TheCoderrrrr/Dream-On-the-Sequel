@@ -14,7 +14,7 @@ public class WarmEmbrace extends Card implements SingleTarget {
         description = "Heal 15 HP for the next 2 rounds";
     }
 
-    public void use(Entity e) {
+    public void use(Entity owner, Entity e) {
 
     }
 }

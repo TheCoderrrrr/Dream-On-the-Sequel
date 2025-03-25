@@ -14,7 +14,7 @@ public class PrimalRage extends Card implements SingleTarget {
         description = "Increase Dmg by 30% for a round";
     }
 
-    public void use(Entity e) {
+    public void use(Entity owner, Entity e) {
 
     }
 }

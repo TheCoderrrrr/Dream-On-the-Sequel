@@ -16,7 +16,7 @@ public class Slam extends Card implements SingleTarget{
     }
 
     @Override
-    public void use(Entity e) {
+    public void use(Entity owner, Entity e) {
 
     }
 }

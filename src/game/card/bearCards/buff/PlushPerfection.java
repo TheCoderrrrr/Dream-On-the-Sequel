@@ -14,7 +14,7 @@ public class PlushPerfection extends Card implements SingleTarget {
         description = "Heal 30 HP";
     }
 
-    public void use(Entity e) {
+    public void use(Entity owner, Entity e) {
 
     }
 }

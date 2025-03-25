@@ -16,7 +16,7 @@ public class BearsYearning extends Card implements SingleTarget {
     }
 
 
-    public void use(Entity e) {
+    public void use(Entity owner, Entity e) {
 
     }
 }

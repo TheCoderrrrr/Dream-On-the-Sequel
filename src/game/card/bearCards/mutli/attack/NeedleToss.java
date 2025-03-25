@@ -2,6 +2,7 @@ package game.card.bearCards.mutli.attack;
 
 import game.card.Card;
 import game.card.MultiTarget;
+import game.entity.Entity;
 import resources.Images;
 
 public class NeedleToss extends Card implements MultiTarget {
@@ -15,7 +16,7 @@ public class NeedleToss extends Card implements MultiTarget {
 
     }
 
-    public void use()
+    public void use(Entity owner)
     {
 
     }

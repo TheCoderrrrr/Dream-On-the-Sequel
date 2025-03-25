@@ -135,7 +135,7 @@ abstract public class Card {
         translationalX = x - this.x;
         translationalY = y - this.y;
     }
-    public void reslot(int x, int y){
+    public void reslot(){
         dragging = false;
         this.x = originalX;
         this.y = originalY;
