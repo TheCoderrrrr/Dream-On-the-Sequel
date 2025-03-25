@@ -20,6 +20,8 @@ public class HitBox {
     private Player player;
     private Color curColor;
     private int curColorNumber;
+    private int width;
+    private int height;
     private static List<Color> colors = new ArrayList<>();
     public HitBox(int x, int y){
         this.x = x - OFFSET;
@@ -37,6 +39,8 @@ public class HitBox {
 
     public void setEnemy(Enemy enemy) {
         this.enemy = enemy;
+        width = enemy.getImage().getWidth() + OFFSET;
+        height = enemy.getImage().getHeight() + OFFSET;
     }
     public Enemy getEnemy() {return enemy;}
     public void setPlayer(Player player) {this.player = player;}
@@ -45,7 +49,7 @@ public class HitBox {
     }
 
     public boolean isMouseOver(int mouseX, int mouseY) {
-        return hasEnemy() && mouseX < x + enemy.getImage().getWidth() + OFFSET && mouseX > x - OFFSET && mouseY < y + enemy.getImage().getHeight() + OFFSET && mouseY > y - OFFSET;
+        return hasEnemy() && mouseX < x + width && mouseX > x - OFFSET && mouseY < y + height + OFFSET && mouseY > y - OFFSET;
     }
 
     public void useCard(Card c) {
@@ -78,5 +82,17 @@ public class HitBox {
     }
     public void killEnemy(){
         enemy = null;
+    }
+    public int getWidth(){
+        return width;
+    }
+    public int getHeight(){
+        return height;
+    }
+    public int getX(){
+        return x - OFFSET;
+    }
+    public int getY(){
+        return y - OFFSET;
     }
 }
