@@ -12,7 +12,6 @@ public abstract class Entity {
     protected float attackMultiplier;
     protected float blockPercent;
     protected float defenseMultiplier;
-
     protected int currAnimationFrame = 0;
     protected final int animationFrame = 15;
 
