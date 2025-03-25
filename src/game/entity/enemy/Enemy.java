@@ -1,7 +1,10 @@
-package game.entity;
+package game.entity.enemy;
 
 import game.actions.Action;
+import game.entity.Entity;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
+import resources.Images;
 
 import java.util.ArrayList;
 
@@ -9,11 +12,15 @@ public abstract class Enemy extends Entity {
     private static final int MOVE_LOOKAHEAD = 5;
     protected ArrayList<Action> allMoves;
     protected final ArrayList<Action> nextMoves;
+    protected String name;
+    protected Image image;
 
     public Enemy(int maxHealth) {
         super(maxHealth);
         nextMoves = new ArrayList<>();
         allMoves = new ArrayList<>();
+        image = Images.GODZILLA;
+        name = "you forgot to set name";
     }
 
     protected void initializeMoves() {
@@ -30,8 +37,9 @@ public abstract class Enemy extends Entity {
     }
 
     @Override
-    public void render(Graphics g) {
-        g.drawString(this + "", 0, 0);
+    public void render(Graphics g, int x, int y) {
+        g.drawImage(image, x, y);
+        g.drawString(this + "", x, y);
         for(int i=0; i<nextMoves.size(); i++) {
             g.drawString(nextMoves.get(i).toString(), 0, -20*i);
         }

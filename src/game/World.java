@@ -1,22 +1,28 @@
 package game;
 
+import core.Main;
 import game.managers.CardManager;
 import game.managers.EntityManager;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.Input;
+import resources.Images;
 
 public class World {
-
+    private static int round;
     private final CardManager cardManager;
     private final EntityManager entityManager;
 
     private static String gameStage;
+    private static Image background;
 
     public World(GameContainer gc) {
         cardManager = new CardManager(gc);
         entityManager = new EntityManager();
         gameStage = "My Turn";
+        background = Images.CREEPYBACKGROUND;
+        round = 1;
     }
 
     public void keyPressed(int key, char c) {
@@ -53,6 +59,7 @@ public class World {
     }
 
     public void render(Graphics g) {
+        g.drawImage(background.getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight()),0, 0);
         cardManager.render(g);
         entityManager.render(g);
     }

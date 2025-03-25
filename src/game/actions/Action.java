@@ -6,9 +6,13 @@ import java.util.ArrayList;
 
 public abstract class Action {
     private final ArrayList<Effect> effects;
+    protected String description;
+    protected String name;
 
     public Action(ArrayList<Effect> effects) {
         this.effects = effects;
+        description = "you forgor to add descirption";
+        name = this.getClass().getSimpleName();
     }
 
     public void action() {
@@ -18,6 +22,12 @@ public abstract class Action {
     }
     public ArrayList<Effect> getEffects(){
         return effects;
+    }
+    public String getName(){
+        return name;
+    }
+    public String getDescription(){
+        return description;
     }
 
 }

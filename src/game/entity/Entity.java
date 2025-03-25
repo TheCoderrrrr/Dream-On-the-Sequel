@@ -23,7 +23,7 @@ public abstract class Entity {
     }
 
     abstract public void action(); //call this method only once per turn
-    abstract public void render(Graphics g);
+    abstract public void render(Graphics g, int x, int y);
 
     public void update() {
 

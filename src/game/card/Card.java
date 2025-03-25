@@ -6,6 +6,7 @@ import game.effects.Effect;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import resources.Fonts;
 import resources.Images;
 
 import java.util.ArrayList;
@@ -65,10 +66,26 @@ abstract public class Card {
     public void render(Graphics g){
         if(!selected){
             g.drawImage(cardImage, x, y);
+            renderDescription(g, x, y);
+            renderName(g, (float) (x + (CARD_WIDTH * 0.05)), (float) (y + CARD_HEIGHT * 0.02));
+            renderEnergyCost(g, x + CARD_WIDTH - (float) energyCostImage.getWidth(), y + (float) energyCostImage.getHeight()/5);
         }else{
             g.drawImage(cardImage, gc.getInput().getMouseX() - translationalX, gc.getInput().getMouseY() - translationalY);
+            renderDescription(g, gc.getInput().getMouseX() - translationalX, (gc.getInput().getMouseY() - translationalY));
+            renderName(g, (float) (gc.getInput().getMouseX() - translationalX + (CARD_WIDTH * 0.05)), (float) (gc.getInput().getMouseY() - translationalY + CARD_HEIGHT * 0.02));
+            renderEnergyCost(g, gc.getInput().getMouseX() - translationalX + CARD_WIDTH - (float) energyCostImage.getWidth(), gc.getInput().getMouseY() - translationalY + (float) energyCostImage.getHeight()/5);
         }
 
+    }
+    public void renderDescription(Graphics g, float x, float y){
+        Fonts.RETROGAMING.wrap(g, description, (float) (x + CARD_WIDTH * 0.05), (float) (y + CARD_HEIGHT * 0.7), CARD_WIDTH - 10, 15);
+    }
+    public void renderName(Graphics g, float x, float y){
+        g.drawString(name, x, y);
+    }
+    public void renderEnergyCost(Graphics g, float x, float y){
+        updateEnergyImage();
+        g.drawImage(energyCostImage, x, y);
     }
     public static int getCardWidth(){
         return CARD_WIDTH;

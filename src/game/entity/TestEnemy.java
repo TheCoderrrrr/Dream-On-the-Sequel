@@ -1,9 +1,9 @@
 package game.entity;
 
-import game.actions.Action;
 import game.actions.enemyActions.Bonk;
 import game.actions.enemyActions.Punch;
 import game.actions.enemyActions.Slap;
+import game.entity.enemy.Enemy;
 
 import java.util.ArrayList;
 import java.util.Arrays;

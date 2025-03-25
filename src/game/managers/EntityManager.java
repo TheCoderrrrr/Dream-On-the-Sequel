@@ -1,7 +1,7 @@
 package game.managers;
 
+import core.Main;
 import game.World;
-import game.entity.Enemy;
 import game.entity.Entity;
 import game.entity.TestEnemy;
 import game.entity.player.Player;
@@ -74,8 +74,9 @@ public class EntityManager {
     }
 
     public void render(Graphics g) {
-        for(int i=0; i<enemies.size(); i++) {
-            enemies.get(i).render(g);
+        for(int i = 0; i < enemies.size(); i++){
+            Entity enemy = enemies.get(i);
+            enemy.render(g, (int) (Main.getScreenWidth() * .75 + (i % 2 == 0 ? 0 : Main.getScreenWidth() * .1)), (int) (Main.getScreenHeight() * .5));
         }
     }
 }
