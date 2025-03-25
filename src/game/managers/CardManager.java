@@ -1,6 +1,7 @@
 package game.managers;
 
 import core.Main;
+import game.World;
 import game.card.Card;
 import game.card.bearCards.buff.BearsYearning;
 import game.card.bearCards.buff.PlushPerfection;
@@ -41,11 +42,11 @@ public class CardManager {
 
     }
 
-    public void update() {
+    public static void update() {
 
     }
 
-    public void render(Graphics g) {
+    public static void render(Graphics g) {
         for (Card c : hand) {
             c.render(g);
         }
@@ -59,18 +60,18 @@ public class CardManager {
             hand.add(deck.remove((int) (Math.random() * deck.size())));
         }
         updateTotalCardWidth();
-        updateCardPositions();
+        initializeHand();
     }
 
     public static void updateTotalCardWidth() {
         totalCardWidth = Card.getCardWidth() * hand.size();
     }
 
-    public static void updateCardPositions() {
+    public static void initializeHand() {
         int zeroPos = Main.getScreenWidth() / 2;
         int firstCardX = zeroPos - totalCardWidth / 2;
         for (int i = 0; i < hand.size(); i++) {
-            hand.get(i).moveCard(firstCardX + i * Card.getCardWidth(), (int) (Main.getScreenHeight() - Card.getCardLength() * 0.6));
+            hand.get(i).initializePosition(firstCardX + i * Card.getCardWidth(), (int) (Main.getScreenHeight() - Card.getCardLength() * 0.6));
         }
     }
 
@@ -78,17 +79,19 @@ public class CardManager {
         if (button == 0) {
             for (Card c : hand) {
                 if (c.isOver(x, y)) {
-                    c.select(x, y);
+                    c.drag(x, y);
                     selectionMode = true;
                 }
             }
         }
     }
     public void mouseReleased(int button, int x, int y){
-        for (Card c : hand) {
-            if (c.isSelected() && button == 0) {
-                c.unselect(x, y);
-                selectionMode = false;
+        if(button == 0) {
+            for (Card c : hand) {
+                if (c.isDragging()) {
+                    c.reslot(x, y);
+                    selectionMode = false;
+                }
             }
         }
     }

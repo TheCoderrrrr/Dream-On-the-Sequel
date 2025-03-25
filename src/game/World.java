@@ -50,17 +50,22 @@ public class World {
         entityManager.enemyTurn();
     }
 
+    public void endTurn() {
+        entityManager.endTurn();
+    }
+
     public void update() {
-        cardManager.update();
+        CardManager.update();
         entityManager.update();
         if(entityManager.enemyAnimationsFinished()) {
+            endTurn();
             startMyTurn();
         }
     }
 
     public void render(Graphics g) {
         g.drawImage(background.getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight()),0, 0);
-        cardManager.render(g);
+        CardManager.render(g);
         entityManager.render(g);
     }
     public void mousePressed(int button, int x, int y){

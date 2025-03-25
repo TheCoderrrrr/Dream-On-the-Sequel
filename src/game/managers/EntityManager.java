@@ -4,6 +4,7 @@ import core.Main;
 import game.World;
 import game.entity.Entity;
 import game.entity.TestEnemy;
+import game.entity.enemy.HitBox;
 import game.entity.player.Player;
 import org.newdawn.slick.Graphics;
 
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 
 public class EntityManager {
     private ArrayList<Entity> enemies;
+    private final ArrayList<HitBox> hitBoxes;
     private Player player;
 
     private int currEntityAnimationID;
@@ -20,9 +22,16 @@ public class EntityManager {
         enemies = new ArrayList<>();
         player = new Player();
 
+        hitBoxes = new ArrayList<>();
+        for(int i=0; i<6; i++) {
+            hitBoxes.add(new HitBox(null));
+        }
+
         enemies.add(new TestEnemy());
         enemies.add(new TestEnemy());
         enemies.add(new TestEnemy());
+
+
     }
 
     public void myTurn() {

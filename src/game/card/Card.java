@@ -24,7 +24,7 @@ abstract public class Card {
     protected int originalY;
     protected int translationalX;
     protected int translationalY;
-    protected boolean selected;
+    protected boolean dragging;
     protected static GameContainer gc;
 
     protected static final int CARD_WIDTH = 200;
@@ -32,7 +32,7 @@ abstract public class Card {
 
     public Card() {
         energyCost = 0;
-        selected = false;
+        dragging = false;
         updateEnergyImage();
     }
     public static void setGC(GameContainer gc){
@@ -64,16 +64,19 @@ abstract public class Card {
         updateEnergyImage();
     }
     public void render(Graphics g){
-        if(!selected){
-            g.drawImage(cardImage, x, y);
-            renderDescription(g, x, y);
-            renderName(g, (float) (x + (CARD_WIDTH * 0.05)), (float) (y + CARD_HEIGHT * 0.02));
-            renderEnergyCost(g, x + CARD_WIDTH - (float) energyCostImage.getWidth(), y + (float) energyCostImage.getHeight()/5);
-        }else{
+        if(dragging){
+
             g.drawImage(cardImage, gc.getInput().getMouseX() - translationalX, gc.getInput().getMouseY() - translationalY);
             renderDescription(g, gc.getInput().getMouseX() - translationalX, (gc.getInput().getMouseY() - translationalY));
             renderName(g, (float) (gc.getInput().getMouseX() - translationalX + (CARD_WIDTH * 0.05)), (float) (gc.getInput().getMouseY() - translationalY + CARD_HEIGHT * 0.02));
             renderEnergyCost(g, gc.getInput().getMouseX() - translationalX + CARD_WIDTH - (float) energyCostImage.getWidth(), gc.getInput().getMouseY() - translationalY + (float) energyCostImage.getHeight()/5);
+
+        }else{
+
+            g.drawImage(cardImage, x, y);
+            renderDescription(g, x, y);
+            renderName(g, (float) (x + (CARD_WIDTH * 0.05)), (float) (y + CARD_HEIGHT * 0.02));
+            renderEnergyCost(g, x + CARD_WIDTH - (float) energyCostImage.getWidth(), y + (float) energyCostImage.getHeight()/5);
         }
 
     }
@@ -114,22 +117,22 @@ abstract public class Card {
         }
         return actualEffects;
     }
-    public boolean isSelected(){
-        return selected;
+    public boolean isDragging(){
+        return dragging;
     }
-    public void select(int x,int y){
-        selected = true;
-        originalX = this.x;
-        originalY = this.y;
+    public void drag(int x, int y){
+        dragging = true;
         translationalX = x - this.x;
         translationalY = y - this.y;
     }
-    public void unselect(int x, int y){
-        selected = false;
-        this.x = x - translationalX;
-        this.y = y - translationalY;
+    public void reslot(int x, int y){
+        dragging = false;
+        this.x = originalX;
+        this.y = originalY;
     }
-    public void moveCard(int x, int y){
+    public void initializePosition(int x, int y){
+        originalX = x;
+        originalY = y;
         this.x = x;
         this.y = y;
     }
