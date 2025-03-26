@@ -17,6 +17,7 @@ public class EntityManager {
     private Player player;
 
     private int currEntityAnimationID;
+    private int numOfEntityAnimationID;
     private boolean enemyTurnFinished;
 
     public EntityManager() {
@@ -37,14 +38,13 @@ public class EntityManager {
         addEnemy(new TestEnemy());
         addEnemy(new TestEnemy());
         addEnemy(new TestEnemy());
-
-
     }
     public void addEnemy(Enemy e) {
         for(HitBox h : hitBoxes) {
             if(!h.hasEnemy()) {
                 h.setEnemy(e);
                 enemies.add(e);
+                e.initializeTarget(player);
                 return;
             }
         }
@@ -55,6 +55,12 @@ public class EntityManager {
     }
     public void enemyTurn() {
         currEntityAnimationID = 0;
+        numOfEntityAnimationID = 0;
+        for(HitBox hitBox : hitBoxes){
+            if(hitBox.hasEnemy()){
+                numOfEntityAnimationID++;
+            }
+        }
         enemyTurnFinished = false;
     }
     public void endTurn() {
@@ -80,7 +86,7 @@ public class EntityManager {
     public void update() {
 
         if(World.isEnemyTurn()) {
-            if(currEntityAnimationID < hitBoxes.size()) {
+            if(currEntityAnimationID < numOfEntityAnimationID) {
                 //make sure we stay within array bounds
 
                 HitBox currHitBox = hitBoxes.get(currEntityAnimationID);
@@ -89,7 +95,6 @@ public class EntityManager {
 
                     if(currHitBox.hasEnemy()) {
                         currHitBox.getEnemy().action();
-
                         //then, move to the next enemy
                         currHitBox.getEnemy().resetAnimation();
                     }
@@ -99,12 +104,12 @@ public class EntityManager {
                 } else {
 
                     //otherwise, move to the next frame within the enemy animation
-                    currHitBox.getEnemy().nextAnimationFrame();
+                    if(currHitBox.hasEnemy()) currHitBox.getEnemy().nextAnimationFrame();
                 }
             } else {
 
                 enemyTurnFinished = true;
-
+                CardManager.resetHand();
             }
 
         }
@@ -112,6 +117,7 @@ public class EntityManager {
             hitBox.chroma();
         }
         cleanUp();
+        newRound();
     }
     public void cleanUp(){
         for(int i = hitBoxes.size() - 1; i >= 0; i--)
@@ -121,10 +127,47 @@ public class EntityManager {
             }
         }
     }
+    public boolean isPlayerDead(){
+        return player.isDead();
+    }
 
     public void render(Graphics g) {
+        player.render(g, (int) (Main.getScreenWidth() * .25), Main.getScreenHeight() / 2);
         for(HitBox hitbox : hitBoxes){
             hitbox.render(g);
         }
+    }
+    public void resetManager(){
+        enemies = new ArrayList<>();
+        player = new Player();
+
+        hitBoxes.clear();
+        for(int i=0; i<3; i++) {
+            hitBoxes.add(new HitBox((int) (Main.getScreenWidth()*0.75f + i * Main.getScreenWidth()/12f), Main.getScreenHeight()/2));
+        }
+        for(int i=0; i<2; i++) {
+            hitBoxes.add(new HitBox((int) (Main.getScreenWidth()*0.80f + i * Main.getScreenWidth()/12f), Main.getScreenHeight()/2 - Main.getScreenHeight()/10));
+        }
+
+        for(HitBox h : hitBoxes) {
+            h.setPlayer(player);
+        }
+        addEnemy(new TestEnemy());
+        addEnemy(new TestEnemy());
+        addEnemy(new TestEnemy());
+    }
+    public void newRound(){
+        if(isAllEnemiesDead()){
+            World.nextRound();
+            addEnemy(new TestEnemy());
+            addEnemy(new TestEnemy());
+            addEnemy(new TestEnemy());
+        }
+    }
+    private boolean isAllEnemiesDead(){
+        for(HitBox hitBox : hitBoxes){
+            if(hitBox.hasEnemy()) return false;
+        }
+        return true;
     }
 }

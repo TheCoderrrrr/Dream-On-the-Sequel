@@ -2,6 +2,7 @@ package game.entity.enemy;
 
 import game.actions.Action;
 import game.entity.Entity;
+import game.entity.player.Player;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import resources.Images;
@@ -13,7 +14,7 @@ public abstract class Enemy extends Entity {
     protected ArrayList<Action> allMoves;
     protected final ArrayList<Action> nextMoves;
     protected String name;
-    protected Image image;
+    protected Entity player;
 
     public Enemy(int maxHealth) {
         super(maxHealth);
@@ -28,12 +29,17 @@ public abstract class Enemy extends Entity {
             nextMoves.add(allMoves.get((int) (Math.random() * allMoves.size())));
         }
     }
+    public void initializeTarget(Entity entity){
+        player = entity;
+    }
 
     @Override
     public void action() {
-        nextMoves.getFirst().action(); //do the first time in action queue
-        nextMoves.removeFirst();//remove that thing
-        nextMoves.add(allMoves.get((int) (Math.random() * allMoves.size()))); //add a new one to the queue
+        if(player != null){
+            nextMoves.getFirst().action(player, this); //do the first time in action queue
+            nextMoves.removeFirst();//remove that thing
+            nextMoves.add(allMoves.get((int) (Math.random() * allMoves.size()))); //add a new one to the queue
+        }
     }
 
     @Override

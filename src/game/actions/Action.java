@@ -1,6 +1,7 @@
 package game.actions;
 
 import game.effects.Effect;
+import game.entity.Entity;
 
 import java.util.ArrayList;
 
@@ -15,8 +16,10 @@ public class Action {
         name = this.getClass().getSimpleName();
     }
 
-    public void action() {
+    public void action(Entity target, Entity owner) {
         for(Effect e : effects) {
+            e.setTarget(target);
+            e.setOwner(owner);
             e.apply();
         }
     }

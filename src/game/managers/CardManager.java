@@ -111,4 +111,20 @@ public class CardManager {
             }
         }
     }
+    public void resetManager(){
+        hand = new ArrayList<>();
+        deck = new ArrayList<>();
+
+        selectionMode = false;
+        totalEnergy = 4;
+        maximumEnergy = totalEnergy;
+
+        deck.add(new BearBite());
+        deck.add(new BearHug());
+        deck.add(new BearsYearning());
+        deck.add(new PlushPerfection());
+        deck.add(new Sewing());
+
+        resetHand();
+    }
 }

@@ -3,10 +3,7 @@ package game;
 import core.Main;
 import game.managers.CardManager;
 import game.managers.EntityManager;
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
-import org.newdawn.slick.Input;
+import org.newdawn.slick.*;
 import resources.Images;
 
 public class World {
@@ -24,7 +21,6 @@ public class World {
         background = Images.CREEPYBACKGROUND;
         round = 1;
 
-
         cardManager.setEntityManager(entityManager);
     }
 
@@ -32,6 +28,7 @@ public class World {
         if(key == Input.KEY_SPACE) {
             if(isMyTurn()) {
                 startEnemyTurn();
+                System.out.println("wsg");
             }
         }
     }
@@ -64,18 +61,65 @@ public class World {
             endTurn();
             startMyTurn();
         }
+        gameEnd();
     }
 
     public void render(Graphics g) {
         g.drawImage(background.getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight()),0, 0);
         CardManager.render(g);
         entityManager.render(g);
+        drawButton(g);
     }
     public void mousePressed(int button, int x, int y){
         cardManager.mousePressed(button, x, y);
+        endTurnButton(button, x, y);
     }
     public void mouseReleased(int button, int x, int y){
         cardManager.mouseReleased(button, x, y);
     }
-
+    public void gameEnd(){
+        if(entityManager.isPlayerDead()){
+            gameStage = "end";
+        }
+    }
+    public String getGameStage(){
+        return gameStage;
+    }
+    public void resetWorld(){
+        cardManager.resetManager();
+        entityManager.resetManager();
+        gameStage = "My Turn";
+        background = Images.CREEPYBACKGROUND;
+        round = 1;
+    }
+    public static int getRound(){
+        return round;
+    }
+    public static void nextRound(){
+        round++;
+    }
+    public void endTurnButton(int button, int x, int y){
+        int width = (int) (Main.getScreenWidth() * 0.1);
+        int height = (int) (Main.getScreenHeight() * 0.1);
+        int buttonX = Main.getScreenWidth() - width;
+        int buttonY = Main.getScreenHeight() - height;
+        if(x > buttonX && x < buttonX + width && y > buttonY && y < buttonY + height){
+            if(button == 0){
+                if(isMyTurn()) {
+                    startEnemyTurn();
+                    System.out.println("wsg");
+                }
+            }
+        }
+    }
+    public void drawButton(Graphics g){
+        int width = (int) (Main.getScreenWidth() * 0.1);
+        int height = (int) (Main.getScreenHeight() * 0.1);
+        int buttonX = Main.getScreenWidth() - width;
+        int buttonY = Main.getScreenHeight() - height;
+        g.drawImage(Images.endTurnButton.getScaledCopy(width, height), buttonX, buttonY);
+        g.setLineWidth(4);
+        g.drawRect(buttonX, buttonY, width, height);
+        g.setLineWidth(1);
+    }
 }

@@ -70,6 +70,8 @@ public class Images {
     public static Image ENERGY3;
     public static Image ENERGY4;
 
+    public static Image endTurnButton;
+
     public static void loadImages()
     {
         try
@@ -99,6 +101,8 @@ public class Images {
             ENERGY2 = ENERGYSPRITESHEET.getSubImage(2, 0);
             ENERGY3 = ENERGYSPRITESHEET.getSubImage(3, 0);
             ENERGY4 = ENERGYSPRITESHEET.getSubImage(4, 0);
+
+            endTurnButton = new Image("res/images/buttons/End_Turn.png");
         }
         catch (SlickException e)
         {

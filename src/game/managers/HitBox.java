@@ -35,6 +35,7 @@ public class HitBox {
         colors.add(new Color(        0,       255,         0));
         curColorNumber = 0;
         curColor = Color.white;
+        System.out.println(colors.size());
     }
 
     public void setEnemy(Enemy enemy) {
@@ -72,7 +73,7 @@ public class HitBox {
         }
     }
     public void chroma(){
-        if(curColorNumber - 1 >= colors.size()){
+        if(curColorNumber  > 3000){
             curColorNumber = 0;
         }else{
             curColorNumber++;

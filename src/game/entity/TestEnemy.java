@@ -20,7 +20,11 @@ public class TestEnemy extends Enemy {
 
     @Override
     public void action() {
-        nextMoves.getFirst().action(); //do the first time in action queue
+        if(nextMoves.getFirst() instanceof Bonk){
+            nextMoves.getFirst().action(this, this);//do the first time in action queue
+        }else{
+            nextMoves.getFirst().action(player, this);
+        }
         nextMoves.removeFirst();//remove that thing
         nextMoves.add(allMoves.get((int) (Math.random() * allMoves.size()))); //add a new one to the queue
     }

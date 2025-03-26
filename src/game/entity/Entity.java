@@ -2,6 +2,7 @@ package game.entity;
 
 import game.effects.Effect;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 
 import java.util.ArrayList;
 
@@ -14,6 +15,7 @@ public abstract class Entity {
     protected float defenseMultiplier;
     protected int currAnimationFrame = 0;
     protected final int animationFrame = 15;
+    protected Image image;
     protected boolean isdead;
 
 
@@ -23,6 +25,7 @@ public abstract class Entity {
         this.defenseMultiplier = 1;
         this.attackMultiplier = 1;
         this.blockPercent = 0;
+        activeEffects = new ArrayList<>();
         isdead = false;
     }
 

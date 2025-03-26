@@ -38,6 +38,9 @@ public class Game extends BasicGameState
 	{	
 		// This updates your game's logic every frame.  NO DRAWING.
 		world.update();
+		if(world.getGameStage().equals("end")){
+			sbg.enterState(Main.TITLE_ID);
+		}
 	}
 
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException 
@@ -50,12 +53,12 @@ public class Game extends BasicGameState
 	
 	public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException 
 	{
-		// This code happens when you enter a gameState.  
+		// This code happens when you enter a gameState.
 	}
 
 	public void leave(GameContainer gc, StateBasedGame sbg) 
 	{
-		// This code happens when you leave a gameState. 
+		world.resetWorld();
 	}
 
 	public void keyPressed(int key, char c)
