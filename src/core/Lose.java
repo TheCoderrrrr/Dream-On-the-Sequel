@@ -3,6 +3,7 @@ package core;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import resources.Images;
 
 public class Lose extends BasicGameState {
     StateBasedGame sbg;
@@ -21,6 +22,7 @@ public class Lose extends BasicGameState {
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException
     {
         this.sbg = sbg;
+        background = Images.LOSE_SCREEN.getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
     }
 
     public void update(GameContainer gc,StateBasedGame sbg, int delta) throws SlickException
@@ -29,7 +31,7 @@ public class Lose extends BasicGameState {
     }
 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException{
-        background = new Image("res/images/backgrounds/Title.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
+        g.drawImage(background.getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight()), 0, 0);
     }
 
     public void keyPressed(int key, char c)

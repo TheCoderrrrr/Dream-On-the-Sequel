@@ -11,6 +11,8 @@ public class Images {
 
     public static Image TUTORIALSCREEN_BACKGROUND;
 
+    public static Image LOSE_SCREEN;
+
     public static Image PLACEHOLDERCARD;
     public static Image BACKGROUND;
     public static Image CREEPYBACKGROUND;
@@ -81,6 +83,8 @@ public class Images {
             TITLESCREEN_BACKGROUND = new Image("res/images/backgrounds/TitleScreen.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
 
             TUTORIALSCREEN_BACKGROUND = new Image("res/images/backgrounds/TutorialScreen.png");
+
+            LOSE_SCREEN = new Image("res/images/backgrounds/Lose.png");
 
             PLACEHOLDERCARD = new Image("res/images/cards/card_template.png");
             BACKGROUND = new Image("res/images/backgrounds/background.png");
