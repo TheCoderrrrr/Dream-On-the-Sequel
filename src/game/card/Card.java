@@ -150,4 +150,7 @@ abstract public class Card {
         return x <= mX && x + CARD_WIDTH > mX && y <= mY && y + CARD_HEIGHT >= mY;
     }
 
+    public void unuse(){
+        isUsed = false;
+    }
 }

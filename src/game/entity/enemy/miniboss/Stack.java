@@ -4,6 +4,7 @@ import game.actions.enemyActions.stackActions.attacking.RingBlaster;
 import game.actions.enemyActions.stackActions.attacking.StackSlam;
 import game.actions.enemyActions.stackActions.attacking.TotemSpin;
 import game.actions.enemyActions.stackActions.attacking.TowerBlock;
+import game.actions.enemyActions.stackActions.buffing.TowerShield;
 import game.entity.enemy.Enemy;
 import resources.Images;
 
@@ -15,7 +16,7 @@ public class Stack extends Enemy {
     {
         super(maxHealth *= 2);
         image = Images.STACKENEMY;
-        allMoves = new ArrayList<>(Arrays.asList(new RingBlaster(), new StackSlam(), new TotemSpin(), new TowerBlock()));
+        allMoves = new ArrayList<>(Arrays.asList(new RingBlaster(), new StackSlam(), new TotemSpin(), new TowerBlock(), new TowerShield()));
         this.initializeMoves();
     }
 

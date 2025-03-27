@@ -5,9 +5,13 @@ import game.World;
 import game.card.Card;
 import game.card.bearCards.buff.BearsYearning;
 import game.card.bearCards.buff.PlushPerfection;
+import game.card.bearCards.buff.PrimalRage;
 import game.card.bearCards.buff.Sewing;
+import game.card.bearCards.mutli.attack.NeedleToss;
+import game.card.bearCards.mutli.debuff.ButtonBomb;
 import game.card.bearCards.single.attack.BearBite;
 import game.card.bearCards.single.attack.BearHug;
+import game.card.bearCards.single.attack.PawCrush;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 
@@ -36,9 +40,9 @@ public class CardManager {
 
         deck.add(new BearBite());
         deck.add(new BearHug());
-        deck.add(new BearsYearning());
-        deck.add(new PlushPerfection());
-        deck.add(new Sewing());
+        deck.add(new NeedleToss());
+        deck.add(new PawCrush());
+        deck.add(new ButtonBomb());
 
         resetHand();
 
@@ -51,7 +55,8 @@ public class CardManager {
     public static void update() {
         for(int i=hand.size() - 1; i>=0; i--) {
             if(hand.get(i).isUsed()) {
-                hand.remove(i);
+                hand.get(i).unuse();
+                deck.add(hand.remove(i));
             }
         }
         updateTotalCardWidth();
@@ -124,6 +129,8 @@ public class CardManager {
         deck.add(new BearsYearning());
         deck.add(new PlushPerfection());
         deck.add(new Sewing());
+        deck.add(new NeedleToss());
+        deck.add(new PrimalRage());
 
         resetHand();
     }

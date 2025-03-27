@@ -13,9 +13,9 @@ import java.util.ArrayList;
 
 public class EntityManager {
     private ArrayList<Entity> enemies;
-    private final ArrayList<HitBox> hitBoxes;
+    private static ArrayList<HitBox> hitBoxes;
+    private static ArrayList<HitBox> hitBoxesInUse;
     private Player player;
-
     private int currEntityAnimationID;
     private int numOfEntityAnimationID;
     private boolean enemyTurnFinished;
@@ -25,6 +25,7 @@ public class EntityManager {
         player = new Player();
 
         hitBoxes = new ArrayList<>();
+        hitBoxesInUse = new ArrayList<>();
         for(int i=0; i<3; i++) {
             hitBoxes.add(new HitBox((int) (Main.getScreenWidth()*0.75f + i * Main.getScreenWidth()/12f), Main.getScreenHeight()/2));
         }
@@ -58,6 +59,7 @@ public class EntityManager {
         numOfEntityAnimationID = 0;
         for(HitBox hitBox : hitBoxes){
             if(hitBox.hasEnemy()){
+                hitBoxesInUse.add(hitBox);
                 numOfEntityAnimationID++;
             }
         }
@@ -89,22 +91,24 @@ public class EntityManager {
             if(currEntityAnimationID < numOfEntityAnimationID) {
                 //make sure we stay within array bounds
 
-                HitBox currHitBox = hitBoxes.get(currEntityAnimationID);
-                if(currHitBox.hasEnemy() && currHitBox.getEnemy().finishedAnimation()) {
-                    //if the current enemy finished the animation, then call action() for that enemy
+                HitBox currHitBox = hitBoxesInUse.get(currEntityAnimationID);
+                if(currHitBox.hasEnemy()) {
+                    if(currHitBox.getEnemy().finishedAnimation()){
+                        //if the current enemy finished the animation, then call action() for that enemy
 
-                    if(currHitBox.hasEnemy()) {
-                        currHitBox.getEnemy().action();
-                        //then, move to the next enemy
-                        currHitBox.getEnemy().resetAnimation();
+                        if(currHitBox.hasEnemy()) {
+                            currHitBox.getEnemy().action();
+                            //then, move to the next enemy
+                            currHitBox.getEnemy().resetAnimation();
+                        }
+
+                        currEntityAnimationID++;
+                    }else{
+                        //otherwise, move to the next frame within the enemy animation
+                        if(currHitBox.hasEnemy()) currHitBox.getEnemy().nextAnimationFrame();
                     }
-
-                    currEntityAnimationID++;
-
                 } else {
-
-                    //otherwise, move to the next frame within the enemy animation
-                    if(currHitBox.hasEnemy()) currHitBox.getEnemy().nextAnimationFrame();
+                    numOfEntityAnimationID++;
                 }
             } else {
 
@@ -124,6 +128,7 @@ public class EntityManager {
         {
             if(hitBoxes.get(i).hasEnemy() && hitBoxes.get(i).getEnemy().isDead()){
                 hitBoxes.get(i).killEnemy();
+                hitBoxesInUse.remove(hitBoxes.get(i));
             }
         }
     }
@@ -169,5 +174,8 @@ public class EntityManager {
             if(hitBox.hasEnemy()) return false;
         }
         return true;
+    }
+    public static ArrayList<HitBox> getHitBoxes(){
+        return hitBoxes;
     }
 }

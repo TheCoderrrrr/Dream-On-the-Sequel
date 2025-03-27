@@ -18,7 +18,7 @@ public class World {
         cardManager = new CardManager(gc);
         entityManager = new EntityManager();
         gameStage = "My Turn";
-        background = Images.CREEPYBACKGROUND;
+        background = Images.HAPPYBACKGROUND;
         round = 1;
 
         cardManager.setEntityManager(entityManager);
@@ -55,6 +55,7 @@ public class World {
     }
 
     public void update() {
+        updateBackground();
         CardManager.update();
         entityManager.update();
         if(entityManager.enemyAnimationsFinished()) {
@@ -121,5 +122,13 @@ public class World {
         g.setLineWidth(4);
         g.drawRect(buttonX, buttonY, width, height);
         g.setLineWidth(1);
+    }
+    public void updateBackground(){
+        if(round % 5 == 0){
+            background = Images.CREEPYBACKGROUND.getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
+        }
+        else {
+            background = Images.HAPPYBACKGROUND.getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
+        }
     }
 }

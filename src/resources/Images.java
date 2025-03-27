@@ -76,11 +76,11 @@ public class Images {
     {
         try
         {
-            TITLESCREEN_BACKGROUND = new Image("res/images/backgrounds/TitleScreen.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
+            TITLESCREEN_BACKGROUND = new Image("res/images/backgrounds/Title.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
 
             PLACEHOLDERCARD = new Image("res/images/cards/card_template.png");
             BACKGROUND = new Image("res/images/backgrounds/background.png");
-            HAPPYBACKGROUND = new Image("res/images/backgrounds/happyBackground.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
+            HAPPYBACKGROUND = new Image("res/images/backgrounds/Happeh.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
             CREEPYBACKGROUND = new Image("res/images/backgrounds/creepyBackground.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
 
             loadBearImages();
