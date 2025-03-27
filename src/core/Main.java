@@ -13,11 +13,15 @@ public class Main extends StateBasedGame
 	
     public static final int GAME_ID  = 1;
 	public static final int TITLE_ID = 0;
+	public static final int TUTORIAL_ID = 2;
+	public static final int LOSE_ID = 3;
 	public static final int TESTIN_ID = 999;
 
 	private BasicGameState title;
 	private BasicGameState game;
 	private BasicGameState testing;
+	private BasicGameState tutorial;
+	private BasicGameState lose;
 
 	public Main(String name) 
 	{
@@ -26,6 +30,8 @@ public class Main extends StateBasedGame
 		title = new TitleScreen(TITLE_ID);
 		game = new Game(GAME_ID);
 		testing = new Testing(TESTIN_ID);
+		tutorial = new Tutorial(TUTORIAL_ID);
+		lose = new Lose(LOSE_ID);
 	}
 
 	public static int getScreenWidth()
@@ -44,6 +50,8 @@ public class Main extends StateBasedGame
 		addState(title);
 		addState(game);
 		addState(testing);
+		addState(tutorial);
+		addState(lose);
 	}
 
 	public static void main(String[] args) 

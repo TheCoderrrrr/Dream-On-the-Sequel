@@ -5,6 +5,7 @@ import game.entity.Entity;
 import game.entity.player.Player;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
+import resources.Fonts;
 import resources.Images;
 
 import java.util.ArrayList;
@@ -49,7 +50,7 @@ public abstract class Enemy extends Entity {
         for(int i=0; i<nextMoves.size(); i++) {
             g.drawString(nextMoves.get(i).getClass().getSimpleName(), x, y -20*(i+1));
         }
-        g.drawString(health + " ", x, y+20);
+        Fonts.REGULAR.drawString(g , "Hp : " + health + " ", (float) x, (float) y+20, 25);
     }
     public Image getImage(){
         if(image != null) return image;

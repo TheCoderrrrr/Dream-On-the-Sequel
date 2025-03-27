@@ -3,6 +3,7 @@ package game.entity.player;
 import game.artifacts.Artifact;
 import game.entity.Entity;
 import org.newdawn.slick.Graphics;
+import resources.Fonts;
 import resources.Images;
 
 import java.util.ArrayList;
@@ -25,6 +26,6 @@ public class Player extends Entity {
     @Override
     public void render(Graphics g, int x, int y) {
         g.drawImage(image, x, y);
-        g.drawString(health + " ", x, y+20);
+        Fonts.REGULAR.drawString(g , "Hp : " + health + " ", (float) x, (float) y+20, 25);
     }
 }

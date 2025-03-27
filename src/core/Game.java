@@ -39,7 +39,7 @@ public class Game extends BasicGameState
 		// This updates your game's logic every frame.  NO DRAWING.
 		world.update();
 		if(world.getGameStage().equals("end")){
-			sbg.enterState(Main.TITLE_ID);
+			sbg.enterState(Main.LOSE_ID);
 		}
 	}
 

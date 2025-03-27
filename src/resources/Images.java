@@ -9,6 +9,8 @@ import org.newdawn.slick.SpriteSheet;
 public class Images {
     public static Image TITLESCREEN_BACKGROUND;
 
+    public static Image TUTORIALSCREEN_BACKGROUND;
+
     public static Image PLACEHOLDERCARD;
     public static Image BACKGROUND;
     public static Image CREEPYBACKGROUND;
@@ -76,7 +78,9 @@ public class Images {
     {
         try
         {
-            TITLESCREEN_BACKGROUND = new Image("res/images/backgrounds/Title.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
+            TITLESCREEN_BACKGROUND = new Image("res/images/backgrounds/TitleScreen.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
+
+            TUTORIALSCREEN_BACKGROUND = new Image("res/images/backgrounds/TutorialScreen.png");
 
             PLACEHOLDERCARD = new Image("res/images/cards/card_template.png");
             BACKGROUND = new Image("res/images/backgrounds/background.png");

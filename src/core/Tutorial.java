@@ -1,5 +1,6 @@
 package core;
 
+import net.java.games.input.Component;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -7,12 +8,12 @@ import resources.Fonts;
 import resources.Images;
 import resources.Sounds;
 
-public class TitleScreen extends BasicGameState {
+public class Tutorial extends BasicGameState {
     private int id;
     private Image background;
     private StateBasedGame sbg;
 
-    public TitleScreen(int id){
+    public Tutorial(int id){
         this.id = id;
     }
 
@@ -23,7 +24,7 @@ public class TitleScreen extends BasicGameState {
         Images.loadSymbols();
         Fonts.loadFonts();
         this.sbg = sbg;
-        background = Images.TITLESCREEN_BACKGROUND.getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
+        background = Images.TUTORIALSCREEN_BACKGROUND.getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
     }
 
     public int getID() {
@@ -47,9 +48,9 @@ public class TitleScreen extends BasicGameState {
 
     public void keyPressed(int key, char c)
     {
-        if(key == Input.KEY_SPACE){
-            sbg.enterState(Main.GAME_ID);
-        }else if(key == Input.KEY_T) sbg.enterState(Main.TUTORIAL_ID);
+        if(key == Input.KEY_T){
+            sbg.enterState(Main.TITLE_ID);
+        }
     }
 
     public void mousePressed(int button, int x, int y)
