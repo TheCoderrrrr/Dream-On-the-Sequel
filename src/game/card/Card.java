@@ -3,6 +3,7 @@ package game.card;
 import game.actions.Action;
 import game.effects.Damage;
 import game.effects.Effect;
+import game.ui.EffectsPanel;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -27,6 +28,7 @@ abstract public class Card {
     protected boolean dragging;
     protected boolean isUsed;
     protected static GameContainer gc;
+    protected EffectsPanel effectsPanel;
 
     protected static final int CARD_WIDTH = 200;
     protected static final int CARD_HEIGHT = 300;
@@ -82,13 +84,11 @@ abstract public class Card {
             renderEnergyCost(g, gc.getInput().getMouseX() - translationalX + CARD_WIDTH - (float) energyCostImage.getWidth(), gc.getInput().getMouseY() - translationalY + (float) energyCostImage.getHeight()/5);
 
         }else{
-
             g.drawImage(cardImage, x, y);
             renderDescription(g, x, y);
             renderName(g, (float) (x + (CARD_WIDTH * 0.05)), (float) (y + CARD_HEIGHT * 0.02));
             renderEnergyCost(g, x + CARD_WIDTH - (float) energyCostImage.getWidth(), y + (float) energyCostImage.getHeight()/5);
         }
-
     }
     public void renderDescription(Graphics g, float x, float y){
         Fonts.RETROGAMING.wrap(g, description, (float) (x + CARD_WIDTH * 0.05), (float) (y + CARD_HEIGHT * 0.7), CARD_WIDTH - 10, 15);
@@ -99,6 +99,13 @@ abstract public class Card {
     public void renderEnergyCost(Graphics g, float x, float y){
         updateEnergyImage();
         g.drawImage(energyCostImage, x, y);
+    }
+    public void renderEffectsPanel(Graphics g){
+        if(effectsPanel != null){
+            if(isOver(gc.getInput().getMouseX(), gc.getInput().getMouseY())){
+                effectsPanel.render(g, x + getCardWidth() , y);
+            }
+        }
     }
     public static int getCardWidth(){
         return CARD_WIDTH;

@@ -9,6 +9,7 @@ import game.effects.Mark;
 import game.entity.Entity;
 import game.managers.EntityManager;
 import game.managers.HitBox;
+import game.ui.EffectsPanel;
 import resources.Images;
 
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class ButtonBomb extends Card implements MultiTarget {
         ArrayList<Effect> actions = new ArrayList<>();
         actions.add(new Mark(1.5f, 2));
         action = new Action(actions);
+        effectsPanel = new EffectsPanel(actions);
     }
 
     public void use(Entity owner)

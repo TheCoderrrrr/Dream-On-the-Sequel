@@ -1,4 +1,4 @@
 package game.artifacts;
 
-public class Artifact {
+public abstract class Artifact {
 }

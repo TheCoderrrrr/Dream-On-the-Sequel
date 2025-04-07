@@ -70,6 +70,9 @@ public class CardManager {
         for (Card c : hand) {
             if(c.isDragging()) c.render(g);
         }
+        for(Card c : hand){
+            c.renderEffectsPanel(g);
+        }
     }
 
     public static void resetHand() {

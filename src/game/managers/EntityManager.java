@@ -15,7 +15,7 @@ public class EntityManager {
     private ArrayList<Entity> enemies;
     private static ArrayList<HitBox> hitBoxes;
     private static ArrayList<HitBox> hitBoxesInUse;
-    private Player player;
+    private static Player player;
     private int currEntityAnimationID;
     private int numOfEntityAnimationID;
     private boolean enemyTurnFinished;
@@ -177,5 +177,8 @@ public class EntityManager {
     }
     public static ArrayList<HitBox> getHitBoxes(){
         return hitBoxes;
+    }
+    public static Entity getPlayer(){
+        return player;
     }
 }

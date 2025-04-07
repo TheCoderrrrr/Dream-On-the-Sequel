@@ -1,18 +1,19 @@
 package game.ui;
 
+import org.newdawn.slick.Graphics;
+
 import java.awt.*;
 
 public abstract class Panel {
-    protected int x;
-    protected int y;
+
     protected int width;
     protected int height;
     protected String name;
     protected String description;
     protected Tooltip tooltip;
-    public Panel(int x, int y){
+    public Panel(){
 
     }
-    public abstract void render(Graphics g);
+    public abstract void render(Graphics g, int x, int y);
 
 }

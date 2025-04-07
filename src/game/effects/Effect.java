@@ -32,4 +32,10 @@ abstract public class Effect {
     }
 
     abstract public void apply();
+    public String getName(){
+        return name;
+    }
+    public String getDescription(){
+        return description;
+    }
 }
