@@ -1,10 +1,11 @@
 package game.card.bearCards.buff;
+import game.card.Buffing;
 import game.card.Card;
 import game.card.SingleTarget;
 import resources.Images;
 import game.entity.Entity;
 
-public class Sewing extends Card implements SingleTarget {
+public class Sewing extends Card implements SingleTarget, Buffing {
     public Sewing()
     {
         super();

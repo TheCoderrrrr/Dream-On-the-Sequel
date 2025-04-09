@@ -1,6 +1,7 @@
 package game.card.bearCards.single.attack;
 
 import game.actions.Action;
+import game.card.Attacking;
 import game.card.Card;
 import game.card.SingleTarget;
 import game.effects.Damage;
@@ -11,7 +12,7 @@ import resources.Images;
 
 import java.util.ArrayList;
 
-public class BearBite extends Card implements SingleTarget{
+public class BearBite extends Card implements SingleTarget, Attacking {
     public BearBite(){
         super();
         energyCost = 1;

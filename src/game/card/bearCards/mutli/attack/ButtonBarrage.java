@@ -1,11 +1,12 @@
 package game.card.bearCards.mutli.attack;
 
+import game.card.Attacking;
 import game.card.Card;
 import game.card.MultiTarget;
 import game.entity.Entity;
 import resources.Images;
 
-public class ButtonBarrage extends Card implements MultiTarget {
+public class ButtonBarrage extends Card implements MultiTarget, Attacking {
     public ButtonBarrage()
     {
         super();

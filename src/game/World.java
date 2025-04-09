@@ -15,8 +15,8 @@ public class World {
     private static Image background;
 
     public World(GameContainer gc) {
-        cardManager = new CardManager(gc);
         entityManager = new EntityManager();
+        cardManager = new CardManager(gc);
         gameStage = "My Turn";
         background = Images.HAPPYBACKGROUND;
         round = 1;
@@ -28,7 +28,6 @@ public class World {
         if(key == Input.KEY_SPACE) {
             if(isMyTurn()) {
                 startEnemyTurn();
-                System.out.println("wsg");
             }
         }
     }

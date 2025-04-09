@@ -1,11 +1,12 @@
 package game.card.bearCards.buff;
 
+import game.card.Buffing;
 import game.card.Card;
 import game.card.SingleTarget;
 import game.entity.Entity;
 import resources.Images;
 
-public class BearsYearning extends Card implements SingleTarget {
+public class BearsYearning extends Card implements SingleTarget, Buffing {
     public BearsYearning()
     {
         super();

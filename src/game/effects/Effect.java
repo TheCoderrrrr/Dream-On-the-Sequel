@@ -38,4 +38,7 @@ abstract public class Effect {
     public String getDescription(){
         return description;
     }
+    public int getDurationLeft(){
+        return durationLeft;
+    }
 }

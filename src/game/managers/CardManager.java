@@ -2,11 +2,10 @@ package game.managers;
 
 import core.Main;
 import game.World;
+import game.card.Attacking;
+import game.card.Buffing;
 import game.card.Card;
-import game.card.bearCards.buff.BearsYearning;
-import game.card.bearCards.buff.PlushPerfection;
-import game.card.bearCards.buff.PrimalRage;
-import game.card.bearCards.buff.Sewing;
+import game.card.bearCards.buff.*;
 import game.card.bearCards.mutli.attack.NeedleToss;
 import game.card.bearCards.mutli.debuff.ButtonBomb;
 import game.card.bearCards.single.attack.BearBite;
@@ -40,7 +39,7 @@ public class CardManager {
 
         deck.add(new BearBite());
         deck.add(new BearHug());
-        deck.add(new NeedleToss());
+        deck.add(new WarmEmbrace());
         deck.add(new PawCrush());
         deck.add(new ButtonBomb());
 
@@ -65,13 +64,28 @@ public class CardManager {
 
     public static void render(Graphics g) {
         for (Card c : hand) {
-            if(!c.isDragging()) c.render(g);
+            if(!c.isDragging()) {
+                c.render(g);
+
+            }
         }
         for (Card c : hand) {
-            if(c.isDragging()) c.render(g);
+            if(c.isDragging())
+            {
+                if(c instanceof Buffing){
+                    g.fillRect(Main.getScreenWidth() / 2, Main.getScreenHeight() / 2, 200, 200);
+                }else if(c instanceof Attacking){
+                    for(HitBox h : EntityManager.getHitBoxes()){
+                        if(h.hasEnemy()){
+                            h.renderHitBox(g);
+                        }
+                    }
+                }
+                c.render(g);
+            }
         }
         for(Card c : hand){
-            c.renderEffectsPanel(g);
+            c.renderEffectsPanel(g, hand);
         }
     }
 

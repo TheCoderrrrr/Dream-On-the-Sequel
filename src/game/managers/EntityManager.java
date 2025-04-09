@@ -16,6 +16,7 @@ public class EntityManager {
     private static ArrayList<HitBox> hitBoxes;
     private static ArrayList<HitBox> hitBoxesInUse;
     private static Player player;
+    private static HitBox playerHitBox;
     private int currEntityAnimationID;
     private int numOfEntityAnimationID;
     private boolean enemyTurnFinished;
@@ -26,6 +27,8 @@ public class EntityManager {
 
         hitBoxes = new ArrayList<>();
         hitBoxesInUse = new ArrayList<>();
+        playerHitBox = new HitBox((int) (Main.getScreenWidth()*0.25f), Main.getScreenHeight()/2);
+
         for(int i=0; i<3; i++) {
             hitBoxes.add(new HitBox((int) (Main.getScreenWidth()*0.75f + i * Main.getScreenWidth()/12f), Main.getScreenHeight()/2));
         }

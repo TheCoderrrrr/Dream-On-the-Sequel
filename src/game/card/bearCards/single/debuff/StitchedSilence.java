@@ -1,10 +1,11 @@
 package game.card.bearCards.single.debuff;
+import game.card.Attacking;
 import game.card.Card;
 import game.card.SingleTarget;
 import game.entity.Entity;
 import resources.Images;
 
-public class StitchedSilence extends Card implements SingleTarget {
+public class StitchedSilence extends Card implements SingleTarget, Attacking {
     public StitchedSilence()
     {
         super();

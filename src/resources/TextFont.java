@@ -52,9 +52,9 @@ public class TextFont {
         this.text = text;
         g.resetTransform();
         g.resetFont();
-        System.out.println(x  + " " + y);
-
-        System.out.println(x / scale + " " + y/scale);
+//        System.out.println(x  + " " + y);
+//
+//        System.out.println(x / scale + " " + y/scale);
     }
 
     public void drawStringCentered(Graphics g, String text, float x, float y)

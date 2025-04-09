@@ -1,11 +1,12 @@
 package game.card.bearCards.single.attack;
 
+import game.card.Attacking;
 import game.card.Card;
 import game.card.SingleTarget;
 import game.entity.Entity;
 import resources.Images;
 
-public class Smash extends Card implements SingleTarget{
+public class Smash extends Card implements SingleTarget, Attacking {
     public Smash(){
         super();
         energyCost = 1;

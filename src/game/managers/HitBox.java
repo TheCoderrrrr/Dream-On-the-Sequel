@@ -68,9 +68,11 @@ public class HitBox {
 
         if(hasEnemy()) {
             enemy.render(g, x, y);
-            g.setColor(curColor);
-            g.drawRect(x - OFFSET, y - OFFSET, enemy.getImage().getWidth() + OFFSET, enemy.getImage().getHeight() + OFFSET);
         }
+    }
+    public void renderHitBox(Graphics g) {
+        g.setColor(curColor);
+        g.drawRect(x - OFFSET, y - OFFSET, enemy.getImage().getWidth() + OFFSET, enemy.getImage().getHeight() + OFFSET);
     }
     public void chroma(){
         if(curColorNumber  > 3000){

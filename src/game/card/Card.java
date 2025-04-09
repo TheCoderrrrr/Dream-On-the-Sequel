@@ -100,10 +100,20 @@ abstract public class Card {
         updateEnergyImage();
         g.drawImage(energyCostImage, x, y);
     }
-    public void renderEffectsPanel(Graphics g){
-        if(effectsPanel != null){
-            if(isOver(gc.getInput().getMouseX(), gc.getInput().getMouseY())){
-                effectsPanel.render(g, x + getCardWidth() , y);
+    public void renderEffectsPanel(Graphics g, ArrayList<Card> cards){
+        if(effectsPanel != null) {
+            if (dragging) {
+                    effectsPanel.render(g, gc.getInput().getMouseX() - translationalX + getCardWidth(), (gc.getInput().getMouseY() - translationalY));
+            } else {
+                boolean render = true;
+                for(Card c : cards){
+                    if(c.isDragging()){
+                        render = false;
+                    }
+                }
+                if (isOver(gc.getInput().getMouseX(), gc.getInput().getMouseY()) && render) {
+                    effectsPanel.render(g, x + getCardWidth(), y);
+                }
             }
         }
     }

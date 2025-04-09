@@ -1,10 +1,11 @@
 package game.card.bearCards.single.debuff;
+import game.card.Attacking;
 import game.card.Card;
 import game.card.SingleTarget;
 import game.entity.Entity;
 import resources.Images;
 
-public class CuddleCrush extends Card implements SingleTarget {
+public class CuddleCrush extends Card implements SingleTarget, Attacking {
     public CuddleCrush()
     {
         super();

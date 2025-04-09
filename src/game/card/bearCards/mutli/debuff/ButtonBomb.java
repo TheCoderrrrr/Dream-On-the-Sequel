@@ -1,6 +1,7 @@
 package game.card.bearCards.mutli.debuff;
 
 import game.actions.Action;
+import game.card.Attacking;
 import game.card.Card;
 import game.card.MultiTarget;
 import game.effects.Damage;
@@ -14,7 +15,7 @@ import resources.Images;
 
 import java.util.ArrayList;
 
-public class ButtonBomb extends Card implements MultiTarget {
+public class ButtonBomb extends Card implements MultiTarget, Attacking {
     public ButtonBomb()
     {
         super();

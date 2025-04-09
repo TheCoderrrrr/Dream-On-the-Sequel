@@ -1,10 +1,12 @@
 package game.card.bearCards.buff;
+import game.card.Buffing;
 import game.card.Card;
 import game.card.SingleTarget;
 import game.entity.Entity;
+import game.managers.EntityManager;
 import resources.Images;
 
-public class PrimalRage extends Card implements SingleTarget {
+public class PrimalRage extends Card implements SingleTarget, Buffing {
     public PrimalRage()
     {
         super();
