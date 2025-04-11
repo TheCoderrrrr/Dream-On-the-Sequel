@@ -4,9 +4,7 @@ import game.actions.Action;
 import game.card.Attacking;
 import game.card.Card;
 import game.card.MultiTarget;
-import game.effects.Damage;
-import game.effects.Effect;
-import game.effects.Mark;
+import game.effects.*;
 import game.entity.Entity;
 import game.managers.EntityManager;
 import game.managers.HitBox;
@@ -25,6 +23,8 @@ public class ButtonBomb extends Card implements MultiTarget, Attacking {
         cardImage = Images.BUTTON_BOMB;
         ArrayList<Effect> actions = new ArrayList<>();
         actions.add(new Mark(1.5f, 2));
+        actions.add(new Heal(15, 2));
+        actions.add(new Burn(15, 2));
         action = new Action(actions);
         effectsPanel = new EffectsPanel(actions);
     }
