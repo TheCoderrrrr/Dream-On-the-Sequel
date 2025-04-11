@@ -22,7 +22,6 @@ public class BearBite extends Card implements SingleTarget, Attacking {
         ArrayList<Effect> actions = new ArrayList<>();
         actions.add(new Damage(25));
         action = new Action(actions);
-        effectsPanel = new EffectsPanel(actions);
     }
 
     public void use(Entity owner, Entity target) {
