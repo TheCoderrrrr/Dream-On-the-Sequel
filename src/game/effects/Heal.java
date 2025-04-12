@@ -14,6 +14,10 @@ public class Heal extends Effect{
         description = "Restores health to the player.";
     }
 
+    public Heal copy() {
+        return new Heal(healStrength, duration);
+    }
+
     @Override
     public void apply() {
         target.heal(healStrength);

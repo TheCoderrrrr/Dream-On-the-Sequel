@@ -13,6 +13,10 @@ public class Mark extends Effect{
         description = "Makes the affected enemy take additional damage when attacked.";
     }
 
+    public Mark copy() {
+        return new Mark(multiplier, duration);
+    }
+
     @Override
     public void apply() {
         target.modifyDefense(multiplier);

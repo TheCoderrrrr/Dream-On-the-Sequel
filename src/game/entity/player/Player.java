@@ -3,6 +3,7 @@ package game.entity.player;
 import game.artifacts.Artifact;
 import game.artifacts.Bulwark;
 import game.artifacts.ManaStone;
+import game.effects.Effect;
 import game.entity.Entity;
 import org.newdawn.slick.Graphics;
 import resources.Fonts;
@@ -61,6 +62,12 @@ public class Player extends Entity {
         int e = 800;
         for(Artifact a : artifacts) {
             g.drawString(a.toString(), 100, e);
+            e += 50;
+        }
+
+        e = 800;
+        for(Effect effect : activeEffects) {
+            g.drawString(effect.getClass().getSimpleName() + " duration: " + effect.getDurationLeft(), 500, e);
             e += 50;
         }
     }

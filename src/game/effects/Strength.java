@@ -14,6 +14,10 @@ public class Strength extends Effect{
         description = "Temporarily increases the damage of the attacks.";
     }
 
+    public Strength copy() {
+        return new Strength(attackMultiplier, duration);
+    }
+
     @Override
     public void apply() {
         target.modifyAttack(attackMultiplier);

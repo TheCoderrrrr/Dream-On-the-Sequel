@@ -13,6 +13,10 @@ public class Damage extends Effect{
         description = "";
     }
 
+    public Damage copy() {
+        return new Damage(damage);
+    }
+
     @Override
     public void apply() {
         target.takeDamage(damage);

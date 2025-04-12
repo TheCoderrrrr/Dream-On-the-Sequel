@@ -36,6 +36,10 @@ public abstract class Entity {
 
     }
 
+    public void applyEffect(Effect e) {
+        activeEffects.add(e);
+    }
+
     public void endTurn() {
         attackMultiplier = 1;
         defenseMultiplier = 1;
@@ -43,7 +47,9 @@ public abstract class Entity {
 
 
         for(Effect e : activeEffects) {
-            e.apply();
+            if(!e.isExpired()) {
+                e.apply();
+            }
         }
 
         for(int i=activeEffects.size()-1; i>=0; i--) {

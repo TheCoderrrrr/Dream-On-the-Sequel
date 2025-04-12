@@ -55,7 +55,6 @@ public class HitBox {
 
     public void useCard(Card c) {
         c.markAsUsed();
-        System.out.println("yes");
         if(c instanceof SingleTarget) {
             ((SingleTarget) c).use(player, enemy);
         }

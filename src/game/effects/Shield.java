@@ -14,6 +14,10 @@ public class Shield extends Effect{
         description = "Increases block percentage.";
     }
 
+    public Shield copy() {
+        return new Shield(multiplier, duration);
+    }
+
     @Override
     public void apply() {
         target.modifyBlock(multiplier);

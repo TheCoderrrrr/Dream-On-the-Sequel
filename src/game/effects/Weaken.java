@@ -12,16 +12,8 @@ public class Weaken extends Effect{
         description = "Reduces the damage the enemy deals to the player.";
     }
 
-    public float getMultiplier() {
-        if (multiplier == 1) {
-            return .1f;
-        } else if (multiplier == 2) {
-            return .2f;
-        } else if (multiplier == 3) {
-            return .4f;
-        } else {
-            return .5f;
-        }
+    public Weaken copy() {
+        return new Weaken(multiplier, duration);
     }
 
     @Override
