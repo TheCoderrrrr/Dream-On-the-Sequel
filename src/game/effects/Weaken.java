@@ -26,6 +26,6 @@ public class Weaken extends Effect{
 
     @Override
     public void apply() {
-
+        durationLeft--;
     }
 }

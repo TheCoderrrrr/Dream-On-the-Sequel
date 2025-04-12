@@ -104,6 +104,10 @@ public class CardManager {
         totalCardWidth = Card.getCardWidth() * hand.size();
     }
 
+    public static void gainEnergy(int energy) {
+        totalEnergy += energy;
+    }
+
     public static void initializeHand() {
         int zeroPos = Main.getScreenWidth() / 2;
         int firstCardX = zeroPos - totalCardWidth / 2;

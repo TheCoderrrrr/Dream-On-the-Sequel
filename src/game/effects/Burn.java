@@ -17,7 +17,7 @@ public class Burn extends Effect {
 
     @Override
     public void apply() {
-        target.heal(BURN_STRENGTH);
+        target.takeDamage(BURN_STRENGTH);
         durationLeft--;
     }
 }

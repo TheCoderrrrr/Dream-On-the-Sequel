@@ -2,6 +2,7 @@ package game.actions.enemyActions.godzillaActions.attack;
 
 import game.actions.Action;
 import game.effects.Damage;
+import game.effects.Vulnerable;
 
 import java.util.ArrayList;
 import java.util.List;
