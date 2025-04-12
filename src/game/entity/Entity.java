@@ -41,6 +41,7 @@ public abstract class Entity {
     }
 
     public void endTurn() {
+
         attackMultiplier = 1;
         defenseMultiplier = 1;
         blockPercent = 0;

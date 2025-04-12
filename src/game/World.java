@@ -57,7 +57,7 @@ public class World {
         updateBackground();
         CardManager.update();
         entityManager.update();
-        if(entityManager.enemyAnimationsFinished()) {
+        if(entityManager.enemyAnimationsFinished() && isEnemyTurn()) {
             endTurn();
             startMyTurn();
         }

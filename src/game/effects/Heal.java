@@ -1,6 +1,5 @@
 package game.effects;
 
-import game.entity.Entity;
 import resources.Images;
 
 public class Heal extends Effect{

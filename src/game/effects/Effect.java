@@ -30,7 +30,7 @@ abstract public class Effect {
     }
 
     public final boolean isExpired() {
-        return durationLeft == 0;
+        return durationLeft <= 0;
     }
 
     ///only call this ability if the effect acts IMMEDIATELY, not when a turn ends(like poison or burn)
