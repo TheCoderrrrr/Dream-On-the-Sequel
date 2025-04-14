@@ -1,5 +1,6 @@
 package core;
 
+import game.MessageManager;
 import game.World;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
@@ -32,6 +33,8 @@ public class Game extends BasicGameState
 		gc.setShowFPS(true);
 
 		world = new World(gc);
+
+		MessageManager.init();
 	}
 
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException
@@ -41,6 +44,7 @@ public class Game extends BasicGameState
 		if(world.getGameStage().equals("end")){
 			sbg.enterState(Main.LOSE_ID);
 		}
+		MessageManager.update();
 	}
 
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException 
@@ -49,6 +53,7 @@ public class Game extends BasicGameState
 
 		g.setColor(Color.white);
 		world.render(g);
+		MessageManager.render(g);
 	}
 	
 	public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException 
