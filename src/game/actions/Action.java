@@ -2,6 +2,8 @@ package game.actions;
 
 import game.effects.Effect;
 import game.entity.Entity;
+import org.newdawn.slick.Image;
+import resources.Images;
 
 import java.util.ArrayList;
 
@@ -10,11 +12,13 @@ public class Action {
     private ArrayList<Effect> effectsGiven;
     protected String description;
     protected String name;
+    protected Image symbol;
 
     public Action(ArrayList<Effect> effects) {
         this.effects = effects;
         description = "you forgor to add descirption";
         name = this.getClass().getSimpleName();
+        symbol = Images.ENERGY0;
     }
 
     public void action(Entity target, Entity owner) {
@@ -40,6 +44,9 @@ public class Action {
     }
     public String getDescription(){
         return description;
+    }
+    public Image getSymbol(){
+        return symbol;
     }
 
 }

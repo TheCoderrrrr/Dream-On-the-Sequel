@@ -42,4 +42,7 @@ public class Damage extends Effect {
     {
         return "-" + damage;
     }
+    public int getDamage(){
+        return damage;
+    }
 }

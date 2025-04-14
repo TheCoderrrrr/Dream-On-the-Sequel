@@ -18,14 +18,15 @@ public class TestEnemy extends Enemy {
         image = Images.ENEMY2;
     }
 
-    @Override
-    public void action() {
-        if(nextMoves.getFirst() instanceof Bonk){
-            nextMoves.getFirst().action(this, this);//do the first time in action queue
-        }else{
-            nextMoves.getFirst().action(player, this);
-        }
-        nextMoves.removeFirst();//remove that thing
-        nextMoves.add(allMoves.get((int) (Math.random() * allMoves.size()))); //add a new one to the queue
-    }
+//    @Override
+//    public void action() {
+//        if(nextMoves.getFirst() instanceof Bonk){
+//            nextMoves.getFirst().action(this, this);//do the first time in action queue
+//        }else{
+//            nextMoves.getFirst().action(player, this);
+//        }
+//        nextMoves.removeFirst();//remove that thing
+//        nextMoves.add(allMoves.get((int) (Math.random() * allMoves.size()))); //add a new one to the queue
+//        nextActionPanel.updateNextAction(nextMoves.getFirst());
+//    }
 }
