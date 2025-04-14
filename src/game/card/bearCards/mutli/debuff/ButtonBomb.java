@@ -8,7 +8,7 @@ import game.effects.*;
 import game.entity.Entity;
 import game.managers.EntityManager;
 import game.managers.HitBox;
-import game.ui.EffectsPanel;
+import game.ui.CardEffectsPanel;
 import resources.Images;
 
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ public class ButtonBomb extends Card implements MultiTarget, Attacking {
         actions.add(new Heal(15, 2));
         actions.add(new Burn(15, 2));
         action = new Action(actions);
-        effectsPanel = new EffectsPanel(actions);
+        effectsPanel = new CardEffectsPanel(actions);
     }
 
     public void use(Entity owner)

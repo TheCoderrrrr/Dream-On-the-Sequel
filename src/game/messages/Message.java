@@ -1,7 +1,6 @@
-package game;
+package game.messages;
 
 import org.newdawn.slick.Color;
-import org.newdawn.slick.Font;
 import org.newdawn.slick.Graphics;
 import resources.Fonts;
 import resources.TextFont;
@@ -30,6 +29,7 @@ public class Message {
     public Message(String text, float x, float y, Color color, TextFont font, int duration, boolean fading) {
         this.text = text;
         this.x = x;
+        this.y = y;
         this.color = color;
         this.font = font;
         this.duration = duration;
@@ -69,9 +69,8 @@ public class Message {
         if(fading)
         {
             color = new Color (color.getRed(), color.getGreen(), color.getBlue(), getPercentTimeLeft());
-            font.drawString(g, text, x, y, 100);
             g.setColor(color);
-            g.drawString("-" + text, x, y);
+            font.drawStringCentered(g, text, x, y, 50);
 
         }
     }

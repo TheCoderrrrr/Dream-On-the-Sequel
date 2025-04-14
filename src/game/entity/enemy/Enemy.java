@@ -5,6 +5,7 @@ import game.actions.Attacking;
 import game.actions.Buffing;
 import game.entity.Entity;
 import game.entity.player.Player;
+import game.ui.EffectsPanel;
 import game.ui.NextActionPanel;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;

@@ -143,7 +143,6 @@ public class TextFont {
         g.resetTransform();
         g.resetFont();
 
-        System.out.println(lineCount);
         return lineCount * lineHeight * scale;
     }
 }

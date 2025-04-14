@@ -1,7 +1,6 @@
-package game;
+package game.messages;
 
 import org.newdawn.slick.Color;
-import org.newdawn.slick.Font;
 import resources.Fonts;
 
 public class FloatMessage extends Message{
@@ -13,6 +12,6 @@ public class FloatMessage extends Message{
     public void update()
     {
         super.update();
-        y -= 0.5;
+        y -= 0.5F;
     }
 }

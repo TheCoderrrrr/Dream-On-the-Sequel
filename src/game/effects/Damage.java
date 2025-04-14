@@ -1,9 +1,7 @@
 package game.effects;
 
-import game.FloatMessage;
-import game.MessageManager;
-import game.entity.Entity;
-import game.entity.enemy.Enemy;
+import game.messages.FloatMessage;
+import game.managers.MessageManager;
 import game.managers.EntityManager;
 import game.managers.HitBox;
 import org.newdawn.slick.Color;
@@ -34,6 +32,7 @@ public class Damage extends Effect {
             {
                 MessageManager.addMessage(new FloatMessage(String.valueOf(damage), h.getX(), h.getY(), Color.red, 60));
                 System.out.println("Adding float message for damage: " + damage);
+                System.out.println(h.getY());
             }
         }
     }

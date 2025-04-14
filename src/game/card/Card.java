@@ -3,7 +3,7 @@ package game.card;
 import game.actions.Action;
 import game.effects.Damage;
 import game.effects.Effect;
-import game.ui.EffectsPanel;
+import game.ui.CardEffectsPanel;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -28,7 +28,7 @@ abstract public class Card {
     protected boolean dragging;
     protected boolean isUsed;
     protected static GameContainer gc;
-    protected EffectsPanel effectsPanel;
+    protected CardEffectsPanel effectsPanel;
 
     protected static final int CARD_WIDTH = 200;
     protected static final int CARD_HEIGHT = 300;

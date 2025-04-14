@@ -1,6 +1,7 @@
 package game.entity;
 
 import game.effects.Effect;
+import game.managers.HitBox;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 

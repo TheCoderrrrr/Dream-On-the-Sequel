@@ -1,5 +1,6 @@
-package game;
+package game.managers;
 
+import game.messages.Message;
 import org.newdawn.slick.Graphics;
 
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class MessageManager {
 
     public static void init()
     {
-        messages = new ArrayList <Message>();
+        messages = new ArrayList<>();
     }
 
     public static void addMessage(Message message)

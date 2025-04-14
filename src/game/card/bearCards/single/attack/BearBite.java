@@ -7,7 +7,6 @@ import game.card.SingleTarget;
 import game.effects.Damage;
 import game.effects.Effect;
 import game.entity.Entity;
-import game.ui.EffectsPanel;
 import resources.Images;
 
 import java.util.ArrayList;
