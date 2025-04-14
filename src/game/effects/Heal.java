@@ -1,6 +1,5 @@
 package game.effects;
 
-import game.entity.Entity;
 import resources.Images;
 
 public class Heal extends Effect{
@@ -12,6 +11,10 @@ public class Heal extends Effect{
         name = "Healing";
         symbol = Images.HEALING;
         description = "Restores health to the player.";
+    }
+
+    public Heal copy() {
+        return new Heal(healStrength, duration);
     }
 
     @Override

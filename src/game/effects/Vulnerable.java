@@ -12,6 +12,10 @@ public class Vulnerable extends Effect{
         description = "Increases the damage taken by the affected enemy.";
     }
 
+    public Vulnerable copy() {
+        return new Vulnerable(multiplier, duration);
+    }
+
     @Override
     public void apply() {
         target.modifyDefense(multiplier);

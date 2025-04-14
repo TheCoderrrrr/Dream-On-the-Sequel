@@ -69,10 +69,10 @@ public class EntityManager {
         enemyTurnFinished = false;
     }
     public void endTurn() {
-        player.endTurn();
         for(Entity e : enemies) {
             e.endTurn();
         }
+        player.endTurn();
     }
 
     public boolean enemyAnimationsFinished() {

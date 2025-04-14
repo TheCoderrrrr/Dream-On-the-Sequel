@@ -1,7 +1,6 @@
 package game.managers;
 
 import core.Main;
-import game.World;
 import game.card.Attacking;
 import game.card.Buffing;
 import game.card.Card;
@@ -104,6 +103,13 @@ public class CardManager {
         totalCardWidth = Card.getCardWidth() * hand.size();
     }
 
+    public static void spendEnergy(int energy) {
+        totalEnergy -= energy;
+    }
+    public static void gainEnergy(int energy) {
+        totalEnergy += energy;
+    }
+
     public static void initializeHand() {
         int zeroPos = Main.getScreenWidth() / 2;
         int firstCardX = zeroPos - totalCardWidth / 2;
@@ -125,13 +131,17 @@ public class CardManager {
     public void mouseReleased(int button, int x, int y){
         if(button == 0) {
             for (Card c : hand) {
-                if(c.isDragging()) {
+                if(c.isDragging() && canUse(c)) {
                     entityManager.cardReleased(c, x, y);
                     c.reslot();
                     selectionMode = false;
                 }
             }
         }
+    }
+
+    private boolean canUse(Card c) {
+        return c.getEnergyCost() <= totalEnergy;
     }
     public void resetManager(){
         hand = new ArrayList<>();

@@ -28,12 +28,6 @@ public class WarmEmbrace extends Card implements SingleTarget, Buffing {
     }
 
     public void use(Entity owner, Entity e) {
-        for(Effect effect : action.getEffects()) {
-            effect.setOwner(EntityManager.getPlayer());
-            effect.setTarget(EntityManager.getPlayer());
-        }
-        for(Effect effect : action.getEffects()) {
-            effect.apply();
-        }
+        action.action(owner, e);
     }
 }

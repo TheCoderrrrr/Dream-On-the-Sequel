@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class Action {
     private final ArrayList<Effect> effects;
+    private ArrayList<Effect> effectsGiven;
     protected String description;
     protected String name;
 
@@ -17,10 +18,18 @@ public class Action {
     }
 
     public void action(Entity target, Entity owner) {
+        effectsGiven = new ArrayList<>();
+
         for(Effect e : effects) {
-            e.setTarget(target);
-            e.setOwner(owner);
-            e.apply();
+            Effect copy = e.copy();
+            copy.setTarget(target);
+            copy.setOwner(owner);
+            copy.apply();
+            effectsGiven.add(copy);
+        }
+
+        for(Effect e : effectsGiven) {
+            target.applyEffect(e);
         }
     }
     public ArrayList<Effect> getEffects(){

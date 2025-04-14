@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Godzilla extends Enemy {
+
     public Godzilla(int maxHealth)
     {
         super(maxHealth);

@@ -9,7 +9,7 @@ import java.util.List;
 public class Fortitude extends Action {
     public Fortitude()
     {
-        super(new ArrayList<>(List.of(new Shield(10, 2))));
+        super(new ArrayList<>(List.of(new Shield(0.1f, 2))));
         description = "Shield is applied";
     }
 }

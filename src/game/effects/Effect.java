@@ -19,6 +19,8 @@ abstract public class Effect {
         description = "nothin";
     }
 
+    abstract public Effect copy();
+
     public void setTarget(Entity target) {
         this.target = target;
     }
@@ -28,9 +30,10 @@ abstract public class Effect {
     }
 
     public final boolean isExpired() {
-        return durationLeft == 0;
+        return durationLeft <= 0;
     }
 
+    ///only call this ability if the effect acts IMMEDIATELY, not when a turn ends(like poison or burn)
     abstract public void apply();
     public String getName(){
         return name;

@@ -36,14 +36,21 @@ public abstract class Entity {
 
     }
 
+    public void applyEffect(Effect e) {
+        activeEffects.add(e);
+    }
+
     public void endTurn() {
+
         attackMultiplier = 1;
         defenseMultiplier = 1;
         blockPercent = 0;
 
 
         for(Effect e : activeEffects) {
-            e.apply();
+            if(!e.isExpired()) {
+                e.apply();
+            }
         }
 
         for(int i=activeEffects.size()-1; i>=0; i--) {
@@ -69,7 +76,7 @@ public abstract class Entity {
         blockPercent += (1 - blockPercent) * multiplier;
     }
 
-    public final void takeDamage(int damage) {
+    public void takeDamage(int damage) {
         if(Math.random() < blockPercent) {
             //block damage
             return;
@@ -88,15 +95,13 @@ public abstract class Entity {
     public void resetAnimation() {
         currAnimationFrame = 0;
     }
-
     public void nextAnimationFrame() {
         currAnimationFrame++;
     }
-
     public boolean finishedAnimation() {
         return currAnimationFrame == animationFrame;
     }
     public boolean isDead(){
-        return health == 0;
+        return health <= 0;
     }
 }
