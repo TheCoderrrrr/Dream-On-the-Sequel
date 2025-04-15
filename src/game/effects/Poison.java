@@ -2,6 +2,7 @@ package game.effects;
 
 import game.entity.Entity;
 import resources.Images;
+import resources.Sounds;
 
 public class Poison extends Effect {
     private final int poisonStrength;
@@ -21,6 +22,7 @@ public class Poison extends Effect {
 
     @Override
     public void apply() {
+        Sounds.POISON.play();
         target.takeDamage(poisonStrength);
         durationLeft--;
     }

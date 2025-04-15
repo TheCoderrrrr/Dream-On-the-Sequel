@@ -1,6 +1,7 @@
 package game.effects;
 
 import resources.Images;
+import resources.Sounds;
 
 public class Mark extends Effect{
     private float multiplier;
@@ -19,6 +20,7 @@ public class Mark extends Effect{
 
     @Override
     public void apply() {
+        Sounds.MARK.play();
         target.modifyDefense(multiplier);
         durationLeft--;
     }

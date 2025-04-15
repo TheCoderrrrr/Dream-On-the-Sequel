@@ -2,6 +2,7 @@ package game.effects;
 
 import game.entity.Entity;
 import resources.Images;
+import resources.Sounds;
 
 public class Burn extends Effect {
     private final int burnStrength;
@@ -23,5 +24,7 @@ public class Burn extends Effect {
     public void apply() {
         target.takeDamage(burnStrength);
         durationLeft--;
+        Sounds.BURN.play();
+
     }
 }

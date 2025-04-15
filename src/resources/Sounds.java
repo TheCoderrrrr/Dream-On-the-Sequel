@@ -12,6 +12,17 @@ public class Sounds {
     public static Sound GOOFY;
     public static Sound MUSICATTACK;
     public static Sound SLASH;
+    public static Sound HEALING;
+    public static Sound POISON;
+    public static Sound SHIELD;
+    public static Sound VULNERABLE;
+    public static Sound BOSSBATTLE;
+    public static Sound BURN;
+    public static Sound DAMAGE;
+    public static Sound WEAKEN;
+    public static Sound MARK;
+    public static Sound STRENGTH;
+
     public static void loadSounds()
     {
         try {
@@ -19,6 +30,17 @@ public class Sounds {
             GOOFY = new Sound("res/sounds/goofy.wav");
             MUSICATTACK = new Sound("res/sounds/musicAttack.wav");
             SLASH = new Sound("res/sounds/slash.wav");
+            HEALING = new Sound("res/sounds/healing.wav");
+            POISON = new Sound("res/sounds/poison.wav");
+            SHIELD = new Sound("res/sounds/shield.wav");
+            VULNERABLE = new Sound("res/sounds/vulnerable.wav");
+            BOSSBATTLE = new Sound("res/sounds/bossbattlebegins.wav");
+            BURN = new Sound("res/sounds/fire.wav");
+            DAMAGE = new Sound("res/sounds/damage.wav");
+            WEAKEN = new Sound("res/sounds/weaken.wav");
+            MARK = new Sound("res/sounds/mark.wav");
+            STRENGTH = new Sound("res/sounds/strength.wav");
+
         }
         catch (SlickException e)
         {

@@ -1,6 +1,7 @@
 package game.effects;
 
 import resources.Images;
+import resources.Sounds;
 
 public class Weaken extends Effect{
     private float multiplier;
@@ -18,6 +19,7 @@ public class Weaken extends Effect{
 
     @Override
     public void apply() {
+        Sounds.WEAKEN.play();
         durationLeft--;
     }
 }

@@ -2,6 +2,7 @@ package game.effects;
 
 import game.entity.Entity;
 import resources.Images;
+import resources.Sounds;
 
 public class Shield extends Effect{
     private final float multiplier;
@@ -20,6 +21,7 @@ public class Shield extends Effect{
 
     @Override
     public void apply() {
+        Sounds.SHIELD.play();
         target.modifyBlock(multiplier);
         durationLeft--;
     }

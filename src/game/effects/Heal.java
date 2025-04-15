@@ -1,6 +1,7 @@
 package game.effects;
 
 import resources.Images;
+import resources.Sounds;
 
 public class Heal extends Effect{
     private final int healStrength;
@@ -19,6 +20,7 @@ public class Heal extends Effect{
 
     @Override
     public void apply() {
+        Sounds.HEALING.play();
         target.heal(healStrength);
         durationLeft--;
     }

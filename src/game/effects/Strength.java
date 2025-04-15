@@ -2,6 +2,7 @@ package game.effects;
 
 import game.entity.Entity;
 import resources.Images;
+import resources.Sounds;
 
 public class Strength extends Effect{
     private final float attackMultiplier;
@@ -20,6 +21,7 @@ public class Strength extends Effect{
 
     @Override
     public void apply() {
+        Sounds.STRENGTH.play();
         target.modifyAttack(attackMultiplier);
         durationLeft--;
     }

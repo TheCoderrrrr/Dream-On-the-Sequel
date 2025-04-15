@@ -1,5 +1,6 @@
 package game.effects;
 import resources.Images;
+import resources.Sounds;
 
 public class Vulnerable extends Effect{
     private float multiplier;
@@ -18,6 +19,7 @@ public class Vulnerable extends Effect{
 
     @Override
     public void apply() {
+        Sounds.VULNERABLE.play();
         target.modifyDefense(multiplier);
         durationLeft--;
     }
