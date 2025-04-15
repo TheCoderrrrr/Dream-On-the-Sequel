@@ -14,6 +14,7 @@ public class World {
     private static String gameStage;
     private static Image background;
 
+
     public World(GameContainer gc) {
         entityManager = new EntityManager();
         cardManager = new CardManager(gc);
@@ -129,5 +130,9 @@ public class World {
         else {
             background = Images.HAPPYBACKGROUND.getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
         }
+    }
+
+    public void renderRound(Graphics g) {
+        g.drawString("Round " + round, Main.getScreenWidth()/100f, Main.getScreenHeight()/100f);
     }
 }
