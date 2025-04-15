@@ -150,13 +150,13 @@ public class EntityManager {
         player = new Player();
 
         hitBoxes.clear();
+        hitBoxesInUse.clear();
         for(int i=0; i<3; i++) {
             hitBoxes.add(new HitBox((int) (Main.getScreenWidth()*0.75f + i * Main.getScreenWidth()/12f), Main.getScreenHeight()/2));
         }
         for(int i=0; i<2; i++) {
             hitBoxes.add(new HitBox((int) (Main.getScreenWidth()*0.80f + i * Main.getScreenWidth()/12f), Main.getScreenHeight()/2 - Main.getScreenHeight()/10));
         }
-
         for(HitBox h : hitBoxes) {
             h.setPlayer(player);
         }
