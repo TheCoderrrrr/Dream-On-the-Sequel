@@ -50,6 +50,7 @@ public class Game extends BasicGameState
 
 		g.setColor(Color.white);
 		world.render(g);
+		world.renderRound(g);
 		MessageManager.render(g);
 	}
 	
