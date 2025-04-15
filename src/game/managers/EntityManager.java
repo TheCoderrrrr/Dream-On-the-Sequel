@@ -146,7 +146,7 @@ public class EntityManager {
         }
     }
     public void resetManager(){
-        enemies = new ArrayList<>();
+        enemies.clear();
         player = new Player();
 
         hitBoxes.clear();

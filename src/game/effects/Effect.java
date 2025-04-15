@@ -2,6 +2,7 @@ package game.effects;
 
 import game.entity.Entity;
 import org.newdawn.slick.Image;
+import resources.Images;
 
 abstract public class Effect {
     protected Entity owner;
@@ -16,6 +17,7 @@ abstract public class Effect {
         this.duration = duration;
         durationLeft = duration;
         name = "";
+        symbol = Images.ENERGY0;
         description = "nothin";
     }
 
@@ -43,5 +45,8 @@ abstract public class Effect {
     }
     public int getDurationLeft(){
         return durationLeft;
+    }
+    public Image getSymbol(){
+        return symbol;
     }
 }

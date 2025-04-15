@@ -70,5 +70,6 @@ public class Player extends Entity {
             g.drawString(effect.getClass().getSimpleName() + " duration: " + effect.getDurationLeft(), 500, e);
             e += 50;
         }
+        effectsPanel.render(g, x, y);
     }
 }

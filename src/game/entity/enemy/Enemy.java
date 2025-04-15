@@ -32,21 +32,22 @@ public abstract class Enemy extends Entity {
     }
 
     protected void initializeMoves() {
-        while(nextMoves.size() < MOVE_LOOKAHEAD) {
+        while (nextMoves.size() < MOVE_LOOKAHEAD) {
             nextMoves.add(allMoves.get((int) (Math.random() * allMoves.size())));
         }
         nextActionPanel.updateNextAction(nextMoves.getFirst());
     }
-    public void initializeTarget(Entity entity){
+
+    public void initializeTarget(Entity entity) {
         player = entity;
     }
 
     @Override
     public void action() {
-        if(player != null){
-            if(nextMoves.getFirst() instanceof Attacking){
+        if (player != null) {
+            if (nextMoves.getFirst() instanceof Attacking) {
                 nextMoves.getFirst().action(player, this); //do the first time in action queue //if the action is of attacking type attack player
-            }else{
+            } else {
                 nextMoves.getFirst().action(this, this); //if action is of buffing type attack itself?
             }
             nextMoves.removeFirst();//remove that thing
@@ -61,14 +62,16 @@ public abstract class Enemy extends Entity {
         g.drawString(this.getClass().getSimpleName(), x, y);
 
         nextActionPanel.render(g, x, y);
-        for(int i=0; i<nextMoves.size(); i++) {
-            g.drawString(nextMoves.get(i).getClass().getSimpleName(), x + 100, y -20*(i+1));
+        for (int i = 0; i < nextMoves.size(); i++) {
+            g.drawString(nextMoves.get(i).getClass().getSimpleName(), x + 100, y - 20 * (i + 1));
         }
 
-        Fonts.REGULAR.drawString(g , "Hp : " + health + " ", (float) x, (float) y+20, 25);
+        Fonts.REGULAR.drawString(g, "Hp : " + health + " ", (float) x, (float) y + 20, 25);
+        effectsPanel.render(g, x, y);
     }
-    public Image getImage(){
-        if(image != null) return image;
+
+    public Image getImage() {
+        if (image != null) return image;
         else return null;
     }
 

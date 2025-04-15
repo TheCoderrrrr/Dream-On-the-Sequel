@@ -61,6 +61,7 @@ public class HitBox {
         if(c instanceof MultiTarget) {
             ((MultiTarget) c).use(player);
         }
+        CardManager.spendEnergy(c.getEnergyCost());
     }
 
     public void render(Graphics g){

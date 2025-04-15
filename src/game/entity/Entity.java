@@ -2,6 +2,7 @@ package game.entity;
 
 import game.effects.Effect;
 import game.managers.HitBox;
+import game.ui.EffectsPanel;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 
@@ -18,6 +19,7 @@ public abstract class Entity {
     protected final int animationFrame = 15;
     protected Image image;
     protected boolean isdead;
+    protected EffectsPanel effectsPanel;
 
 
     public Entity(int maxHealth) {
@@ -27,6 +29,7 @@ public abstract class Entity {
         this.attackMultiplier = 1;
         this.blockPercent = 0;
         activeEffects = new ArrayList<>();
+        effectsPanel = new EffectsPanel();
         isdead = false;
     }
 
@@ -39,6 +42,7 @@ public abstract class Entity {
 
     public void applyEffect(Effect e) {
         activeEffects.add(e);
+        effectsPanel.updateEffects(activeEffects);
     }
 
     public void endTurn() {
@@ -59,6 +63,7 @@ public abstract class Entity {
                 activeEffects.remove(i);
             }
         }
+        effectsPanel.updateEffects(activeEffects);
     }
 
     public void newTurn() {

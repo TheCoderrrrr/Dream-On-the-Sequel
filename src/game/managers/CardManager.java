@@ -21,7 +21,7 @@ public class CardManager {
     private static boolean selectionMode;
     private static int totalCardWidth;
     private static int totalEnergy;
-    private static int maximumEnergy;
+    private static int curEnergy;
 
     private static ArrayList<Card> hand;
     private static ArrayList<Card> deck;
@@ -36,7 +36,7 @@ public class CardManager {
 
         selectionMode = false;
         totalEnergy = 4;
-        maximumEnergy = totalEnergy;
+        curEnergy = totalEnergy;
 
         deck.add(new BearBite());
         deck.add(new BearHug());
@@ -53,8 +53,8 @@ public class CardManager {
     }
 
     public static void update() {
-        for(int i=hand.size() - 1; i>=0; i--) {
-            if(hand.get(i).isUsed()) {
+        for (int i = hand.size() - 1; i >= 0; i--) {
+            if (hand.get(i).isUsed()) {
                 hand.get(i).unuse();
                 deck.add(hand.remove(i));
             }
@@ -65,19 +65,18 @@ public class CardManager {
 
     public static void render(Graphics g) {
         for (Card c : hand) {
-            if(!c.isDragging()) {
+            if (!c.isDragging()) {
                 c.render(g);
 
             }
         }
         for (Card c : hand) {
-            if(c.isDragging())
-            {
-                if(c instanceof Buffing){
+            if (c.isDragging()) {
+                if (c instanceof Buffing) {
                     g.fillRect(Main.getScreenWidth() / 2, Main.getScreenHeight() / 2, 200, 200);
-                }else if(c instanceof Attacking){
-                    for(HitBox h : EntityManager.getHitBoxes()){
-                        if(h.hasEnemy()){
+                } else if (c instanceof Attacking) {
+                    for (HitBox h : EntityManager.getHitBoxes()) {
+                        if (h.hasEnemy()) {
                             h.renderHitBox(g);
                         }
                     }
@@ -85,7 +84,7 @@ public class CardManager {
                 c.render(g);
             }
         }
-        for(Card c : hand){
+        for (Card c : hand) {
             c.renderEffectsPanel(g, hand);
         }
     }
@@ -108,6 +107,7 @@ public class CardManager {
     public static void spendEnergy(int energy) {
         totalEnergy -= energy;
     }
+
     public static void gainEnergy(int energy) {
         totalEnergy += energy;
     }
@@ -130,11 +130,14 @@ public class CardManager {
             }
         }
     }
-    public void mouseReleased(int button, int x, int y){
-        if(button == 0) {
+
+    public void mouseReleased(int button, int x, int y) {
+        if (button == 0) {
             for (Card c : hand) {
-                if(c.isDragging() && canUse(c)) {
-                    entityManager.cardReleased(c, x, y);
+                if (c.isDragging()) {
+                    if (canUse(c)) {
+                        entityManager.cardReleased(c, x, y);
+                    }
                     c.reslot();
                     selectionMode = false;
                 }
@@ -145,13 +148,14 @@ public class CardManager {
     private boolean canUse(Card c) {
         return c.getEnergyCost() <= totalEnergy;
     }
-    public void resetManager(){
+
+    public void resetManager() {
         hand = new ArrayList<>();
         deck = new ArrayList<>();
 
         selectionMode = false;
         totalEnergy = 4;
-        maximumEnergy = totalEnergy;
+        curEnergy = totalEnergy;
 
         deck.add(new BearBite());
         deck.add(new BearHug());
