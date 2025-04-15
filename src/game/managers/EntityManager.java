@@ -117,6 +117,7 @@ public class EntityManager {
 
                 enemyTurnFinished = true;
                 CardManager.resetHand();
+                CardManager.resetEnergy();
             }
 
         }

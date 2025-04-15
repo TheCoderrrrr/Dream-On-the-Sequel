@@ -13,6 +13,7 @@ import game.card.bearCards.single.attack.PawCrush;
 import game.ui.Panel;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import resources.Fonts;
 
 import java.util.ArrayList;
 
@@ -87,6 +88,7 @@ public class CardManager {
         for (Card c : hand) {
             c.renderEffectsPanel(g, hand);
         }
+        Fonts.DOGICAPIXEL.drawStringCentered(g, curEnergy + " / " + totalEnergy, (float) Main.getScreenWidth() / 2, (float) Main.getScreenHeight() / 2);
     }
 
     public static void resetHand() {
@@ -105,11 +107,14 @@ public class CardManager {
     }
 
     public static void spendEnergy(int energy) {
-        totalEnergy -= energy;
+        curEnergy -= energy;
     }
 
     public static void gainEnergy(int energy) {
-        totalEnergy += energy;
+        curEnergy += energy;
+    }
+    public static void resetEnergy(){
+        curEnergy = totalEnergy;
     }
 
     public static void initializeHand() {
@@ -146,7 +151,7 @@ public class CardManager {
     }
 
     private boolean canUse(Card c) {
-        return c.getEnergyCost() <= totalEnergy;
+        return c.getEnergyCost() <= curEnergy;
     }
 
     public void resetManager() {
