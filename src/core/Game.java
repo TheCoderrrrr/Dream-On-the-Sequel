@@ -27,7 +27,7 @@ public class Game extends BasicGameState
 	
 	public void init(GameContainer gc, StateBasedGame sbg) throws SlickException 
 	{
-		gc.setShowFPS(true);
+		gc.setShowFPS(false);
 
 		world = new World(gc);
 

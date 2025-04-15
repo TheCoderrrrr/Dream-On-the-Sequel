@@ -45,7 +45,7 @@ public class Main extends StateBasedGame
 	}
 	
 
-	public void initStatesList(GameContainer gc) throws SlickException 
+	public void initStatesList(GameContainer gc) throws SlickException
 	{
 		addState(title);
 		addState(game);

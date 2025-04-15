@@ -14,9 +14,6 @@ public class World {
     private static String gameStage;
     private static Image background;
 
-    private int fadeTimer = 0;
-
-    private final int fadeDuration = 180;
 
     public World(GameContainer gc) {
         entityManager = new EntityManager();
@@ -63,7 +60,6 @@ public class World {
         entityManager.update();
         if(entityManager.enemyAnimationsFinished() && isEnemyTurn()) {
             endTurn();
-            fadeTimer = fadeDuration;
             startMyTurn();
         }
         gameEnd();
@@ -137,14 +133,6 @@ public class World {
     }
 
     public void renderRound(Graphics g) {
-        g.drawString("Round " + round, Main.getScreenWidth()/2f, Main.getScreenHeight()/10f);
-        if (fadeTimer > 0)
-        {
-            float alpha = (float) fadeTimer/fadeDuration;
-            g.setColor(new Color(1f, 1f, 1f, alpha));
-            String text =  "Round " + round;
-            g.drawString(text, Main.getScreenWidth()/2f, Main.getScreenHeight()/2f);
-            fadeTimer--;
-        }
+        g.drawString("Round " + round, Main.getScreenWidth()/100f, Main.getScreenHeight()/100f);
     }
 }
