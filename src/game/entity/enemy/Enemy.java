@@ -60,7 +60,7 @@ public abstract class Enemy extends game.entity.Entity {
         g.drawImage(image, x, y);
 //        g.drawString(this.getClass().getSimpleName(), x, y);
 
-        nextActionPanel.render(g, x, y);
+        nextActionPanel.render(g, x, y - 30);
 //        for (int i = 0; i < nextMoves.size(); i++) {
 //            g.drawString(nextMoves.get(i).getClass().getSimpleName(), x + 100, y - 20 * (i + 1));
 //        }
