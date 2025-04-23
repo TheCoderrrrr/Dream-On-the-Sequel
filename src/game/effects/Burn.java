@@ -1,6 +1,10 @@
 package game.effects;
 
 import game.entity.Entity;
+import game.managers.HitBox;
+import game.managers.MessageManager;
+import game.messages.FloatMessage;
+import org.newdawn.slick.Color;
 import resources.Images;
 import resources.Sounds;
 
@@ -25,6 +29,9 @@ public class Burn extends Effect {
         target.takeDamage(burnStrength);
         durationLeft--;
         Sounds.BURN.play(1f, .5f);
-
+        if(target.getMyHitBox() != null){
+            HitBox h = target.getMyHitBox();
+            MessageManager.addMessage(new FloatMessage(String.valueOf(burnStrength), (float) (h.getX() + h.getWidth() * Math.random()), (float) h.getY(), Color.orange, 60));
+        }
     }
 }

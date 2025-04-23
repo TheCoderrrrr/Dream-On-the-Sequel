@@ -42,6 +42,7 @@ public class EntityManager {
 
         playerHitBox.setEntity(player);
         playerHitBox.setPlayer(player);
+        player.assignHitBox(playerHitBox);
 
         addEnemy(new TestEnemy());
         addEnemy(new TestEnemy());

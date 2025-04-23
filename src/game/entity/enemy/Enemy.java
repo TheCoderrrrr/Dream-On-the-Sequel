@@ -1,9 +1,11 @@
 package game.entity.enemy;
 
+import core.Main;
 import game.actions.Action;
 import game.actions.Attacking;
 import game.managers.HitBox;
 import game.ui.NextActionPanel;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import resources.Fonts;
 import resources.Images;
@@ -33,9 +35,7 @@ public abstract class Enemy extends game.entity.Entity {
         }
         nextActionPanel.updateNextAction(nextMoves.getFirst());
     }
-    public void assignHitBox(HitBox h){
-        myHitBox = h;
-    }
+
 
     public void initializeTarget(game.entity.Entity entity) {
         player = entity;
@@ -66,7 +66,21 @@ public abstract class Enemy extends game.entity.Entity {
 //        }
 
         Fonts.REGULAR.drawString(g, "Hp : " + health + " ", (float) x, (float) y + 20, 25);
-        effectsPanel.render(g, x, y);
+        renderHealth(g, x , y);
+    }
+    public void renderHealth(Graphics g, int x, int y){
+        if(image != null){
+            float barWidth = (float) (image.getWidth() * 1.5);
+            g.setColor(Color.black);
+            g.fillRect((float) (x - barWidth / 5), (float) (y + image.getHeight() * 0.75),barWidth, (float) (Main.getScreenHeight() * 0.012));
+            g.setColor(Color.red);
+            g.fillRect((float) (x - barWidth / 5), (float) (y + image.getHeight() * 0.75), barWidth * getPercentHealthLeft(), (float) (Main.getScreenHeight() * 0.012));
+            g.setColor(Color.white);
+            Fonts.REGULAR.drawStringCentered(g , health + " / " + maxHealth, (float) x + image.getWidth() / 2, (float) (y + image.getHeight() * 0.78), 22);
+
+            //ik this looks stupid to put in here but its so much easier
+            effectsPanel.render(g, (int) (x - barWidth / 5), (int) (y + image.getHeight() * 0.84));
+        }
     }
 
 

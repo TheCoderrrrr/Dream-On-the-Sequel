@@ -68,6 +68,12 @@ public abstract class Entity {
         }
         effectsPanel.updateEffects(activeEffects);
     }
+    public void assignHitBox(HitBox h){
+        myHitBox = h;
+    }
+    public float getPercentHealthLeft(){
+        return (float) health / maxHealth;
+    }
     public void modifyAttack(float multiplier) {
         attackMultiplier *= multiplier;
     }
