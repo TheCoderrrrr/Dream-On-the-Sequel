@@ -14,6 +14,5 @@ public class Bite extends Action{
         description = "Does 15 damage";
         symbol = Images.ACTION_ATTACK;
 
-
     }
 }

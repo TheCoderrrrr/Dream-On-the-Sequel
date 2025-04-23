@@ -13,6 +13,5 @@ public class LazerBeam extends Action {
         super(new ArrayList<>(List.of(new Damage(30))));
         description = "Does 30 damage";
         symbol = Images.ACTION_ATTACK;
-
     }
 }
