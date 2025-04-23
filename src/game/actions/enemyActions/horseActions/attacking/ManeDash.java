@@ -2,6 +2,7 @@ package game.actions.enemyActions.horseActions.attacking;
 
 import game.actions.Action;
 import game.effects.Damage;
+import resources.Images;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,5 +12,6 @@ public class ManeDash extends Action {
     {
         super(new ArrayList<>(List.of(new Damage(25))));
         description = "Does 25 damage";
+        symbol = Images.ACTION_ATTACK;
     }
 }

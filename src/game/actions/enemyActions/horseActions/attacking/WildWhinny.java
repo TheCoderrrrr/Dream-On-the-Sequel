@@ -2,6 +2,7 @@ package game.actions.enemyActions.horseActions.attacking;
 
 import game.actions.Action;
 import game.effects.Damage;
+import resources.Images;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,5 +12,6 @@ public class WildWhinny extends Action {
     {
         super(new ArrayList<>(List.of(new Damage(20))));
         description = "Does 20 damage and 'Mark' effect is applied";
+        symbol = Images.ACTION_MARK;
     }
 }

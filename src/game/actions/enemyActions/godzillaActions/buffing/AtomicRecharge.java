@@ -3,6 +3,7 @@ package game.actions.enemyActions.godzillaActions.buffing;
 import game.actions.Action;
 import game.effects.Damage;
 import game.effects.Heal;
+import resources.Images;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,5 +13,6 @@ public class AtomicRecharge extends Action {
     {
         super(new ArrayList<>(List.of(new Heal(15, 1))));
         description = "Heals 15";
+        symbol = Images.ACTION_HEAL;
     }
 }
