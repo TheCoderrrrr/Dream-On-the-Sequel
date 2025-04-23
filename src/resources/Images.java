@@ -104,9 +104,9 @@ public class Images {
             loadSymbols();
 
             ACTION_VULNERABLE = new Image("res/images/actions/vulnerable2.png");
-            ACTION_HEAL = new Image("res/images/actions/heal2.png");
+            ACTION_HEAL = new Image("res/images/actions/heal3.png");
             ACTION_ATTACK = new Image("res/images/actions/attack2.png");
-            ACTION_POISON = new Image("res/images/actions/poison2.png");
+            ACTION_POISON = new Image("res/images/actions/poison3.png");
             ACTION_SHIELD = new Image("res/images/actions/shield2.png");
             ACTION_MARK = new Image("res/images/actions/mark2.png");
 //            ACTION_MARK = new Image("res/images/actions/mark.png").getScaledCopy((int) (Main.getScreenWidth() * 0.05), (int) (Main.getScreenHeight() * 0.05));

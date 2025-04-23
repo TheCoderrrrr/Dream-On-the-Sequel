@@ -58,12 +58,12 @@ public abstract class Enemy extends game.entity.Entity {
     @Override
     public void render(Graphics g, int x, int y) {
         g.drawImage(image, x, y);
-        g.drawString(this.getClass().getSimpleName(), x, y);
+//        g.drawString(this.getClass().getSimpleName(), x, y);
 
         nextActionPanel.render(g, x, y);
-        for (int i = 0; i < nextMoves.size(); i++) {
-            g.drawString(nextMoves.get(i).getClass().getSimpleName(), x + 100, y - 20 * (i + 1));
-        }
+//        for (int i = 0; i < nextMoves.size(); i++) {
+//            g.drawString(nextMoves.get(i).getClass().getSimpleName(), x + 100, y - 20 * (i + 1));
+//        }
 
         Fonts.REGULAR.drawString(g, "Hp : " + health + " ", (float) x, (float) y + 20, 25);
         effectsPanel.render(g, x, y);
