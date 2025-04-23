@@ -26,9 +26,9 @@ public class Burn extends Effect {
 
     @Override
     public void apply() {
-        target.takeDamage(burnStrength);
+        target.takeDamage(burnStrength * stack);
         durationLeft--;
-        Sounds.BURN.play(1f, .5f);
+        Sounds.BURN.play(1f, 1f);
         if(target.getMyHitBox() != null){
             HitBox h = target.getMyHitBox();
             MessageManager.addMessage(new FloatMessage(String.valueOf(burnStrength), (float) (h.getX() + h.getWidth() * Math.random()), (float) h.getY(), Color.orange, 60));

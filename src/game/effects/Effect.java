@@ -12,6 +12,7 @@ abstract public class Effect {
     protected String name;
     protected String description;
     protected Image symbol;
+    protected int stack = 1;
 
     public Effect(int duration) {
         this.duration = duration;
@@ -48,5 +49,11 @@ abstract public class Effect {
     }
     public Image getSymbol(){
         return symbol;
+    }
+    public void increaseStack(){
+        stack++;
+    }
+    public void resetDuration(int duration){
+        durationLeft = duration;
     }
 }

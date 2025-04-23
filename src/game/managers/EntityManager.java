@@ -27,10 +27,10 @@ public class EntityManager {
 
         hitBoxes = new ArrayList<>();
         hitBoxesInUse = new ArrayList<>();
-        playerHitBox = new HitBox((int) (Main.getScreenWidth()*0.25f), Main.getScreenHeight()/2);
+        playerHitBox = new HitBox((int) (Main.getScreenWidth()*0.25f), (int) (Main.getScreenHeight()/2.2));
 
         for(int i=0; i<3; i++) {
-            hitBoxes.add(new HitBox((int) (Main.getScreenWidth()*0.75f + i * Main.getScreenWidth()/12f), Main.getScreenHeight()/2));
+            hitBoxes.add(new HitBox((int) (Main.getScreenWidth()*0.75f + i * Main.getScreenWidth()/12f), (int) (Main.getScreenHeight()/2.2)));
         }
         for(int i=0; i<2; i++) {
             hitBoxes.add(new HitBox((int) (Main.getScreenWidth()*0.80f + i * Main.getScreenWidth()/12f), Main.getScreenHeight()/2 - Main.getScreenHeight()/10));
@@ -154,7 +154,7 @@ public class EntityManager {
     }
 
     public void render(Graphics g) {
-        player.render(g, (int) (Main.getScreenWidth() * .25), Main.getScreenHeight() / 2);
+        playerHitBox.render(g);
         for(HitBox hitbox : hitBoxes){
             hitbox.render(g);
         }

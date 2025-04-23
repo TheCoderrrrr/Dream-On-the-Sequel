@@ -11,7 +11,7 @@ public class Heal extends Effect{
         this.healStrength = healStrength;
         name = "Healing";
         symbol = Images.HEALING;
-        description = "Restores health to the player.";
+        description = "Restores Health";
     }
 
     public Heal copy() {
@@ -21,7 +21,7 @@ public class Heal extends Effect{
     @Override
     public void apply() {
         Sounds.HEALING.play(1f, .1f);
-        target.heal(healStrength);
+        target.heal(healStrength * stack);
         durationLeft--;
     }
 }

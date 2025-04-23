@@ -42,8 +42,16 @@ public abstract class Entity {
     }
 
     public void applyEffect(Effect e) {
-        activeEffects.add(e);
+        for(Effect effect : activeEffects){
+            if(e == effect){
+                effect.increaseStack();
+                effect.resetDuration(5);
+            }else{
+                activeEffects.add(e);
+            }
+        }
         effectsPanel.updateEffects(activeEffects);
+
     }
     public void newTurn() {
 
@@ -120,5 +128,8 @@ public abstract class Entity {
     public Image getImage() {
         if (image != null) return image;
         else return null;
+    }
+    public ArrayList<Effect> getActiveEffects(){
+        return activeEffects;
     }
 }
