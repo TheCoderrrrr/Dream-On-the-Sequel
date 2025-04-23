@@ -19,7 +19,4 @@ public class ManaStone extends Artifact{
         super.turnStartEffects(p);
         CardManager.gainEnergy(1);
     }
-
-
-
 }

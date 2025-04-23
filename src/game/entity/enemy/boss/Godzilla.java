@@ -3,13 +3,13 @@ package game.entity.enemy.boss;
 import game.actions.enemyActions.godzillaActions.attack.*;
 import game.actions.enemyActions.godzillaActions.buffing.AtomicRecharge;
 import game.actions.enemyActions.godzillaActions.buffing.Fortitude;
-import game.entity.enemy.Entity;
+import game.entity.enemy.Enemy;
 import resources.Images;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Godzilla extends Entity {
+public class Godzilla extends Enemy {
 
     public Godzilla(int maxHealth)
     {

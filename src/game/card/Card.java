@@ -4,6 +4,7 @@ import game.actions.Action;
 import game.effects.Damage;
 import game.effects.Effect;
 import game.ui.CardEffectsPanel;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -76,8 +77,8 @@ abstract public class Card {
         updateEnergyImage();
     }
     public void render(Graphics g){
+        g.setColor(Color.white);
         if(dragging){
-
             g.drawImage(cardImage, gc.getInput().getMouseX() - translationalX, gc.getInput().getMouseY() - translationalY);
             renderDescription(g, gc.getInput().getMouseX() - translationalX, (gc.getInput().getMouseY() - translationalY));
             renderName(g, (float) (gc.getInput().getMouseX() - translationalX + (CARD_WIDTH * 0.05)), (float) (gc.getInput().getMouseY() - translationalY + CARD_HEIGHT * 0.02));

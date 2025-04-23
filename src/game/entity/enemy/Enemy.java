@@ -5,13 +5,12 @@ import game.actions.Attacking;
 import game.managers.HitBox;
 import game.ui.NextActionPanel;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
 import resources.Fonts;
 import resources.Images;
 
 import java.util.ArrayList;
 
-public abstract class Entity extends game.entity.Entity {
+public abstract class Enemy extends game.entity.Entity {
     private static final int MOVE_LOOKAHEAD = 5;
     protected ArrayList<Action> allMoves;
     protected final ArrayList<Action> nextMoves;
@@ -19,7 +18,7 @@ public abstract class Entity extends game.entity.Entity {
     protected game.entity.Entity player;
     protected NextActionPanel nextActionPanel;
 
-    public Entity(int maxHealth) {
+    public Enemy(int maxHealth) {
         super(maxHealth);
         nextMoves = new ArrayList<>();
         allMoves = new ArrayList<>();
