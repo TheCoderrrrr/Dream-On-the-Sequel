@@ -65,6 +65,14 @@ public class Images {
     public static Image VULNERABLE;
     public static Image WEAKENED;
 
+    //Action Symbols
+    public static Image ACTION_VULNERABLE;
+    public static Image ACTION_HEAL;
+    public static Image ACTION_ATTACK;
+    public static Image ACTION_POISON;
+    public static Image ACTION_SHIELD;
+    public static Image ACTION_MARK;
+
     public static Image ENERGYCOSTS;
     public static SpriteSheet ENERGYSPRITESHEET;
 
@@ -94,6 +102,14 @@ public class Images {
             loadBearImages();
 
             loadSymbols();
+
+            ACTION_VULNERABLE = new Image("res/images/actions/vulnerable2.png");
+            ACTION_HEAL = new Image("res/images/actions/heal2.png");
+            ACTION_ATTACK = new Image("res/images/actions/attack2.png");
+            ACTION_POISON = new Image("res/images/actions/poison2.png");
+            ACTION_SHIELD = new Image("res/images/actions/shield2.png");
+            ACTION_MARK = new Image("res/images/actions/mark2.png");
+//            ACTION_MARK = new Image("res/images/actions/mark.png").getScaledCopy((int) (Main.getScreenWidth() * 0.05), (int) (Main.getScreenHeight() * 0.05));
 
             ENEMY1 = new Image("res/images/entity/enemy/Green_Army_Soldier.png");
             ENEMY2 = new Image("res/images/entity/enemy/Rolling_Horse.png");
