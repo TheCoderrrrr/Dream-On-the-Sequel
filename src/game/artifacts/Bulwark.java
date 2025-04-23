@@ -12,6 +12,4 @@ public class Bulwark extends Artifact{
         super(null, new ArrayList<>(List.of(new Shield(0.1f, 1))), null);
     }
 
-
-
 }

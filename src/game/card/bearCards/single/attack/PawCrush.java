@@ -8,6 +8,7 @@ import game.effects.Burn;
 import game.effects.Damage;
 import game.effects.Effect;
 import game.entity.Entity;
+import game.ui.CardEffectsPanel;
 import resources.Images;
 
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ public class PawCrush extends Card implements SingleTarget, Attacking {
         actions.add(new Damage(50));
         actions.add(new Burn(10, 2));
         action = new Action(actions);
+        effectsPanel = new CardEffectsPanel(actions);
     }
 
     public void use(Entity owner, Entity target) {

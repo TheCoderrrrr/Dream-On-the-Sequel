@@ -2,10 +2,7 @@ package game.entity.enemy;
 
 import game.actions.Action;
 import game.actions.Attacking;
-import game.actions.Buffing;
-import game.entity.Entity;
-import game.entity.player.Player;
-import game.ui.EffectsPanel;
+import game.managers.HitBox;
 import game.ui.NextActionPanel;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
@@ -14,15 +11,15 @@ import resources.Images;
 
 import java.util.ArrayList;
 
-public abstract class Enemy extends Entity {
+public abstract class Entity extends game.entity.Entity {
     private static final int MOVE_LOOKAHEAD = 5;
     protected ArrayList<Action> allMoves;
     protected final ArrayList<Action> nextMoves;
     protected String name;
-    protected Entity player;
+    protected game.entity.Entity player;
     protected NextActionPanel nextActionPanel;
 
-    public Enemy(int maxHealth) {
+    public Entity(int maxHealth) {
         super(maxHealth);
         nextMoves = new ArrayList<>();
         allMoves = new ArrayList<>();
@@ -37,8 +34,11 @@ public abstract class Enemy extends Entity {
         }
         nextActionPanel.updateNextAction(nextMoves.getFirst());
     }
+    public void assignHitBox(HitBox h){
+        myHitBox = h;
+    }
 
-    public void initializeTarget(Entity entity) {
+    public void initializeTarget(game.entity.Entity entity) {
         player = entity;
     }
 
@@ -70,9 +70,6 @@ public abstract class Enemy extends Entity {
         effectsPanel.render(g, x, y);
     }
 
-    public Image getImage() {
-        if (image != null) return image;
-        else return null;
-    }
+
 
 }

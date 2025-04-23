@@ -19,7 +19,7 @@ public class Vulnerable extends Effect{
 
     @Override
     public void apply() {
-        Sounds.VULNERABLE.play();
+        Sounds.VULNERABLE.play(1f, .5f);
         target.modifyDefense(multiplier);
         durationLeft--;
     }

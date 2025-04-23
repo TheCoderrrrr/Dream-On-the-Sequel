@@ -20,7 +20,7 @@ public class Heal extends Effect{
 
     @Override
     public void apply() {
-        Sounds.HEALING.play();
+        Sounds.HEALING.play(1f, .1f);
         target.heal(healStrength);
         durationLeft--;
     }

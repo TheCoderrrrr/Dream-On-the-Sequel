@@ -3,7 +3,7 @@ package game.managers;
 import game.card.Card;
 import game.card.MultiTarget;
 import game.card.SingleTarget;
-import game.entity.enemy.Enemy;
+import game.entity.Entity;
 import game.entity.player.Player;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
@@ -16,7 +16,7 @@ public class HitBox {
     private int x;
     private int y;
     private final int OFFSET = 25; //extends the hitbox 25 pixels on each side of the entity
-    private Enemy enemy;
+    private Entity entity;
     private Player player;
     private Color curColor;
     private int curColorNumber;
@@ -38,25 +38,27 @@ public class HitBox {
         System.out.println(colors.size());
     }
 
-    public void setEnemy(Enemy enemy) {
-        this.enemy = enemy;
-        width = enemy.getImage().getWidth() + OFFSET;
-        height = enemy.getImage().getHeight() + OFFSET;
+    public void setEntity(Entity entity) {
+        this.entity = entity;
+        width = entity.getImage().getWidth() + OFFSET;
+        height = entity.getImage().getHeight() + OFFSET;
     }
-    public Enemy getEnemy() {return enemy;}
+
+
+    public Entity getEntity() {return entity;}
     public void setPlayer(Player player) {this.player = player;}
-    public boolean hasEnemy() {
-        return enemy != null;
+    public boolean hasEntity() {
+        return entity != null;
     }
 
     public boolean isMouseOver(int mouseX, int mouseY) {
-        return hasEnemy() && mouseX < x + width && mouseX > x - OFFSET && mouseY < y + height + OFFSET && mouseY > y - OFFSET;
+        return hasEntity() && mouseX < x + width && mouseX > x - OFFSET && mouseY < y + height + OFFSET && mouseY > y - OFFSET;
     }
 
     public void useCard(Card c) {
         c.markAsUsed();
         if(c instanceof SingleTarget) {
-            ((SingleTarget) c).use(player, enemy);
+            ((SingleTarget) c).use(player, entity);
         }
         if(c instanceof MultiTarget) {
             ((MultiTarget) c).use(player);
@@ -66,13 +68,13 @@ public class HitBox {
 
     public void render(Graphics g){
 
-        if(hasEnemy()) {
-            enemy.render(g, x, y);
+        if(hasEntity()) {
+            entity.render(g, x, y);
         }
     }
     public void renderHitBox(Graphics g) {
         g.setColor(curColor);
-        g.drawRect(x - OFFSET, y - OFFSET, enemy.getImage().getWidth() + OFFSET, enemy.getImage().getHeight() + OFFSET);
+        g.drawRect(x - OFFSET, y - OFFSET, entity.getImage().getWidth() + OFFSET, entity.getImage().getHeight() + OFFSET);
     }
     public void chroma(){
         if(curColorNumber  > 3000){
@@ -83,8 +85,8 @@ public class HitBox {
         curColor = colors.get(curColorNumber);
 
     }
-    public void killEnemy(){
-        enemy = null;
+    public void killEntity(){
+        entity = null;
     }
     public int getWidth(){
         return width;

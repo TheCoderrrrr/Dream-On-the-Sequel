@@ -24,7 +24,7 @@ public class Burn extends Effect {
     public void apply() {
         target.takeDamage(burnStrength);
         durationLeft--;
-        Sounds.BURN.play();
+        Sounds.BURN.play(1f, .5f);
 
     }
 }

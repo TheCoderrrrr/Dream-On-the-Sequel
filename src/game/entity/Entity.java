@@ -20,6 +20,7 @@ public abstract class Entity {
     protected Image image;
     protected boolean isdead;
     protected EffectsPanel effectsPanel;
+    protected HitBox myHitBox;
 
 
     public Entity(int maxHealth) {
@@ -44,7 +45,9 @@ public abstract class Entity {
         activeEffects.add(e);
         effectsPanel.updateEffects(activeEffects);
     }
+    public void newTurn() {
 
+    }
     public void endTurn() {
 
         attackMultiplier = 1;
@@ -65,11 +68,6 @@ public abstract class Entity {
         }
         effectsPanel.updateEffects(activeEffects);
     }
-
-    public void newTurn() {
-
-    }
-
     public void modifyAttack(float multiplier) {
         attackMultiplier *= multiplier;
     }
@@ -109,5 +107,12 @@ public abstract class Entity {
     }
     public boolean isDead(){
         return health <= 0;
+    }
+    public HitBox getMyHitBox(){
+        return myHitBox;
+    }
+    public Image getImage() {
+        if (image != null) return image;
+        else return null;
     }
 }

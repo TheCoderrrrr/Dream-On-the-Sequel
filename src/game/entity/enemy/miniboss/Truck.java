@@ -5,13 +5,13 @@ import game.actions.enemyActions.truckActions.attacking.Crush;
 import game.actions.enemyActions.truckActions.attacking.RamSlam;
 import game.actions.enemyActions.truckActions.attacking.TurboTakedown;
 import game.actions.enemyActions.truckActions.buffing.PitStop;
-import game.entity.enemy.Enemy;
+import game.entity.enemy.Entity;
 import resources.Images;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Truck extends Enemy {
+public class Truck extends Entity {
     public Truck(int maxHealth)
     {
         super(maxHealth *= 2);

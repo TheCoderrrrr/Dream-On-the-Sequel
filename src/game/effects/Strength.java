@@ -21,7 +21,7 @@ public class Strength extends Effect{
 
     @Override
     public void apply() {
-        Sounds.STRENGTH.play();
+        Sounds.STRENGTH.play(1f, .5f);
         target.modifyAttack(attackMultiplier);
         durationLeft--;
     }

@@ -19,7 +19,7 @@ public class Weaken extends Effect{
 
     @Override
     public void apply() {
-        Sounds.WEAKEN.play();
+        Sounds.WEAKEN.play(1f, .5f);
         durationLeft--;
     }
 }

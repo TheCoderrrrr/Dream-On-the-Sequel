@@ -2,17 +2,17 @@ package game.managers;
 
 import core.Main;
 import game.World;
+import game.card.Attacking;
 import game.card.Card;
-import game.entity.Entity;
 import game.entity.TestEnemy;
-import game.entity.enemy.Enemy;
+import game.entity.enemy.Entity;
 import game.entity.player.Player;
 import org.newdawn.slick.Graphics;
 
 import java.util.ArrayList;
 
 public class EntityManager {
-    private ArrayList<Entity> enemies;
+    private ArrayList<game.entity.Entity> enemies;
     private static ArrayList<HitBox> hitBoxes;
     private static ArrayList<HitBox> hitBoxesInUse;
     private static Player player;
@@ -39,16 +39,21 @@ public class EntityManager {
         for(HitBox h : hitBoxes) {
             h.setPlayer(player);
         }
+
+        playerHitBox.setEntity(player);
+        playerHitBox.setPlayer(player);
+
         addEnemy(new TestEnemy());
         addEnemy(new TestEnemy());
         addEnemy(new TestEnemy());
     }
-    public void addEnemy(Enemy e) {
+    public void addEnemy(Entity e) {
         for(HitBox h : hitBoxes) {
-            if(!h.hasEnemy()) {
-                h.setEnemy(e);
+            if(!h.hasEntity()) {
+                h.setEntity(e);
                 enemies.add(e);
                 e.initializeTarget(player);
+                e.assignHitBox(h);
                 return;
             }
         }
@@ -61,7 +66,7 @@ public class EntityManager {
         currEntityAnimationID = 0;
         numOfEntityAnimationID = 0;
         for(HitBox hitBox : hitBoxes){
-            if(hitBox.hasEnemy()){
+            if(hitBox.hasEntity()){
                 hitBoxesInUse.add(hitBox);
                 numOfEntityAnimationID++;
             }
@@ -69,7 +74,7 @@ public class EntityManager {
         enemyTurnFinished = false;
     }
     public void endTurn() {
-        for(Entity e : enemies) {
+        for(game.entity.Entity e : enemies) {
             e.endTurn();
         }
         player.endTurn();
@@ -80,9 +85,15 @@ public class EntityManager {
     }
 
     public void cardReleased(Card c, int x, int y) {
-        for(HitBox h : hitBoxes) {
-            if(h.isMouseOver(x, y) && h.hasEnemy()) {
-                h.useCard(c);
+        if(c instanceof Attacking){
+            for(HitBox h : hitBoxes) {
+                if(h.isMouseOver(x, y) && h.hasEntity()) {
+                    h.useCard(c);
+                }
+            }
+        }else{
+            if(playerHitBox.isMouseOver(x, y) && playerHitBox.hasEntity()){
+                playerHitBox.useCard(c);
             }
         }
     }
@@ -95,20 +106,20 @@ public class EntityManager {
                 //make sure we stay within array bounds
 
                 HitBox currHitBox = hitBoxesInUse.get(currEntityAnimationID);
-                if(currHitBox.hasEnemy()) {
-                    if(currHitBox.getEnemy().finishedAnimation()){
+                if(currHitBox.hasEntity()) {
+                    if(currHitBox.getEntity().finishedAnimation()){
                         //if the current enemy finished the animation, then call action() for that enemy
 
-                        if(currHitBox.hasEnemy()) {
-                            currHitBox.getEnemy().action();
+                        if(currHitBox.hasEntity()) {
+                            currHitBox.getEntity().action();
                             //then, move to the next enemy
-                            currHitBox.getEnemy().resetAnimation();
+                            currHitBox.getEntity().resetAnimation();
                         }
 
                         currEntityAnimationID++;
                     }else{
                         //otherwise, move to the next frame within the enemy animation
-                        if(currHitBox.hasEnemy()) currHitBox.getEnemy().nextAnimationFrame();
+                        if(currHitBox.hasEntity()) currHitBox.getEntity().nextAnimationFrame();
                     }
                 } else {
                     numOfEntityAnimationID++;
@@ -130,8 +141,8 @@ public class EntityManager {
     public void cleanUp(){
         for(int i = hitBoxes.size() - 1; i >= 0; i--)
         {
-            if(hitBoxes.get(i).hasEnemy() && hitBoxes.get(i).getEnemy().isDead()){
-                hitBoxes.get(i).killEnemy();
+            if(hitBoxes.get(i).hasEntity() && hitBoxes.get(i).getEntity().isDead()){
+                hitBoxes.get(i).killEntity();
                 hitBoxesInUse.remove(hitBoxes.get(i));
             }
         }
@@ -168,6 +179,7 @@ public class EntityManager {
     public void newRound(){
         if(isAllEnemiesDead()){
             World.nextRound();
+            CardManager.resetEnergy();
             addEnemy(new TestEnemy());
             addEnemy(new TestEnemy());
             addEnemy(new TestEnemy());
@@ -175,14 +187,14 @@ public class EntityManager {
     }
     private boolean isAllEnemiesDead(){
         for(HitBox hitBox : hitBoxes){
-            if(hitBox.hasEnemy()) return false;
+            if(hitBox.hasEntity()) return false;
         }
         return true;
     }
     public static ArrayList<HitBox> getHitBoxes(){
         return hitBoxes;
     }
-    public static Entity getPlayer(){
-        return player;
+    public static HitBox getPlayerHitBox(){
+        return playerHitBox;
     }
 }

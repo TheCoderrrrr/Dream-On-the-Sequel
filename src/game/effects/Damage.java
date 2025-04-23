@@ -26,15 +26,9 @@ public class Damage extends Effect {
 
         target.takeDamage(damage);
         durationLeft--;
-
-        for (HitBox h : EntityManager.getHitBoxes())
-        {
-            if(h.getEnemy() == target)
-            {
-                MessageManager.addMessage(new FloatMessage(String.valueOf(damage), h.getX(), h.getY(), Color.red, 60));
-                System.out.println("Adding float message for damage: " + damage);
-                System.out.println(h.getY());
-            }
+        if(target.getMyHitBox() != null){
+            HitBox h = target.getMyHitBox();
+            MessageManager.addMessage(new FloatMessage(String.valueOf(damage), h.getX(), h.getY(), Color.red, 60));
         }
     }
 

@@ -20,7 +20,7 @@ public class Mark extends Effect{
 
     @Override
     public void apply() {
-        Sounds.MARK.play();
+        Sounds.MARK.play(1f, .5f);
         target.modifyDefense(multiplier);
         durationLeft--;
     }

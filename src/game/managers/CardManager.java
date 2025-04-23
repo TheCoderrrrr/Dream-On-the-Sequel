@@ -10,6 +10,7 @@ import game.card.bearCards.mutli.debuff.ButtonBomb;
 import game.card.bearCards.single.attack.BearBite;
 import game.card.bearCards.single.attack.BearHug;
 import game.card.bearCards.single.attack.PawCrush;
+import game.entity.enemy.Entity;
 import game.ui.Panel;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -74,10 +75,10 @@ public class CardManager {
         for (Card c : hand) {
             if (c.isDragging()) {
                 if (c instanceof Buffing) {
-                    g.fillRect(Main.getScreenWidth() / 2, Main.getScreenHeight() / 2, 200, 200);
+                    EntityManager.getPlayerHitBox().renderHitBox(g);
                 } else if (c instanceof Attacking) {
                     for (HitBox h : EntityManager.getHitBoxes()) {
-                        if (h.hasEnemy()) {
+                        if (h.hasEntity()) {
                             h.renderHitBox(g);
                         }
                     }
@@ -171,5 +172,6 @@ public class CardManager {
         deck.add(new PrimalRage());
 
         resetHand();
+        resetEnergy();
     }
 }

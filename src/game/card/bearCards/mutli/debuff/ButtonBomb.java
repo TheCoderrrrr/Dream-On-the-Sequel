@@ -22,9 +22,9 @@ public class ButtonBomb extends Card implements MultiTarget, Attacking {
         description = "Adds Mark Effect";
         cardImage = Images.BUTTON_BOMB;
         ArrayList<Effect> actions = new ArrayList<>();
-        actions.add(new Mark(1.5f, 2));
-        actions.add(new Heal(15, 2));
-        actions.add(new Burn(15, 2));
+        actions.add(new Mark(1.5f, 4));
+        actions.add(new Damage(10));
+        actions.add(new Burn(20, 4));
         action = new Action(actions);
         effectsPanel = new CardEffectsPanel(actions);
     }
@@ -32,10 +32,10 @@ public class ButtonBomb extends Card implements MultiTarget, Attacking {
     public void use(Entity owner)
     {
         for(HitBox hitBox : EntityManager.getHitBoxes()){
-            if(hitBox.hasEnemy()){
+            if(hitBox.hasEntity()){
                 for(Effect effect : action.getEffects()) {
                     effect.setOwner(owner);
-                    effect.setTarget(hitBox.getEnemy());
+                    effect.setTarget(hitBox.getEntity());
                 }
                 for(Effect effect : action.getEffects()) {
                     effect.apply();

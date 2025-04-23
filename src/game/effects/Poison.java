@@ -22,7 +22,7 @@ public class Poison extends Effect {
 
     @Override
     public void apply() {
-        Sounds.POISON.play();
+        Sounds.POISON.play(1f, .5f);
         target.takeDamage(poisonStrength);
         durationLeft--;
     }

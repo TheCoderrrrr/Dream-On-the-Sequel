@@ -29,10 +29,10 @@ public class NeedleToss extends Card implements MultiTarget, Attacking {
     public void use(Entity owner)
     {
         for(HitBox hitBox : EntityManager.getHitBoxes()){
-            if(hitBox.hasEnemy()){
+            if(hitBox.hasEntity()){
                 for(Effect effect : action.getEffects()) {
                     effect.setOwner(owner);
-                    effect.setTarget(hitBox.getEnemy());
+                    effect.setTarget(hitBox.getEntity());
                 }
                 for(Effect effect : action.getEffects()) {
                     effect.apply();

@@ -21,7 +21,7 @@ public class Shield extends Effect{
 
     @Override
     public void apply() {
-        Sounds.SHIELD.play();
+        Sounds.SHIELD.play(1f, .5f);
         target.modifyBlock(multiplier);
         durationLeft--;
     }
