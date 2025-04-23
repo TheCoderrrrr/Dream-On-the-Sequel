@@ -5,7 +5,7 @@ import game.World;
 import game.card.Attacking;
 import game.card.Card;
 import game.entity.TestEnemy;
-import game.entity.enemy.Entity;
+import game.entity.enemy.Enemy;
 import game.entity.player.Player;
 import org.newdawn.slick.Graphics;
 
@@ -47,7 +47,7 @@ public class EntityManager {
         addEnemy(new TestEnemy());
         addEnemy(new TestEnemy());
     }
-    public void addEnemy(Entity e) {
+    public void addEnemy(Enemy e) {
         for(HitBox h : hitBoxes) {
             if(!h.hasEntity()) {
                 h.setEntity(e);
@@ -129,6 +129,7 @@ public class EntityManager {
                 enemyTurnFinished = true;
                 CardManager.resetHand();
                 CardManager.resetEnergy();
+                player.newTurn();
             }
 
         }

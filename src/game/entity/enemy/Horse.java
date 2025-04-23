@@ -9,7 +9,7 @@ import resources.Images;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Horse extends Entity {
+public class Horse extends Enemy {
     public Horse(int maxHealth)
     {
         super(maxHealth);

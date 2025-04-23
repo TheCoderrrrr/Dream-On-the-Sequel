@@ -10,7 +10,6 @@ import game.card.bearCards.mutli.debuff.ButtonBomb;
 import game.card.bearCards.single.attack.BearBite;
 import game.card.bearCards.single.attack.BearHug;
 import game.card.bearCards.single.attack.PawCrush;
-import game.entity.enemy.Entity;
 import game.ui.Panel;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
