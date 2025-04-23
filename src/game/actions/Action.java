@@ -18,7 +18,11 @@ public class Action {
         this.effects = effects;
         description = "you forgor to add descirption";
         name = this.getClass().getSimpleName();
-        symbol = Images.ENERGY0;
+        symbol = Images.ACTION_ATTACK;
+        symbol = Images.ACTION_HEAL;
+        symbol = Images.ACTION_MARK;
+        symbol = Images.ACTION_POISON;
+        symbol = Images.ACTION_VULNERABLE;
     }
 
     public void action(Entity target, Entity owner) {
