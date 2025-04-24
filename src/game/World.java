@@ -3,6 +3,8 @@ package game;
 import core.Main;
 import game.managers.CardManager;
 import game.managers.EntityManager;
+import game.managers.MessageManager;
+import game.messages.FloatMessage;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;
 import resources.Images;
@@ -111,6 +113,8 @@ public class World {
     }
     public static void nextRound(){
         round++;
+        CardManager.resetHand();
+        CardManager.resetEnergy();
         sbg.enterState(Main.WIN_ID);
     }
     public void endTurnButton(int button, int x, int y){
@@ -155,6 +159,9 @@ public class World {
     }
 
     public void renderRound(Graphics g) {
-        g.drawString("Round " + round, Main.getScreenWidth()/100f, Main.getScreenHeight()/100f);
+        g.drawString("Round " + round, Main.getScreenWidth()/100f, Main.getScreenHeight()/75f);
+    }
+    public void killeverything(){
+        entityManager.killEverything();
     }
 }

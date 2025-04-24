@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 public class ArtifactInfoPanel extends Panel{
     private ArrayList<Effect> effects;
-    private ArrayList<Artifact> artifacts;
+    private ArrayList<Artifact> artifacts = new ArrayList<>();
     private int padding = (int) (Main.getScreenWidth() * 0.01);
     public ArtifactInfoPanel(){
         tooltip = new Tooltip();
@@ -30,6 +30,7 @@ public class ArtifactInfoPanel extends Panel{
     }
     public void renderSingleArtifact(Graphics g, int x, int y, Artifact artifact){
         g.drawImage(artifact.getImage(), x, y);
+
 
     }
 }

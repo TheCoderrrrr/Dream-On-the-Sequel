@@ -1,6 +1,7 @@
 package game.artifacts;
 
 import game.effects.Shield;
+import resources.Images;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +11,7 @@ public class Bulwark extends Artifact{
 
     public Bulwark() {
         super(null, new ArrayList<>(List.of(new Shield(0.1f, 1))), null);
+        image = Images.RELIC1;
     }
 
 }

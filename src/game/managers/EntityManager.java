@@ -203,6 +203,7 @@ public class EntityManager {
         if (isAllEnemiesDead()) {
             World.nextRound();
             CardManager.resetEnergy();
+            player.newTurn();
             switch (World.getRound()) {
                 case 2:
                     addEnemy(new Horse());
@@ -284,7 +285,7 @@ public class EntityManager {
         return playerHitBox;
     }
 
-    public static void killEverything() {
+    public void killEverything() {
         for (int i = hitBoxes.size() - 1; i >= 0; i--) {
             hitBoxes.get(i).killEntity();
             hitBoxesInUse.remove(hitBoxes.get(i));

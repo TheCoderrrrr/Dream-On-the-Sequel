@@ -10,6 +10,7 @@ import game.entity.Entity;
 import game.managers.HitBox;
 import game.managers.MessageManager;
 import game.messages.FloatMessage;
+import game.ui.ArtifactInfoPanel;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import resources.Fonts;
@@ -21,11 +22,13 @@ public class Player extends Entity {
     public static final int PLAYER_MAX_HP = 100;
     private ArrayList<Artifact> artifacts;
     private ArrayList<Artifact> addableArtifacts;
+    private ArtifactInfoPanel artifactInfoPanel;
 
     public Player() {
         super(PLAYER_MAX_HP);
         artifacts = new ArrayList<>();
         addableArtifacts = new ArrayList<>();
+        artifactInfoPanel = new ArtifactInfoPanel();
 
         addableArtifacts.add(new Bulwark());
         addableArtifacts.add(new ManaStone());
@@ -43,6 +46,7 @@ public class Player extends Entity {
 
             addableArtifacts.remove(a);
             artifacts.add(a);
+            artifactInfoPanel.updateArtifacts(artifacts);
         }
     }
 
@@ -95,6 +99,7 @@ public class Player extends Entity {
         }
 
         renderHealth(g, x, y);
+        artifactInfoPanel.render(g, 0, 0);
     }
 
     public void renderHealth(Graphics g, int x, int y) {

@@ -1,6 +1,7 @@
 package game.managers;
 
 import core.Main;
+import game.artifacts.Artifact;
 import game.card.Attacking;
 import game.card.Buffing;
 import game.card.Card;
@@ -16,7 +17,9 @@ import game.card.bearCards.single.debuff.CuddleCrush;
 import game.card.bearCards.single.debuff.CupidsArrow;
 import game.card.bearCards.single.debuff.MuffledRoar;
 import game.card.bearCards.single.debuff.StitchedSilence;
+import game.entity.player.Player;
 import game.ui.Panel;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import resources.Fonts;
@@ -131,7 +134,11 @@ public class CardManager {
         for (Card c : hand) {
             c.renderEffectsPanel(g, hand);
         }
-        Fonts.DOGICAPIXEL.drawStringCentered(g, curEnergy + " / " + totalEnergy, (float) Main.getScreenWidth() / 2, (float) Main.getScreenHeight() / 2);
+        g.setColor(new Color(255, 255, 255, 255));
+        g.fillRoundRect((float) Main.getScreenWidth() / 3.94f, (float) Main.getScreenHeight() * .868f , 100, Fonts.DOGICAPIXEL.getHeight(g, curEnergy + " / " + totalEnergy, 100, 30), 10);
+        g.setColor(Color.black);
+        Fonts.DOGICAPIXEL.drawString(g, curEnergy + " / " + totalEnergy, (float) Main.getScreenWidth() / 3.95f, (float) Main.getScreenHeight() * .875f , 30);
+
     }
 
     public static void resetHand() {

@@ -3,6 +3,7 @@ package core;
 import game.managers.EntityManager;
 import game.managers.MessageManager;
 import game.World;
+import game.messages.FloatMessage;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -56,6 +57,8 @@ public class Game extends BasicGameState
 	
 	public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException 
 	{
+		MessageManager.addMessage(new FloatMessage("ROUND : " + world.getRound(), Main.getScreenWidth() / 2, Main.getScreenHeight() / 4, Color.black, 120));
+
 		// This code happens when you enter a gameState.
 	}
 
@@ -70,7 +73,7 @@ public class Game extends BasicGameState
 		world.keyPressed(key, c);
 
 		if(key == Input.KEY_P){
-			EntityManager.killEverything();
+			world.killeverything();
 		}
 	}
 	
