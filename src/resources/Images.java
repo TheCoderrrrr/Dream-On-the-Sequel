@@ -82,7 +82,8 @@ public class Images {
     public static Image ENERGY3;
     public static Image ENERGY4;
 
-    public static Image endTurnButton;
+    public static Image BOSS_ENDTURN;
+    public static Image NORMAL_ENDTURN;
 
     public static void loadImages()
     {
@@ -126,7 +127,8 @@ public class Images {
             ENERGY3 = ENERGYSPRITESHEET.getSubImage(3, 0);
             ENERGY4 = ENERGYSPRITESHEET.getSubImage(4, 0);
 
-            endTurnButton = new Image("res/images/buttons/End_Turn.png");
+            BOSS_ENDTURN = new Image("res/images/buttons/bossendturn.png");
+            NORMAL_ENDTURN = new Image("res/images/buttons/normalendturn.png");
         }
         catch (SlickException e)
         {
