@@ -90,6 +90,9 @@ public class Images {
     public static Image BOSS_ENDTURN;
     public static Image NORMAL_ENDTURN;
 
+    public static Image RELIC1;
+    public static Image RELIC2;
+
     public static void loadImages()
     {
         try
@@ -139,6 +142,9 @@ public class Images {
 
             BOSS_ENDTURN = new Image("res/images/buttons/bossendturn.png");
             NORMAL_ENDTURN = new Image("res/images/buttons/normalendturn.png");
+
+            RELIC1 = new Image("res/images/relics/artifact1.png");
+            RELIC2 = new Image("res/images/relics/artifact2.png");
         }
         catch (SlickException e)
         {
