@@ -54,6 +54,10 @@ public class Images {
     public static Image STACKENEMY;
     public static Image TRUCKENEMY;
     public static Image GODZILLA;
+    public static Image JACK;
+    public static Image DUCK;
+    public static Image DOLL;
+    public static Image ROCKET;
 
     //Effect Symbols
     public static Image BURNING;
@@ -72,6 +76,7 @@ public class Images {
     public static Image ACTION_POISON;
     public static Image ACTION_SHIELD;
     public static Image ACTION_MARK;
+    public static Image ACTION_BURN;
 
     public static Image ENERGYCOSTS;
     public static SpriteSheet ENERGYSPRITESHEET;
@@ -110,6 +115,7 @@ public class Images {
             ACTION_POISON = new Image("res/images/actions/poison3.png");
             ACTION_SHIELD = new Image("res/images/actions/shield2.png");
             ACTION_MARK = new Image("res/images/actions/mark2.png");
+            ACTION_BURN = new Image("res/images/actions/burn.png");
 //            ACTION_MARK = new Image("res/images/actions/mark.png").getScaledCopy((int) (Main.getScreenWidth() * 0.05), (int) (Main.getScreenHeight() * 0.05));
 
             ENEMY1 = new Image("res/images/entity/enemy/Green_Army_Soldier.png");
@@ -117,6 +123,10 @@ public class Images {
             STACKENEMY = new Image("res/images/entity/enemy/miniboss/stack.png");
             TRUCKENEMY = new Image("res/images/entity/enemy/miniboss/truck.png");
             GODZILLA = new Image("res/images/entity/enemy/boss/godzilla.png").getScaledCopy(3);
+            JACK = new Image("res/images/entity/enemy/miniboss/jack.png");
+            DUCK = new Image("res/images/entity/enemy/miniboss/duck.png");
+            DOLL = new Image("res/images/entity/enemy/miniboss/doll.png");
+            ROCKET = new Image("res/images/entity/enemy/rocket.png");
 
             ENERGYCOSTS = new Image("res/images/gui/energy_costs.png");
             ENERGYSPRITESHEET = new SpriteSheet(ENERGYCOSTS, 32, 32);
