@@ -16,7 +16,7 @@ public class Burn extends Effect {
         super(duration);
         this.burnStrength = burnStrength;
         name = "IM ON FIRE";
-        symbol = Images.HEALING;
+        symbol = Images.BURNING;
         description = "AHHHHHHH IM ON FIRE";
     }
 
