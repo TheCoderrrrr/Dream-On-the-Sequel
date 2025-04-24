@@ -16,18 +16,30 @@ import java.util.ArrayList;
 public class Player extends Entity {
     public static final int PLAYER_MAX_HP = 100;
     private ArrayList<Artifact> artifacts;
+    private ArrayList<Artifact> addableArtifacts;
 
     public Player() {
         super(PLAYER_MAX_HP);
         artifacts = new ArrayList<>();
-        artifacts.add(new Bulwark());
-        artifacts.add(new ManaStone());
+        addableArtifacts = new ArrayList<>();
+
+        addableArtifacts.add(new Bulwark());
+        addableArtifacts.add(new ManaStone());
         image = Images.BEAR_HERO;
     }
 
     @Override
     public void action() {
 
+    }
+
+    public void addNewRelic() {
+        if(!addableArtifacts.isEmpty()) {
+            Artifact a = addableArtifacts.get((int) (Math.random() * addableArtifacts.size()));
+
+            addableArtifacts.remove(a);
+            artifacts.add(a);
+        }
     }
 
     @Override

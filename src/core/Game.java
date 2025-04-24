@@ -29,7 +29,8 @@ public class Game extends BasicGameState
 	{
 		gc.setShowFPS(false);
 
-		world = new World(gc);
+		world = new World(gc, sbg);
+		Win.setWorld(world);
 
 		MessageManager.init();
 	}
