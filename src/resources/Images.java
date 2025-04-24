@@ -54,6 +54,10 @@ public class Images {
     public static Image STACKENEMY;
     public static Image TRUCKENEMY;
     public static Image GODZILLA;
+    public static Image JACK;
+    public static Image DUCK;
+    public static Image DOLL;
+    public static Image ROCKET;
 
     //Effect Symbols
     public static Image BURNING;
@@ -119,6 +123,10 @@ public class Images {
             STACKENEMY = new Image("res/images/entity/enemy/miniboss/stack.png");
             TRUCKENEMY = new Image("res/images/entity/enemy/miniboss/truck.png");
             GODZILLA = new Image("res/images/entity/enemy/boss/godzilla.png").getScaledCopy(3);
+            JACK = new Image("res/images/entity/enemy/miniboss/jack.png");
+            DUCK = new Image("res/images/entity/enemy/miniboss/duck.png");
+            DOLL = new Image("res/images/entity/enemy/miniboss/doll.png");
+            ROCKET = new Image("res/images/entity/enemy/rocket.png");
 
             ENERGYCOSTS = new Image("res/images/gui/energy_costs.png");
             ENERGYSPRITESHEET = new SpriteSheet(ENERGYCOSTS, 32, 32);

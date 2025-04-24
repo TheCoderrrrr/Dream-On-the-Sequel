@@ -11,7 +11,7 @@ import java.util.List;
 public class Rapture  extends Action {
     public Rapture()
     {
-        super(new ArrayList<>(List.of(new Damage(20))));
+        super(new ArrayList<>(List.of(new Damage(20), new Vulnerable(1.5f, 2))));
         description = "Does 20 damage and 'Vulnerable' effect is applied";
         symbol = Images.ACTION_VULNERABLE;
     }
