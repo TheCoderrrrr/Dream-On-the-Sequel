@@ -1,11 +1,9 @@
 package core;
 
+import game.managers.EntityManager;
 import game.managers.MessageManager;
 import game.World;
-import org.newdawn.slick.Color;
-import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Graphics;
-import org.newdawn.slick.SlickException;
+import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
@@ -71,6 +69,9 @@ public class Game extends BasicGameState
 		// This code happens every time the user presses a key
 		world.keyPressed(key, c);
 
+		if(key == Input.KEY_P){
+			EntityManager.killEverything();
+		}
 	}
 	
 	public void mousePressed(int button, int x, int y)

@@ -55,7 +55,7 @@ public class EffectsPanel extends Panel{
                 if (gc.getInput().getMouseX() >= effectX && gc.getInput().getMouseX() <= effectX + effectWidth &&
                         gc.getInput().getMouseY() >= effectY && gc.getInput().getMouseY() <= effectY + effectHeight) {
 
-                    tooltip.render(g, x, y, effect.getDescription());
+                    tooltip.render(g, gc.getInput().getMouseX(), gc.getInput().getMouseY(), effect.getDescription());
                 }
             }
         }

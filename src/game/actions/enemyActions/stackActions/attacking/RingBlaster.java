@@ -11,8 +11,8 @@ import java.util.List;
 public class RingBlaster extends Action implements Attacking {
     public RingBlaster()
     {
-        super(new ArrayList<>(List.of(new Damage(30))));
-        description = "Does 30 damage";
+        super(new ArrayList<>(List.of(new Damage(20))));
+        description = "Does 20 damage";
         symbol = Images.ACTION_ATTACK;
     }
 }

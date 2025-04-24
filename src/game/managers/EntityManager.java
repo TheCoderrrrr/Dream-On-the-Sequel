@@ -34,16 +34,16 @@ public class EntityManager {
 
         hitBoxes = new ArrayList<>();
         hitBoxesInUse = new ArrayList<>();
-        playerHitBox = new HitBox((int) (Main.getScreenWidth()*0.25f), (int) (Main.getScreenHeight()/2.2));
+        playerHitBox = new HitBox((int) (Main.getScreenWidth() * 0.25f), (int) (Main.getScreenHeight() / 2.2));
 
-        for(int i=0; i<3; i++) {
-            hitBoxes.add(new HitBox((int) (Main.getScreenWidth()*0.75f + i * Main.getScreenWidth()/12f), (int) (Main.getScreenHeight()/2.2)));
+        for (int i = 0; i < 3; i++) {
+            hitBoxes.add(new HitBox((int) (Main.getScreenWidth() * 0.75f + i * Main.getScreenWidth() / 12f), (int) (Main.getScreenHeight() / 2.2)));
         }
-        for(int i=0; i<2; i++) {
-            hitBoxes.add(new HitBox((int) (Main.getScreenWidth()*0.80f + i * Main.getScreenWidth()/12f), Main.getScreenHeight()/2 - Main.getScreenHeight()/10));
+        for (int i = 0; i < 2; i++) {
+            hitBoxes.add(new HitBox((int) (Main.getScreenWidth() * 0.80f + i * Main.getScreenWidth() / 12f), Main.getScreenHeight() / 2 - Main.getScreenHeight() / 10));
         }
 
-        for(HitBox h : hitBoxes) {
+        for (HitBox h : hitBoxes) {
             h.setPlayer(player);
         }
 
@@ -56,9 +56,10 @@ public class EntityManager {
 //        addEnemy(new Godzilla(200));
 //        addEnemy(new TestEnemy());
     }
+
     public void addEnemy(Enemy e) {
-        for(HitBox h : hitBoxes) {
-            if(!h.hasEntity()) {
+        for (HitBox h : hitBoxes) {
+            if (!h.hasEntity()) {
                 h.setEntity(e);
                 enemies.add(e);
                 e.initializeTarget(player);
@@ -75,19 +76,21 @@ public class EntityManager {
     public void myTurn() {
         player.action();
     }
+
     public void enemyTurn() {
         currEntityAnimationID = 0;
         numOfEntityAnimationID = 0;
-        for(HitBox hitBox : hitBoxes){
-            if(hitBox.hasEntity()){
+        for (HitBox hitBox : hitBoxes) {
+            if (hitBox.hasEntity()) {
                 hitBoxesInUse.add(hitBox);
                 numOfEntityAnimationID++;
             }
         }
         enemyTurnFinished = false;
     }
+
     public void endTurn() {
-        for(game.entity.Entity e : enemies) {
+        for (game.entity.Entity e : enemies) {
             e.endTurn();
         }
         player.endTurn();
@@ -98,14 +101,14 @@ public class EntityManager {
     }
 
     public void cardReleased(Card c, int x, int y) {
-        if(c instanceof Attacking){
-            for(HitBox h : hitBoxes) {
-                if(h.isMouseOver(x, y) && h.hasEntity()) {
+        if (c instanceof Attacking) {
+            for (HitBox h : hitBoxes) {
+                if (h.isMouseOver(x, y) && h.hasEntity()) {
                     h.useCard(c);
                 }
             }
-        }else{
-            if(playerHitBox.isMouseOver(x, y) && playerHitBox.hasEntity()){
+        } else {
+            if (playerHitBox.isMouseOver(x, y) && playerHitBox.hasEntity()) {
                 playerHitBox.useCard(c);
             }
         }
@@ -114,16 +117,16 @@ public class EntityManager {
 
     public void update() {
 
-        if(World.isEnemyTurn()) {
-            if(currEntityAnimationID < numOfEntityAnimationID) {
+        if (World.isEnemyTurn()) {
+            if (currEntityAnimationID < numOfEntityAnimationID) {
                 //make sure we stay within array bounds
 
                 HitBox currHitBox = hitBoxesInUse.get(currEntityAnimationID);
-                if(currHitBox.hasEntity()) {
-                    if(currHitBox.getEntity().finishedAnimation()){
+                if (currHitBox.hasEntity()) {
+                    if (currHitBox.getEntity().finishedAnimation()) {
                         //if the current enemy finished the animation, then call action() for that enemy
 
-                        if(currHitBox.hasEntity()) {
+                        if (currHitBox.hasEntity()) {
                             currHitBox.getEntity().action();
 
                             //then, move to the next enemy
@@ -131,9 +134,9 @@ public class EntityManager {
                         }
 
                         currEntityAnimationID++;
-                    }else{
+                    } else {
                         //otherwise, move to the next frame within the enemy animation
-                        if(currHitBox.hasEntity()) currHitBox.getEntity().nextAnimationFrame();
+                        if (currHitBox.hasEntity()) currHitBox.getEntity().nextAnimationFrame();
                     }
                 } else {
                     numOfEntityAnimationID++;
@@ -147,32 +150,34 @@ public class EntityManager {
             }
 
         }
-        for(HitBox hitBox : hitBoxes){
+        for (HitBox hitBox : hitBoxes) {
             hitBox.chroma();
         }
         cleanUp();
         newRound();
     }
-    public void cleanUp(){
-        for(int i = hitBoxes.size() - 1; i >= 0; i--)
-        {
-            if(hitBoxes.get(i).hasEntity() && hitBoxes.get(i).getEntity().isDead()){
+
+    public void cleanUp() {
+        for (int i = hitBoxes.size() - 1; i >= 0; i--) {
+            if (hitBoxes.get(i).hasEntity() && hitBoxes.get(i).getEntity().isDead()) {
                 hitBoxes.get(i).killEntity();
                 hitBoxesInUse.remove(hitBoxes.get(i));
             }
         }
     }
-    public boolean isPlayerDead(){
+
+    public boolean isPlayerDead() {
         return player.isDead();
     }
 
     public void render(Graphics g) {
         playerHitBox.render(g);
-        for(HitBox hitbox : hitBoxes){
+        for (HitBox hitbox : hitBoxes) {
             hitbox.render(g);
         }
     }
-    public void resetManager(){
+
+    public void resetManager() {
         enemies.clear();
         player = new Player();
 
@@ -182,22 +187,23 @@ public class EntityManager {
 
         hitBoxes.clear();
         hitBoxesInUse.clear();
-        for(int i=0; i<3; i++) {
-            hitBoxes.add(new HitBox((int) (Main.getScreenWidth()*0.75f + i * Main.getScreenWidth()/12f), Main.getScreenHeight()/2));
+        for (int i = 0; i < 3; i++) {
+            hitBoxes.add(new HitBox((int) (Main.getScreenWidth() * 0.75f + i * Main.getScreenWidth() / 12f), Main.getScreenHeight() / 2));
         }
-        for(int i=0; i<2; i++) {
-            hitBoxes.add(new HitBox((int) (Main.getScreenWidth()*0.80f + i * Main.getScreenWidth()/12f), Main.getScreenHeight()/2 - Main.getScreenHeight()/10));
+        for (int i = 0; i < 2; i++) {
+            hitBoxes.add(new HitBox((int) (Main.getScreenWidth() * 0.80f + i * Main.getScreenWidth() / 12f), Main.getScreenHeight() / 2 - Main.getScreenHeight() / 10));
         }
-        for(HitBox h : hitBoxes) {
+        for (HitBox h : hitBoxes) {
             h.setPlayer(player);
         }
         addEnemy(new Horse());
     }
-    public void newRound(){
-        if(isAllEnemiesDead()){
+
+    public void newRound() {
+        if (isAllEnemiesDead()) {
             World.nextRound();
             CardManager.resetEnergy();
-            switch (World.getRound()){
+            switch (World.getRound()) {
                 case 2:
                     addEnemy(new Horse());
                     addEnemy(new Soldier());
@@ -262,16 +268,27 @@ public class EntityManager {
             }
         }
     }
-    private boolean isAllEnemiesDead(){
-        for(HitBox hitBox : hitBoxes){
-            if(hitBox.hasEntity()) return false;
+
+    private boolean isAllEnemiesDead() {
+        for (HitBox hitBox : hitBoxes) {
+            if (hitBox.hasEntity()) return false;
         }
         return true;
     }
-    public static ArrayList<HitBox> getHitBoxes(){
+
+    public static ArrayList<HitBox> getHitBoxes() {
         return hitBoxes;
     }
-    public static HitBox getPlayerHitBox(){
+
+    public static HitBox getPlayerHitBox() {
         return playerHitBox;
+    }
+
+    public static void killEverything() {
+        for (int i = hitBoxes.size() - 1; i >= 0; i--) {
+            hitBoxes.get(i).killEntity();
+            hitBoxesInUse.remove(hitBoxes.get(i));
+
+        }
     }
 }

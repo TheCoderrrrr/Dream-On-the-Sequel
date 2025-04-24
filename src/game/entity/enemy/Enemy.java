@@ -72,7 +72,6 @@ public abstract class Enemy extends game.entity.Entity {
 //            g.drawString(nextMoves.get(i).getClass().getSimpleName(), x + 100, y - 20 * (i + 1));
 //        }
 
-        Fonts.REGULAR.drawString(g, "Hp : " + health + " ", (float) x, (float) y + 20, 25);
         renderHealth(g, x , y);
     }
     public void renderHealth(Graphics g, int x, int y){

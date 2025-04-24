@@ -1,13 +1,14 @@
 package game.actions.enemyActions.jackActions.buffings;
 
 import game.actions.Action;
+import game.actions.Buffing;
 import game.effects.Heal;
 import resources.Images;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReSpring extends Action {
+public class ReSpring extends Action implements Buffing {
     public ReSpring()
     {
         super(new ArrayList<>(List.of(new Heal(10, 1))));

@@ -9,9 +9,13 @@ import game.card.bearCards.mutli.attack.ButtonBarrage;
 import game.card.bearCards.mutli.attack.NeedleToss;
 import game.card.bearCards.mutli.attack.ThreadTornado;
 import game.card.bearCards.mutli.debuff.ButtonBomb;
-import game.card.bearCards.single.attack.BearBite;
-import game.card.bearCards.single.attack.BearHug;
-import game.card.bearCards.single.attack.PawCrush;
+import game.card.bearCards.mutli.debuff.ComfortCurse;
+import game.card.bearCards.mutli.debuff.StuffedSorrow;
+import game.card.bearCards.single.attack.*;
+import game.card.bearCards.single.debuff.CuddleCrush;
+import game.card.bearCards.single.debuff.CupidsArrow;
+import game.card.bearCards.single.debuff.MuffledRoar;
+import game.card.bearCards.single.debuff.StitchedSilence;
 import game.ui.Panel;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -58,8 +62,20 @@ public class CardManager {
         addableCards.add(new FallacyOfReturn());
         addableCards.add(new WarmEmbrace());
         addableCards.add(new ButtonBarrage());
-        addableCards.add(new NeedleToss());
         addableCards.add(new ThreadTornado());
+        addableCards.add(new ButtonBomb());
+        addableCards.add(new ComfortCurse());
+        addableCards.add(new StuffedSorrow());
+        addableCards.add(new ConcealedClaws());
+        addableCards.add(new Maul());
+        addableCards.add(new PawCrush());
+        addableCards.add(new PawPummel());
+        addableCards.add(new Slam());
+        addableCards.add(new Smash());
+        addableCards.add(new CuddleCrush());
+        addableCards.add(new CupidsArrow());
+        addableCards.add(new MuffledRoar());
+        addableCards.add(new StitchedSilence());
 
 
 
