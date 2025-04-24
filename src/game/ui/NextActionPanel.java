@@ -19,10 +19,16 @@ public class NextActionPanel extends Panel{
     }
 
     public void render(Graphics g, int x, int y) {
+        int width = nextAction.getSymbol().getWidth();
+        int height = nextAction.getSymbol().getHeight();
+
+        g.setColor(new org.newdawn.slick.Color(0, 0, 0, 150));
+        g.fillRoundRect(x - 5, y - 5, width + 10, height + 10, 10);
+
         g.drawImage(nextAction.getSymbol(), x, y);
         for(Effect e : nextAction.getEffects()){
             if(e instanceof Damage){
-                g.drawString(((Damage) e).getDamage() + "", x, y);
+                g.drawString(((Damage) e).getDamage() + "", x + 5, y + 5);
             }
         }
         if(gc.getInput().getMouseX() > x && gc.getInput().getMouseX() < x + nextAction.getSymbol().getWidth() && gc.getInput().getMouseY() > y && gc.getInput().getMouseY() < y + nextAction.getSymbol().getHeight()){

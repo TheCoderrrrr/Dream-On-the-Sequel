@@ -11,9 +11,10 @@ public class Tooltip extends Panel{
     }
 
     public void render(Graphics g, int x, int y, String info) {
-        g.setColor(Color.blue);
-        g.fillRect(x, y, 50, Fonts.DOGICAPIXEL.getHeight(g, info , 50, 15));
+        g.setColor(Color.white);
+        g.fillRoundRect(x, y, 150, Fonts.EXO2.getHeight(g, info, 100, 15), 15);
+        //g.fillRect(x, y, 150, Fonts.EXO2.getHeight(g, info , 50, 15));
         g.setColor(Color.black);
-        Fonts.DOGICAPIXEL.wrap(g, info, x, y, 50, 15);
+        Fonts.EXO2.wrap(g, info, 50, 50, 50, 15);
     }
 }
