@@ -4,6 +4,7 @@ import core.Main;
 import game.managers.CardManager;
 import game.managers.EntityManager;
 import org.newdawn.slick.*;
+import org.newdawn.slick.state.StateBasedGame;
 import resources.Images;
 
 public class World {
@@ -14,8 +15,11 @@ public class World {
     private static String gameStage;
     private static Image background;
 
+    private static StateBasedGame sbg;
 
-    public World(GameContainer gc) {
+    public World(GameContainer gc, StateBasedGame sbg) {
+        World.sbg = sbg;
+
         entityManager = new EntityManager();
         cardManager = new CardManager(gc);
         gameStage = "My Turn";
@@ -23,6 +27,15 @@ public class World {
         round = 1;
 
         cardManager.setEntityManager(entityManager);
+    }
+
+    public void addNewCard() {
+        CardManager.addNewCard();
+    }
+
+
+    public void addNewRelic() {
+        entityManager.addNewRelic();
     }
 
     public void keyPressed(int key, char c) {
@@ -98,6 +111,7 @@ public class World {
     }
     public static void nextRound(){
         round++;
+        sbg.enterState(Main.WIN_ID);
     }
     public void endTurnButton(int button, int x, int y){
         int width = (int) (Main.getScreenWidth() * 0.1);

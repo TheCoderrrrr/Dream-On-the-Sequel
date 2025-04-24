@@ -60,6 +60,10 @@ public class EntityManager {
         }
     }
 
+    public void addNewRelic() {
+        player.addNewRelic();
+    }
+
     public void myTurn() {
         player.action();
     }

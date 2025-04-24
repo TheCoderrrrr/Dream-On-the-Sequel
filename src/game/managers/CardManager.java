@@ -18,7 +18,7 @@ import resources.Fonts;
 import java.util.ArrayList;
 
 public class CardManager {
-    private static final int HAND_SIZE = 5;
+    private static final int HAND_SIZE = 4;
     private static boolean selectionMode;
     private static int totalCardWidth;
     private static int totalEnergy;
@@ -28,12 +28,14 @@ public class CardManager {
     private static ArrayList<Card> deck;
 
     private EntityManager entityManager;
+    private static ArrayList<Card> addableCards;
 
     public CardManager(GameContainer gc) {
         Card.setGC(gc);
         Panel.setGC(gc);
         hand = new ArrayList<>();
         deck = new ArrayList<>();
+        addableCards = new ArrayList<>();
 
         selectionMode = false;
         totalEnergy = 4;
@@ -43,7 +45,13 @@ public class CardManager {
         deck.add(new BearHug());
         deck.add(new WarmEmbrace());
         deck.add(new PawCrush());
-        deck.add(new ButtonBomb());
+
+
+
+        addableCards.add(new ButtonBomb());
+        addableCards.add(new NeedleToss());
+        addableCards.add(new BearsYearning());
+
 
         resetHand();
 
@@ -62,6 +70,15 @@ public class CardManager {
         }
         updateTotalCardWidth();
         initializeHand();
+    }
+
+    public static void addNewCard() {
+        if(!addableCards.isEmpty()) {
+            Card c = addableCards.get((int) (Math.random() * addableCards.size()));
+
+            addableCards.remove(c);
+            deck.add(c);
+        }
     }
 
     public static void render(Graphics g) {
