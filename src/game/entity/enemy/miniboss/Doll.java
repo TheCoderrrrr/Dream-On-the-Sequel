@@ -12,11 +12,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Doll extends Enemy {
-    public Doll(int maxHealth)
+    public Doll()
     {
-        super(maxHealth * 2);
+        super(100);
         image = Images.DOLL;
         allMoves = new ArrayList<>(Arrays.asList(new Scratch(), new Curse(), new DemonSpawn(), new Seance(), new Staredown()));
-        this.initializeMoves();
+        super.initializeMoves();
     }
 }

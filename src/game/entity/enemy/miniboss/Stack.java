@@ -12,9 +12,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Stack extends Enemy {
-    public Stack(int maxHealth)
+    public Stack()
     {
-        super(maxHealth *= 2);
+        super(100);
         image = Images.STACKENEMY;
         allMoves = new ArrayList<>(Arrays.asList(new RingBlaster(), new StackSlam(), new TotemSpin(), new TowerBlock(), new TowerShield()));
         super.initializeMoves();

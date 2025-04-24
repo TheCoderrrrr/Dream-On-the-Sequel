@@ -12,9 +12,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Truck extends Enemy {
-    public Truck(int maxHealth)
+    public Truck()
     {
-        super(maxHealth *= 2);
+        super(100);
         image = Images.TRUCKENEMY;
         allMoves = new ArrayList<>(Arrays.asList(new CargoCover(), new Crush(), new RamSlam(), new TurboTakedown(), new PitStop()));
         super.initializeMoves();

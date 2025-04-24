@@ -12,12 +12,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Jack extends Enemy {
-    public Jack(int maxHealth)
+    public Jack()
     {
-        super(maxHealth * 2);
+        super(100);
         image = Images.JACK;
         allMoves = new ArrayList<>(Arrays.asList(new LoadedSpring(), new Pop(), new Hide(), new Jumpscare(), new ReSpring()));
-        this.initializeMoves();
+        super.initializeMoves();
     }
 
 

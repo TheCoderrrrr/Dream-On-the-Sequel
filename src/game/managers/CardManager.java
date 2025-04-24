@@ -5,7 +5,9 @@ import game.card.Attacking;
 import game.card.Buffing;
 import game.card.Card;
 import game.card.bearCards.buff.*;
+import game.card.bearCards.mutli.attack.ButtonBarrage;
 import game.card.bearCards.mutli.attack.NeedleToss;
+import game.card.bearCards.mutli.attack.ThreadTornado;
 import game.card.bearCards.mutli.debuff.ButtonBomb;
 import game.card.bearCards.single.attack.BearBite;
 import game.card.bearCards.single.attack.BearHug;
@@ -18,7 +20,7 @@ import resources.Fonts;
 import java.util.ArrayList;
 
 public class CardManager {
-    private static final int HAND_SIZE = 4;
+    private static final int HAND_SIZE = 5;
     private static boolean selectionMode;
     private static int totalCardWidth;
     private static int totalEnergy;
@@ -43,14 +45,22 @@ public class CardManager {
 
         deck.add(new BearBite());
         deck.add(new BearHug());
-        deck.add(new WarmEmbrace());
-        deck.add(new PawCrush());
+        deck.add(new BearsYearning());
+        deck.add(new PlushPerfection());
+        deck.add(new Sewing());
+        deck.add(new NeedleToss());
+        deck.add(new PrimalRage());
 
 
 
         addableCards.add(new ButtonBomb());
+        addableCards.add(new ExtraStuffing());
+        addableCards.add(new FallacyOfReturn());
+        addableCards.add(new WarmEmbrace());
+        addableCards.add(new ButtonBarrage());
         addableCards.add(new NeedleToss());
-        addableCards.add(new BearsYearning());
+        addableCards.add(new ThreadTornado());
+
 
 
         resetHand();

@@ -11,11 +11,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Duck extends Enemy {
-    public Duck(int maxHealth)
+    public Duck()
     {
-        super(maxHealth * 2);
+        super(100);
         image = Images.DUCK;
         allMoves = new ArrayList<>(Arrays.asList(new Quack(), new Splash(), new AggressiveFlap(), new Roost()));
-        this.initializeMoves();
+        super.initializeMoves();
     }
 }

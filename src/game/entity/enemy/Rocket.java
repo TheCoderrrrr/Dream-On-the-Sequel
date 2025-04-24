@@ -11,11 +11,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Rocket extends Enemy{
-    public Rocket(int maxHealth)
+    public Rocket()
     {
-        super(maxHealth);
+        super(80);
         image = Images.ROCKET;
         allMoves = new ArrayList<>(Arrays.asList(new BlastOff(), new Strike(), new Cooldown(), new CrewSupport(), new FiringUp()));
-        this.initializeMoves();
+        super.initializeMoves();
     }
 }

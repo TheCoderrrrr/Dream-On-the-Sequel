@@ -8,9 +8,11 @@ import game.effects.Effect;
 import game.effects.Shield;
 import game.entity.TestEnemy;
 import game.entity.enemy.Enemy;
+import game.entity.enemy.Horse;
+import game.entity.enemy.Rocket;
+import game.entity.enemy.Soldier;
 import game.entity.enemy.boss.Godzilla;
-import game.entity.enemy.miniboss.Stack;
-import game.entity.enemy.miniboss.Truck;
+import game.entity.enemy.miniboss.*;
 import game.entity.player.Player;
 import org.newdawn.slick.Graphics;
 
@@ -49,7 +51,7 @@ public class EntityManager {
         playerHitBox.setPlayer(player);
         player.assignHitBox(playerHitBox);
 
-        addEnemy(new Truck(100));
+        addEnemy(new Horse());
 //        addEnemy(new Stack(100));
 //        addEnemy(new Godzilla(200));
 //        addEnemy(new TestEnemy());
@@ -189,17 +191,75 @@ public class EntityManager {
         for(HitBox h : hitBoxes) {
             h.setPlayer(player);
         }
-        addEnemy(new TestEnemy());
-        addEnemy(new TestEnemy());
-        addEnemy(new TestEnemy());
+        addEnemy(new Horse());
     }
     public void newRound(){
         if(isAllEnemiesDead()){
             World.nextRound();
             CardManager.resetEnergy();
-            addEnemy(new TestEnemy());
-            addEnemy(new TestEnemy());
-            addEnemy(new TestEnemy());
+            switch (World.getRound()){
+                case 2:
+                    addEnemy(new Horse());
+                    addEnemy(new Soldier());
+                    break;
+                case 3:
+                    addEnemy(new Soldier());
+                    addEnemy(new Rocket());
+                    break;
+                case 4:
+                    addEnemy(new Duck());
+                    addEnemy(new Soldier());
+                    addEnemy(new Rocket());
+                    break;
+                case 5:
+                    addEnemy(new Rocket());
+                    addEnemy(new Truck());
+                    addEnemy(new Stack());
+                    break;
+                case 6:
+                    addEnemy(new Rocket());
+                    addEnemy(new Jack());
+                    break;
+                case 7:
+                    addEnemy(new Doll());
+                    break;
+                case 8:
+                    addEnemy(new Doll());
+                    addEnemy(new Duck());
+                    break;
+                case 9:
+                    addEnemy(new Doll());
+                    addEnemy(new Truck());
+                    addEnemy(new Jack());
+                    break;
+                case 10:
+                    addEnemy(new Doll());
+                    addEnemy(new Duck());
+                    addEnemy(new Jack());
+                    break;
+                case 11:
+                    addEnemy(new Doll());
+                    addEnemy(new Rocket());
+                    addEnemy(new Jack());
+                    break;
+                case 12:
+                    addEnemy(new Jack());
+                    addEnemy(new Doll());
+                    addEnemy(new Duck());
+                    break;
+                case 13:
+                    addEnemy(new Duck());
+                    addEnemy(new Doll());
+                    addEnemy(new Doll());
+                    break;
+                case 14:
+                    addEnemy(new Doll());
+                    addEnemy(new Jack());
+                    break;
+                case 15:
+                    addEnemy(new Godzilla());
+                    break;
+            }
         }
     }
     private boolean isAllEnemiesDead(){

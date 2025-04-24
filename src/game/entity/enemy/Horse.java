@@ -10,9 +10,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Horse extends Enemy {
-    public Horse(int maxHealth)
+    public Horse()
     {
-        super(maxHealth);
+        super(75);
         image = Images.ENEMY2;
         allMoves = new ArrayList<>(Arrays.asList(new HoofStomp(), new ManeDash(), new NeighQuake(), new WildWhinny()));
         super.initializeMoves();

@@ -1,5 +1,6 @@
 package core;
 
+import game.World;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
@@ -11,9 +12,13 @@ public class TitleScreen extends BasicGameState {
     private int id;
     private Image background;
     private StateBasedGame sbg;
+    private static World world;
 
     public TitleScreen(int id){
         this.id = id;
+    }
+    public static void setWorld(World w) {
+        world = w;
     }
 
     public void init(GameContainer gc, StateBasedGame sbg) throws SlickException {
@@ -25,6 +30,7 @@ public class TitleScreen extends BasicGameState {
         this.sbg = sbg;
         background = Images.TITLESCREEN_BACKGROUND.getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
     }
+
 
     public int getID() {
         return id;
@@ -43,6 +49,7 @@ public class TitleScreen extends BasicGameState {
 
     public void leave(GameContainer gc, StateBasedGame sbg)
     {
+        world.resetWorld();
     }
 
     public void keyPressed(int key, char c)

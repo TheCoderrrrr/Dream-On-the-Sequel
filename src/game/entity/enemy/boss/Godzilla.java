@@ -11,9 +11,9 @@ import java.util.Arrays;
 
 public class Godzilla extends Enemy {
 
-    public Godzilla(int maxHealth)
+    public Godzilla()
     {
-        super(maxHealth);
+        super(200);
         health = maxHealth;
         image = Images.GODZILLA;
         allMoves = new ArrayList<>(Arrays.asList(new Bite(), new LazerBeam(), new PlasmaRay(), new PoisonousBreath(), new Rapture(), new Slash(), new Tailwhip(), new AtomicRecharge(), new Fortitude()));

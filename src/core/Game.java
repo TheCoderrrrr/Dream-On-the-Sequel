@@ -31,6 +31,7 @@ public class Game extends BasicGameState
 
 		world = new World(gc, sbg);
 		Win.setWorld(world);
+		TitleScreen.setWorld(world);
 
 		MessageManager.init();
 	}
@@ -45,7 +46,7 @@ public class Game extends BasicGameState
 		MessageManager.update();
 	}
 
-	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException 
+	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException
 	{
 		// This code renders shapes and images every frame.
 
@@ -62,7 +63,7 @@ public class Game extends BasicGameState
 
 	public void leave(GameContainer gc, StateBasedGame sbg) 
 	{
-		world.resetWorld();
+//		world.resetWorld();
 	}
 
 	public void keyPressed(int key, char c)

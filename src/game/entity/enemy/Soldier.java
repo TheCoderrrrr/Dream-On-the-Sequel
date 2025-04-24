@@ -10,9 +10,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Soldier extends Enemy {
-    public Soldier(int maxHealth)
+    public Soldier()
     {
-        super(maxHealth);
+        super(75);
         image = Images.ENEMY1;
         allMoves = new ArrayList<>(Arrays.asList(new BombSurprise(), new SniperShot(), new Strike(), new VolleyFire()));
         super.initializeMoves();

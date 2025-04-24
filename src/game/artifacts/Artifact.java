@@ -26,7 +26,7 @@ public abstract class Artifact {
         name = "didnt give name";
         description = "didnt give discription";
         image = Images.ENERGY0;
-        infoPanel = new ArtifactInfoPanel(this);
+        infoPanel = new ArtifactInfoPanel();
     }
 
     public void damageTakenEffect(Player p) {
@@ -75,6 +75,9 @@ public abstract class Artifact {
         } else {
             return null;
         }
+    }
+    public Image getImage(){
+        return image;
     }
 
 }
