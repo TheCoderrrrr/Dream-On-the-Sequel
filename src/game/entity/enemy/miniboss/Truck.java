@@ -17,11 +17,6 @@ public class Truck extends Enemy {
         super(maxHealth *= 2);
         image = Images.TRUCKENEMY;
         allMoves = new ArrayList<>(Arrays.asList(new CargoCover(), new Crush(), new RamSlam(), new TurboTakedown(), new PitStop()));
-        this.initializeMoves();
-    }
-
-    protected void addMoves()
-    {
-
+        super.initializeMoves();
     }
 }

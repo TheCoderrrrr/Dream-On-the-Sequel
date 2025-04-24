@@ -8,6 +8,7 @@ import game.effects.Damage;
 import game.effects.Effect;
 import game.effects.Vulnerable;
 import game.entity.Entity;
+import game.ui.CardEffectsPanel;
 import resources.Images;
 
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ public class BearHug extends Card implements SingleTarget, Attacking {
         actions.add(new Damage(20));
         actions.add(new Vulnerable(1.5f, 3));
         action = new Action(actions);
+        effectsPanel = new CardEffectsPanel(actions);
     }
 
     public void use(Entity owner, Entity target) {

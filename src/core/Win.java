@@ -53,7 +53,6 @@ public class Win extends BasicGameState {
                     //new card
 
                     world.addNewCard();
-
                     sbg.enterState(Main.GAME_ID);
                 }
 

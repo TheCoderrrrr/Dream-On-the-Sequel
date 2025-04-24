@@ -5,6 +5,7 @@ import game.card.Card;
 import game.card.SingleTarget;
 import game.effects.Effect;
 import game.effects.Heal;
+import game.effects.Shield;
 import game.ui.CardEffectsPanel;
 import resources.Images;
 import game.entity.Entity;
@@ -20,7 +21,7 @@ public class WarmEmbrace extends Card implements SingleTarget, Buffing {
         name = "Warm Embrace";
         description = "Heal 15 HP for the next 2 rounds";
         ArrayList<Effect> actions = new ArrayList<>();
-        actions.add(new Heal(15, 20));
+        actions.add(new Heal(15, 2));
         action = new Action(actions);
         effectsPanel = new CardEffectsPanel(actions);
     }

@@ -21,17 +21,13 @@ public class Poison extends Effect {
     }
 
     public Poison copy() {
-        return new Poison(poisonStrength * stack, duration);
+        return new Poison(poisonStrength, duration);
     }
 
     @Override
     public void apply() {
         Sounds.POISON.play(1f, .5f);
-        target.takeDamage(poisonStrength * stack);
-        if(target.getMyHitBox() != null){
-            HitBox h = target.getMyHitBox();
-            MessageManager.addMessage(new FloatMessage( "-" + poisonStrength * stack, (float) (h.getX() + h.getWidth() * Math.random()), (float) h.getY(), Color.green, 60));
-        }
+        target.takeDamage(poisonStrength);
         durationLeft--;
     }
 }

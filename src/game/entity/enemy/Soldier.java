@@ -15,12 +15,6 @@ public class Soldier extends Enemy {
         super(maxHealth);
         image = Images.ENEMY1;
         allMoves = new ArrayList<>(Arrays.asList(new BombSurprise(), new SniperShot(), new Strike(), new VolleyFire()));
-        this.initializeMoves();
+        super.initializeMoves();
     }
-
-    protected void addMoves()
-    {
-
-    }
-
 }

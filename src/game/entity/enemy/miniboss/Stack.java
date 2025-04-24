@@ -17,11 +17,7 @@ public class Stack extends Enemy {
         super(maxHealth *= 2);
         image = Images.STACKENEMY;
         allMoves = new ArrayList<>(Arrays.asList(new RingBlaster(), new StackSlam(), new TotemSpin(), new TowerBlock(), new TowerShield()));
-        this.initializeMoves();
+        super.initializeMoves();
     }
 
-    protected void addMoves()
-    {
-
-    }
 }

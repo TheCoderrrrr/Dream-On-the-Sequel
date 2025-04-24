@@ -3,6 +3,8 @@ package game.entity.enemy;
 import core.Main;
 import game.actions.Action;
 import game.actions.Attacking;
+import game.effects.Effect;
+import game.effects.Shield;
 import game.managers.HitBox;
 import game.ui.NextActionPanel;
 import org.newdawn.slick.Color;
@@ -46,6 +48,11 @@ public abstract class Enemy extends game.entity.Entity {
         if (player != null) {
             if (nextMoves.getFirst() instanceof Attacking) {
                 nextMoves.getFirst().action(player, this); //do the first time in action queue //if the action is of attacking type attack player
+                for(Effect e : player.getActiveEffects()){
+                    if(e instanceof Shield){
+                        e.apply();
+                    }
+                }
             } else {
                 nextMoves.getFirst().action(this, this); //if action is of buffing type attack itself?
             }

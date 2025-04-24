@@ -9,6 +9,7 @@ import game.effects.Effect;
 import game.entity.Entity;
 import game.managers.EntityManager;
 import game.managers.HitBox;
+import game.ui.CardEffectsPanel;
 import resources.Images;
 
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class NeedleToss extends Card implements MultiTarget, Attacking {
         ArrayList<Effect> actions = new ArrayList<>();
         actions.add(new Damage(20));
         action = new Action(actions);
+        effectsPanel = new CardEffectsPanel(actions);
     }
 
     public void use(Entity owner)

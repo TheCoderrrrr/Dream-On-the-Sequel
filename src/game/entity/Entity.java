@@ -2,7 +2,10 @@ package game.entity;
 
 import game.effects.Effect;
 import game.managers.HitBox;
+import game.managers.MessageManager;
+import game.messages.FloatMessage;
 import game.ui.EffectsPanel;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 
@@ -42,14 +45,7 @@ public abstract class Entity {
     }
 
     public void applyEffect(Effect e) {
-        for(Effect effect : activeEffects){
-            if(e == effect){
-                effect.increaseStack();
-                effect.resetDuration(5);
-            }else{
-                activeEffects.add(e);
-            }
-        }
+        activeEffects.add(e);
         effectsPanel.updateEffects(activeEffects);
 
     }
@@ -104,6 +100,9 @@ public abstract class Entity {
 
         health -= damageTaken;
         health = Math.max(0, health); //if hp < 0, set hp to 0
+
+        MessageManager.addMessage(new FloatMessage(String.valueOf(damageTaken), getMyHitBox().getX(), getMyHitBox().getY(), Color.red, 60));
+
     }
     public final void heal(int heal) {
         health += heal;
@@ -131,5 +130,8 @@ public abstract class Entity {
     }
     public ArrayList<Effect> getActiveEffects(){
         return activeEffects;
+    }
+    public float getAttackMultiplier(){
+        return attackMultiplier;
     }
 }

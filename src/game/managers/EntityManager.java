@@ -4,8 +4,13 @@ import core.Main;
 import game.World;
 import game.card.Attacking;
 import game.card.Card;
+import game.effects.Effect;
+import game.effects.Shield;
 import game.entity.TestEnemy;
 import game.entity.enemy.Enemy;
+import game.entity.enemy.boss.Godzilla;
+import game.entity.enemy.miniboss.Stack;
+import game.entity.enemy.miniboss.Truck;
 import game.entity.player.Player;
 import org.newdawn.slick.Graphics;
 
@@ -44,9 +49,10 @@ public class EntityManager {
         playerHitBox.setPlayer(player);
         player.assignHitBox(playerHitBox);
 
-        addEnemy(new TestEnemy());
-        addEnemy(new TestEnemy());
-        addEnemy(new TestEnemy());
+        addEnemy(new Truck(100));
+//        addEnemy(new Stack(100));
+//        addEnemy(new Godzilla(200));
+//        addEnemy(new TestEnemy());
     }
     public void addEnemy(Enemy e) {
         for(HitBox h : hitBoxes) {
@@ -117,6 +123,7 @@ public class EntityManager {
 
                         if(currHitBox.hasEntity()) {
                             currHitBox.getEntity().action();
+
                             //then, move to the next enemy
                             currHitBox.getEntity().resetAnimation();
                         }
@@ -166,6 +173,10 @@ public class EntityManager {
     public void resetManager(){
         enemies.clear();
         player = new Player();
+
+        playerHitBox.setEntity(player);
+        playerHitBox.setPlayer(player);
+        player.assignHitBox(playerHitBox);
 
         hitBoxes.clear();
         hitBoxesInUse.clear();

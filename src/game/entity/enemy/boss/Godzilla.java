@@ -17,12 +17,6 @@ public class Godzilla extends Enemy {
         health = maxHealth;
         image = Images.GODZILLA;
         allMoves = new ArrayList<>(Arrays.asList(new Bite(), new LazerBeam(), new PlasmaRay(), new PoisonousBreath(), new Rapture(), new Slash(), new Tailwhip(), new AtomicRecharge(), new Fortitude()));
-        this.initializeMoves();
-
-    }
-
-    protected void addMoves()
-    {
-
+        super.initializeMoves();
     }
 }

@@ -22,11 +22,10 @@ public class ButtonBomb extends Card implements MultiTarget, Attacking {
         description = "Adds Mark Effect";
         cardImage = Images.BUTTON_BOMB;
         ArrayList<Effect> actions = new ArrayList<>();
-        actions.add(new Mark(1.5f, 4));
-        actions.add(new Damage(10));
-        actions.add(new Burn(20, 4));
+        actions.add(new Mark(1.5f, 3));
         action = new Action(actions);
         effectsPanel = new CardEffectsPanel(actions);
+
     }
 
     public void use(Entity owner)

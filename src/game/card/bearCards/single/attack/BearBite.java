@@ -7,6 +7,7 @@ import game.card.SingleTarget;
 import game.effects.Damage;
 import game.effects.Effect;
 import game.entity.Entity;
+import game.ui.CardEffectsPanel;
 import resources.Images;
 
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ public class BearBite extends Card implements SingleTarget, Attacking {
         ArrayList<Effect> actions = new ArrayList<>();
         actions.add(new Damage(25));
         action = new Action(actions);
+        effectsPanel = new CardEffectsPanel(actions);
     }
 
     public void use(Entity owner, Entity target) {

@@ -23,12 +23,9 @@ public class Damage extends Effect {
 
     @Override
     public void apply() {
-        target.takeDamage(damage);
+        target.takeDamage((int) (damage * owner.getAttackMultiplier()));
         durationLeft--;
-        if(target.getMyHitBox() != null){
-            HitBox h = target.getMyHitBox();
-            MessageManager.addMessage(new FloatMessage(String.valueOf(damage), h.getX(), h.getY(), Color.red, 60));
-        }
+
     }
 
     public String toString()

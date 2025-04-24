@@ -15,11 +15,6 @@ public class Horse extends Enemy {
         super(maxHealth);
         image = Images.ENEMY2;
         allMoves = new ArrayList<>(Arrays.asList(new HoofStomp(), new ManeDash(), new NeighQuake(), new WildWhinny()));
-        this.initializeMoves();
-    }
-
-    protected void addMoves()
-    {
-
+        super.initializeMoves();
     }
 }
