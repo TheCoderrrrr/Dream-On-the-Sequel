@@ -132,7 +132,15 @@ public class World {
         int height = (int) (Main.getScreenHeight() * 0.1);
         int buttonX = Main.getScreenWidth() - width;
         int buttonY = Main.getScreenHeight() - height;
-        g.drawImage(Images.endTurnButton.getScaledCopy(width, height), buttonX, buttonY);
+        if (round < 15) {
+            g.drawImage(Images.NORMAL_ENDTURN.getScaledCopy(width, height), buttonX, buttonY);
+        }
+
+        if (round == 15)
+        {
+            g.drawImage(Images.BOSS_ENDTURN.getScaledCopy(width, height), buttonX, buttonY);
+        }
+
         g.setLineWidth(4);
         g.drawRect(buttonX, buttonY, width, height);
         g.setLineWidth(1);
