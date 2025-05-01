@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 abstract public class Card {
     protected Action action;
+    protected Action selfDamaging;
     protected String name;
     protected String description;
     protected int energyCost;

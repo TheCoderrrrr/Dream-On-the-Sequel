@@ -19,11 +19,17 @@ public class ConcealedClaws extends Card implements SingleTarget, Attacking {
         energyCost = 4;
         name = "Concealed Claws";
         cardImage = Images.CONCEALED_CLAWS;
-        description = "Deals 25 damage and poison is inflicted";
+        description = "Deals 75 damage and inflicts poison (-25 HP from self)";
         ArrayList<Effect> actions = new ArrayList<>();
-        actions.add(new Damage(25));
+        actions.add(new Damage(75));
         actions.add(new Poison(10, 3));
+        ArrayList<Effect> self = new ArrayList<>();
+        self.add(new Damage(25));
         action = new Action(actions);
+        selfDamaging = new Action(self);
+        if(!selfDamaging.getEffects().isEmpty()){
+            actions.addAll(self);
+        }
         effectsPanel = new CardEffectsPanel(actions);
     }
 
@@ -36,6 +42,12 @@ public class ConcealedClaws extends Card implements SingleTarget, Attacking {
         for(Effect effect : action.getEffects()) {
             effect.apply();
         }
-
+        for(Effect effect : selfDamaging.getEffects()){
+            effect.setOwner(owner);
+            effect.setTarget(owner);
+        }
+        for(Effect effect : selfDamaging.getEffects()){
+            effect.apply();
+        }
     }
 }

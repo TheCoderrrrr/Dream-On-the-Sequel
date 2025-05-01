@@ -11,8 +11,8 @@ import java.util.List;
 public class Roost extends Action implements Buffing {
     public Roost()
     {
-        super(new ArrayList<>(List.of(new Heal(10, 3))));
-        description = "Heals 10 HP for 1 round";
+        super(new ArrayList<>(List.of(new Heal(5, 3))));
+        description = "Heals 5 HP for 1 round";
         symbol = Images.ACTION_HEAL;
     }
 }
