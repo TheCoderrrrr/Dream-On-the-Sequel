@@ -139,7 +139,7 @@ public class EntityManager {
                         if (currHitBox.hasEntity()) currHitBox.getEntity().nextAnimationFrame();
                     }
                 } else {
-                    numOfEntityAnimationID++;
+                    currEntityAnimationID++;
                 }
             } else {
 

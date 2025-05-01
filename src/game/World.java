@@ -78,6 +78,7 @@ public class World {
             startMyTurn();
         }
         gameEnd();
+//        System.out.println(gameStage);
     }
 
     public void render(Graphics g) {
