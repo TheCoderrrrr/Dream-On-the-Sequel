@@ -1,5 +1,6 @@
 package game.card;
 
+import core.Main;
 import game.actions.Action;
 import game.effects.Damage;
 import game.effects.Effect;
@@ -32,8 +33,14 @@ abstract public class Card {
     protected static GameContainer gc;
     protected CardEffectsPanel effectsPanel;
 
-    protected static final int CARD_WIDTH = 200;
-    protected static final int CARD_HEIGHT = 300;
+
+    protected static final int CARD_WIDTH = (int) (Main.getScreenWidth() / 9.6);
+    protected static final int CARD_HEIGHT = (int) (Main.getScreenHeight() / 3.6);
+    protected static final int UPSCALED_CARD_WIDTH = (int) (Main.getScreenWidth() / 9.6 * 1.2);
+    protected static final int UPSCALED_CARD_HEIGHT = (int) (Main.getScreenHeight() / 3.6 * 1.2);
+    protected int cardWidth = CARD_WIDTH;
+    protected int cardHeight = CARD_HEIGHT;
+    protected float scaler = 1;
 
     public Card() {
         energyCost = 0;
@@ -41,27 +48,29 @@ abstract public class Card {
         isUsed = false;
         updateEnergyImage();
     }
-    public static void setGC(GameContainer gc){
+
+    public static void setGC(GameContainer gc) {
         Card.gc = gc;
     }
-    public void updateEnergyImage(){
-        switch (energyCost){
-            case 0 :
+
+    public void updateEnergyImage() {
+        switch (energyCost) {
+            case 0:
                 energyCostImage = Images.ENERGY0;
                 break;
-            case 1 :
+            case 1:
                 energyCostImage = Images.ENERGY1;
                 break;
-            case 2 :
+            case 2:
                 energyCostImage = Images.ENERGY2;
                 break;
-            case 3 :
+            case 3:
                 energyCostImage = Images.ENERGY3;
                 break;
-            case 4 :
+            case 4:
                 energyCostImage = Images.ENERGY4;
                 break;
-            default :
+            default:
                 energyCostImage = Images.ENERGY0;
                 System.out.println("No energy cost put in " + this.getClass().getSimpleName());
         }
@@ -70,46 +79,54 @@ abstract public class Card {
     public void markAsUsed() {
         isUsed = true;
     }
+
     public boolean isUsed() {
         return isUsed;
     }
 
-    public void update(){
+    public void update() {
         updateEnergyImage();
     }
-    public void render(Graphics g){
+
+    public void render(Graphics g) {
         g.setColor(Color.white);
-        if(dragging){
+        cardImage = cardImage.getScaledCopy(cardWidth, cardHeight);
+        if (dragging) {
             g.drawImage(cardImage, gc.getInput().getMouseX() - translationalX, gc.getInput().getMouseY() - translationalY);
             renderDescription(g, gc.getInput().getMouseX() - translationalX, (gc.getInput().getMouseY() - translationalY));
-            renderName(g, (float) (gc.getInput().getMouseX() - translationalX + (CARD_WIDTH * 0.05)), (float) (gc.getInput().getMouseY() - translationalY + CARD_HEIGHT * 0.02));
-            renderEnergyCost(g, gc.getInput().getMouseX() - translationalX + CARD_WIDTH - (float) energyCostImage.getWidth(), gc.getInput().getMouseY() - translationalY + (float) energyCostImage.getHeight()/5);
+            renderName(g, (float) (gc.getInput().getMouseX() - translationalX + (cardWidth * 0.05)), (float) (gc.getInput().getMouseY() - translationalY + cardHeight * 0.02));
+            renderEnergyCost(g, gc.getInput().getMouseX() - translationalX + cardWidth - (float) energyCostImage.getWidth(), gc.getInput().getMouseY() - translationalY + (float) energyCostImage.getHeight() / 5);
 
-        }else{
+        } else {
             g.drawImage(cardImage, x, y);
             renderDescription(g, x, y);
-            renderName(g, (float) (x + (CARD_WIDTH * 0.05)), (float) (y + CARD_HEIGHT * 0.02));
-            renderEnergyCost(g, x + CARD_WIDTH - (float) energyCostImage.getWidth(), y + (float) energyCostImage.getHeight()/5);
+            renderName(g, (float) (x + (cardWidth * 0.05)), (float) (y + cardHeight * 0.02));
+            renderEnergyCost(g, x + cardWidth - (float) energyCostImage.getWidth(), y + (float) energyCostImage.getHeight() / 5);
         }
+
     }
-    public void renderDescription(Graphics g, float x, float y){
-        Fonts.RETROGAMING.wrap(g, description, (float) (x + CARD_WIDTH * 0.05), (float) (y + CARD_HEIGHT * 0.7), CARD_WIDTH - 10, 15);
+
+    public void renderDescription(Graphics g, float x, float y) {
+        Fonts.RETROGAMING.wrap(g, description, (float) (x + cardWidth * 0.05), (float) (y + cardHeight * 0.7), cardWidth - 10, 15 * scaler);
     }
-    public void renderName(Graphics g, float x, float y){
+
+    public void renderName(Graphics g, float x, float y) {
         g.drawString(name, x, y);
     }
-    public void renderEnergyCost(Graphics g, float x, float y){
+
+    public void renderEnergyCost(Graphics g, float x, float y) {
         updateEnergyImage();
         g.drawImage(energyCostImage, x, y);
     }
-    public void renderEffectsPanel(Graphics g, ArrayList<Card> cards){
-        if(effectsPanel != null) {
+
+    public void renderEffectsPanel(Graphics g, ArrayList<Card> cards) {
+        if (effectsPanel != null) {
             if (dragging) {
-                    effectsPanel.render(g, gc.getInput().getMouseX() - translationalX + getCardWidth(), (gc.getInput().getMouseY() - translationalY));
+                effectsPanel.render(g, gc.getInput().getMouseX() - translationalX + getCardWidth(), (gc.getInput().getMouseY() - translationalY));
             } else {
                 boolean render = true;
-                for(Card c : cards){
-                    if(c.isDragging()){
+                for (Card c : cards) {
+                    if (c.isDragging()) {
                         render = false;
                     }
                 }
@@ -119,57 +136,83 @@ abstract public class Card {
             }
         }
     }
-    public static int getCardWidth(){
-        return CARD_WIDTH;
+
+    public int getCardWidth() {
+        return cardWidth;
     }
-    public static int getCardLength(){
-        return CARD_HEIGHT;
+
+    public int getCardLength() {
+        return cardHeight;
     }
-    public String getName(){
+
+    public String getName() {
         return name;
     }
-    public String getDescription(){
+
+    public String getDescription() {
         return description;
     }
-    public int getEnergyCost(){
+
+    public int getEnergyCost() {
         return energyCost;
     }
+
     public Action getAction() {
         return action;
     }
-    public ArrayList<Effect> getEffects(){
+
+    public ArrayList<Effect> getEffects() {
         ArrayList<Effect> actualEffects = new ArrayList<>();
-        for(Effect e : action.getEffects()){
-            if(!(e instanceof Damage)){
+        for (Effect e : action.getEffects()) {
+            if (!(e instanceof Damage)) {
                 actualEffects.add(e);
             }
         }
         return actualEffects;
     }
-    public boolean isDragging(){
+
+    public boolean isDragging() {
         return dragging;
     }
-    public void drag(int x, int y){
+
+    public void drag(int x, int y) {
         dragging = true;
         translationalX = x - this.x;
         translationalY = y - this.y;
     }
-    public void reslot(){
+
+    public void reslot() {
         dragging = false;
         this.x = originalX;
         this.y = originalY;
     }
-    public void initializePosition(int x, int y){
+
+    public void initializePosition(int x, int y) {
         originalX = x;
         originalY = y;
         this.x = x;
         this.y = y;
     }
+
     public boolean isOver(int mX, int mY) {
-        return x <= mX && x + CARD_WIDTH > mX && y <= mY && y + CARD_HEIGHT >= mY;
+        return x <= mX && x + cardWidth > mX && y <= mY && y + cardHeight >= mY;
     }
 
-    public void unuse(){
+    public void unuse() {
         isUsed = false;
+    }
+
+    public void hoveredPos() {
+        cardWidth = UPSCALED_CARD_WIDTH;
+        cardHeight = UPSCALED_CARD_HEIGHT;
+        scaler = 1.2f;
+        y = Main.getScreenHeight() - cardHeight;
+    }
+
+    public void defaultPos() {
+        cardWidth = CARD_WIDTH;
+        cardHeight = CARD_HEIGHT;
+        scaler = 1;
+        y = Main.getScreenHeight() - cardHeight;
     }
 }
