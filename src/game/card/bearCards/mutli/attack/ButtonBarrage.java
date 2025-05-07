@@ -9,7 +9,7 @@ import game.effects.Effect;
 import game.entity.Entity;
 import game.managers.EntityManager;
 import game.managers.HitBox;
-import game.ui.CardEffectsPanel;
+import game.ui.panels.CardEffectsPanel;
 import resources.Images;
 
 import java.util.ArrayList;

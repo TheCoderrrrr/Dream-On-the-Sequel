@@ -1,10 +1,8 @@
-package game.ui;
+package game.ui.panels;
 
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import resources.Fonts;
-
-import java.awt.*;
 
 public class Tooltip extends Panel{
     public Tooltip() {

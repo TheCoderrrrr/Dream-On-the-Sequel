@@ -4,7 +4,7 @@ import core.Main;
 import game.actions.Action;
 import game.effects.Damage;
 import game.effects.Effect;
-import game.ui.CardEffectsPanel;
+import game.ui.panels.CardEffectsPanel;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;

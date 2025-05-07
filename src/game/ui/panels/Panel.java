@@ -1,9 +1,7 @@
-package game.ui;
+package game.ui.panels;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-
-import java.awt.*;
 
 public abstract class Panel {
 

@@ -1,7 +1,6 @@
 package game.managers;
 
 import core.Main;
-import game.artifacts.Artifact;
 import game.card.Attacking;
 import game.card.Buffing;
 import game.card.Card;
@@ -17,8 +16,7 @@ import game.card.bearCards.single.debuff.CuddleCrush;
 import game.card.bearCards.single.debuff.CupidsArrow;
 import game.card.bearCards.single.debuff.MuffledRoar;
 import game.card.bearCards.single.debuff.StitchedSilence;
-import game.entity.player.Player;
-import game.ui.Panel;
+import game.ui.panels.Panel;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;

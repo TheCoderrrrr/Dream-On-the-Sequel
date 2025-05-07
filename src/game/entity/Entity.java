@@ -4,7 +4,7 @@ import game.effects.Effect;
 import game.managers.HitBox;
 import game.managers.MessageManager;
 import game.messages.FloatMessage;
-import game.ui.EffectsPanel;
+import game.ui.panels.EffectsPanel;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;

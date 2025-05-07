@@ -2,7 +2,7 @@ package game.artifacts;
 
 import game.effects.Effect;
 import game.entity.player.Player;
-import game.ui.ArtifactInfoPanel;
+import game.ui.panels.ArtifactInfoPanel;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import resources.Images;

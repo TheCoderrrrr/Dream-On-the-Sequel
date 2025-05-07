@@ -4,11 +4,9 @@ import game.card.Buffing;
 import game.card.Card;
 import game.card.SingleTarget;
 import game.effects.Effect;
-import game.effects.Heal;
 import game.effects.Strength;
 import game.entity.Entity;
-import game.managers.EntityManager;
-import game.ui.CardEffectsPanel;
+import game.ui.panels.CardEffectsPanel;
 import resources.Images;
 
 import java.util.ArrayList;
