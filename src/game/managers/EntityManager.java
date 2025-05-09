@@ -1,5 +1,6 @@
 package game.managers;
 
+import core.Game;
 import core.Main;
 import game.World;
 import game.card.Attacking;
@@ -14,6 +15,8 @@ import game.entity.enemy.Soldier;
 import game.entity.enemy.boss.Godzilla;
 import game.entity.enemy.miniboss.*;
 import game.entity.player.Player;
+import game.ui.panels.RoundEndPanel;
+import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 
 import java.util.ArrayList;
@@ -27,8 +30,10 @@ public class EntityManager {
     private int currEntityAnimationID;
     private int numOfEntityAnimationID;
     private boolean enemyTurnFinished;
+    private RoundEndPanel roundEndPanel;
+    private GameContainer gc;
 
-    public EntityManager() {
+    public EntityManager(GameContainer gc) {
         enemies = new ArrayList<>();
         player = new Player();
 
@@ -55,6 +60,7 @@ public class EntityManager {
 //        addEnemy(new Stack(100));
 //        addEnemy(new Godzilla(200));
 //        addEnemy(new TestEnemy());
+        this.gc = gc;
     }
 
     public void addEnemy(Enemy e) {
@@ -154,7 +160,14 @@ public class EntityManager {
             hitBox.chroma();
         }
         cleanUp();
-        newRound();
+//        newRound();
+        if(isAllEnemiesDead()){
+            if(World.getRound() == 5 || World.getRound() == 10){
+                roundEndPanel = new RoundEndPanel(gc, true, true, this);
+            }else{
+                roundEndPanel = new RoundEndPanel(gc, false, true, this);
+            }
+        }
     }
 
     public void cleanUp() {
@@ -174,6 +187,9 @@ public class EntityManager {
         playerHitBox.render(g);
         for (HitBox hitbox : hitBoxes) {
             hitbox.render(g);
+        }
+        if(roundEndPanel != null){
+            roundEndPanel.render(g);
         }
     }
 
@@ -204,6 +220,7 @@ public class EntityManager {
             World.nextRound();
             CardManager.resetEnergy();
             player.newTurn();
+            roundEndPanel = null;
             switch (World.getRound()) {
                 case 2:
                     addEnemy(new Horse());
@@ -290,6 +307,11 @@ public class EntityManager {
             hitBoxes.get(i).killEntity();
             hitBoxesInUse.remove(hitBoxes.get(i));
 
+        }
+    }
+    public void mousePressed(int button, int x, int y){
+        if(roundEndPanel != null){
+            roundEndPanel.mousePressed(button, x, y);
         }
     }
 }

@@ -24,7 +24,7 @@ public class World {
     public World(GameContainer gc, StateBasedGame sbg) {
         World.sbg = sbg;
 
-        entityManager = new EntityManager();
+        entityManager = new EntityManager(gc);
         cardManager = new CardManager(gc);
         gameStage = "My Turn";
         background = Images.HAPPYBACKGROUND;
@@ -95,6 +95,7 @@ public class World {
         cardManager.mousePressed(button, x, y);
 //        endTurnButton(button, x, y);
         endTurnButton.mousePressed(button, x, y);
+        entityManager.mousePressed(button, x, y);
     }
     public void mouseReleased(int button, int x, int y){
         cardManager.mouseReleased(button, x, y);
@@ -121,6 +122,9 @@ public class World {
         round++;
         CardManager.resetHand();
         CardManager.resetEnergy();
+//        sbg.enterState(Main.WIN_ID);
+    }
+    public static void enterCardSelectionScreen(){
         sbg.enterState(Main.WIN_ID);
     }
     public void endTurnButton(int button, int x, int y){

@@ -31,7 +31,7 @@ public abstract class Button {
         }
     }
     protected boolean isOver(int mX, int mY){
-        return mX > x && mX <= x + width && mY > y && mY <= mY + height;
+        return mX > x && mX <= x + width && mY > y && mY <= y + height;
     }
     public abstract void render(Graphics g);
     public abstract void action();

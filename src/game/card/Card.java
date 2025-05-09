@@ -111,11 +111,13 @@ abstract public class Card {
     }
 
     public void renderName(Graphics g, float x, float y) {
-        g.drawString(name, x, y);
+        Fonts.REGULAR.drawString(g, name, x, y,15 * scaler);
+//        g.drawString(name, x, y);
     }
 
     public void renderEnergyCost(Graphics g, float x, float y) {
         updateEnergyImage();
+        energyCostImage = energyCostImage.getScaledCopy(scaler);
         g.drawImage(energyCostImage, x, y);
     }
 
