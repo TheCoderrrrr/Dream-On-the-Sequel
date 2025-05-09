@@ -12,6 +12,7 @@ public abstract class Button {
     protected int width;
     protected int height;
     protected Image image;
+    protected boolean used;
     public Button(int x, int y, int width, int height, Image image){
         this.image = image;
         this.x = x;
@@ -24,6 +25,9 @@ public abstract class Button {
         this.y = y;
         this.width = width;
         this.height = height;
+    }
+    public boolean isUsed() {
+        return used;
     }
     public void mousePressed(int button, int x, int y){
         if(isOver(x, y) && button == 0){

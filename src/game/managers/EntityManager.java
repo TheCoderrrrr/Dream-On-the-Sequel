@@ -3,6 +3,7 @@ package game.managers;
 import core.Game;
 import core.Main;
 import game.World;
+import game.artifacts.Artifact;
 import game.card.Attacking;
 import game.card.Card;
 import game.effects.Effect;
@@ -75,8 +76,8 @@ public class EntityManager {
         }
     }
 
-    public void addNewRelic() {
-        player.addNewRelic();
+    public Artifact addNewRelic() {
+        return player.addNewRelic();
     }
 
     public void myTurn() {
@@ -161,7 +162,7 @@ public class EntityManager {
         }
         cleanUp();
 //        newRound();
-        if(isAllEnemiesDead()){
+        if(isAllEnemiesDead() && roundEndPanel == null){
             if(World.getRound() == 5 || World.getRound() == 10){
                 roundEndPanel = new RoundEndPanel(gc, true, true, this);
             }else{

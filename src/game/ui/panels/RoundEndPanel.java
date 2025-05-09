@@ -44,10 +44,10 @@ public class RoundEndPanel extends Panel{
         }
     }
     public void mousePressed(int button, int x, int y){
-        if(cardSelectionButton != null && !CardSelectionButton.used()){
+        if(cardSelectionButton != null && !cardSelectionButton.isUsed()){
             cardSelectionButton.mousePressed(button, x ,y);
         }
-        if(getRelicButton != null){
+        if(getRelicButton != null && !getRelicButton.isUsed()){
             getRelicButton.mousePressed(button, x ,y);
         }
         if(nextRoundButton != null){

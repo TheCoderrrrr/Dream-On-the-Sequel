@@ -38,14 +38,17 @@ public class Player extends Entity {
 
     }
 
-    public void addNewRelic() {
+    public Artifact addNewRelic() {
         if (!addableArtifacts.isEmpty()) {
             Artifact a = addableArtifacts.get((int) (Math.random() * addableArtifacts.size()));
 
             addableArtifacts.remove(a);
             artifacts.add(a);
             artifactInfoPanel.updateArtifacts(artifacts);
+
+            return a;
         }
+        return null;
     }
 
     @Override

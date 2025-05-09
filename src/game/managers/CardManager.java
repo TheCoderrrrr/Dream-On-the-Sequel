@@ -111,13 +111,17 @@ public class CardManager {
         }
     }
 
-    public static void addNewCard() {
+    public static Card addNewCard() {
         if(!addableCards.isEmpty()) {
             Card c = addableCards.get((int) (Math.random() * addableCards.size()));
 
             addableCards.remove(c);
             deck.add(c);
+
+            return c;
         }
+
+        return null;
     }
 
     public static void render(Graphics g) {

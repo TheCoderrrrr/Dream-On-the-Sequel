@@ -5,7 +5,6 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 
 public class CardSelectionButton extends Button{
-    private static boolean used;
     public CardSelectionButton(int x, int y, int width, int height) {
         super(x, y, width, height);
         used = false;
@@ -19,17 +18,17 @@ public class CardSelectionButton extends Button{
             g.setColor(Color.green);
         }
         g.fillRoundRect(x, y, width, height, 2, 2);
+        g.setColor(Color.lightGray);
+        g.drawString("new card", x, y);
     }
 
     @Override
     public void action() {
         if(!used){
             used = true;
+            System.out.println(used);
             World.enterCardSelectionScreen();
             System.out.println("given vcard");
         }
-    }
-    public static boolean used(){
-        return used;
     }
 }

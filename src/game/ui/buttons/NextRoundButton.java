@@ -15,6 +15,8 @@ public class NextRoundButton extends Button{
     public void render(Graphics g) {
         g.setColor(Color.red);
         g.fillRoundRect(x, y, width, height, 2, 2);
+        g.setColor(Color.lightGray);
+        g.drawString("next round", x, y);
     }
 
     @Override

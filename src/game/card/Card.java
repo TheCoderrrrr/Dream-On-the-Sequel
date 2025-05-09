@@ -106,6 +106,15 @@ abstract public class Card {
 
     }
 
+    public void render(int x, int y, Graphics g) {
+        x -= cardWidth/2;
+        y -= cardHeight/2;
+        g.drawImage(cardImage, x, y);
+        renderDescription(g, x, y);
+        renderName(g, (float) (x + (cardWidth * 0.05)), (float) (y + cardHeight * 0.02));
+        renderEnergyCost(g, x + cardWidth - (float) energyCostImage.getWidth(), y + (float) energyCostImage.getHeight() / 5);
+    }
+
     public void renderDescription(Graphics g, float x, float y) {
         Fonts.RETROGAMING.wrap(g, description, (float) (x + cardWidth * 0.05), (float) (y + cardHeight * 0.7), cardWidth - 10, 15 * scaler);
     }

@@ -1,6 +1,8 @@
 package game;
 
 import core.Main;
+import game.artifacts.Artifact;
+import game.card.Card;
 import game.managers.CardManager;
 import game.managers.EntityManager;
 import game.managers.MessageManager;
@@ -34,13 +36,13 @@ public class World {
         endTurnButton = new EndTurnButton((int) (Main.getScreenWidth() - Main.getScreenWidth() * 0.1), (int) (Main.getScreenHeight() - Main.getScreenHeight() * 0.1), (int) (Main.getScreenWidth() * 0.1), (int) (Main.getScreenHeight() * 0.1));
     }
 
-    public void addNewCard() {
-        CardManager.addNewCard();
+    public Card addNewCard() {
+        return CardManager.addNewCard();
     }
 
 
-    public void addNewRelic() {
-        entityManager.addNewRelic();
+    public Artifact addNewRelic() {
+       return entityManager.addNewRelic();
     }
 
     public void keyPressed(int key, char c) {
@@ -115,18 +117,22 @@ public class World {
         background = Images.CREEPYBACKGROUND;
         round = 1;
     }
+
     public static int getRound(){
         return round;
     }
+
     public static void nextRound(){
         round++;
         CardManager.resetHand();
         CardManager.resetEnergy();
-//        sbg.enterState(Main.WIN_ID);
+//        reset enemies?
     }
+
     public static void enterCardSelectionScreen(){
         sbg.enterState(Main.WIN_ID);
     }
+
     public void endTurnButton(int button, int x, int y){
         int width = (int) (Main.getScreenWidth() * 0.1);
         int height = (int) (Main.getScreenHeight() * 0.1);
