@@ -32,8 +32,7 @@ abstract public class Card {
     protected boolean isUsed;
     protected static GameContainer gc;
     protected CardEffectsPanel effectsPanel;
-
-
+    protected boolean outlined;
     protected static final int CARD_WIDTH = (int) (Main.getScreenWidth() / 9.6);
     protected static final int CARD_HEIGHT = (int) (Main.getScreenHeight() / 3.6);
     protected static final int UPSCALED_CARD_WIDTH = (int) (Main.getScreenWidth() / 9.6 * 1.2);
@@ -46,6 +45,7 @@ abstract public class Card {
         energyCost = 0;
         dragging = false;
         isUsed = false;
+        outlined = false;
         updateEnergyImage();
     }
 
@@ -103,6 +103,10 @@ abstract public class Card {
             renderName(g, (float) (x + (cardWidth * 0.05)), (float) (y + cardHeight * 0.02));
             renderEnergyCost(g, x + cardWidth - (float) energyCostImage.getWidth(), y + (float) energyCostImage.getHeight() / 5);
         }
+        if(outlined) {
+            g.setColor(Color.white);
+            g.drawRect(x - 5, y - 5, cardWidth + 10, cardHeight + 10);
+        }
 
     }
 
@@ -113,6 +117,10 @@ abstract public class Card {
         renderDescription(g, x, y);
         renderName(g, (float) (x + (cardWidth * 0.05)), (float) (y + cardHeight * 0.02));
         renderEnergyCost(g, x + cardWidth - (float) energyCostImage.getWidth(), y + (float) energyCostImage.getHeight() / 5);
+        if(outlined) {
+            g.setColor(Color.white);
+            g.drawRect(x - 5, y - 5, cardWidth + 10, cardHeight + 10);
+        }
     }
 
     public void renderDescription(Graphics g, float x, float y) {
@@ -225,5 +233,16 @@ abstract public class Card {
         cardHeight = CARD_HEIGHT;
         scaler = 1;
         y = Main.getScreenHeight() - cardHeight;
+    }
+    public void outline() {
+        outlined = true;
+        System.out.println("outluined");
+    }
+
+    public void unoutline() {
+        outlined = false;
+    }
+    public boolean isOutlined(){
+        return outlined;
     }
 }

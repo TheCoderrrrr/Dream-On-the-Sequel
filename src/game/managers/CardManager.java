@@ -245,4 +245,7 @@ public class CardManager {
         resetHand();
         resetEnergy();
     }
+    public static void addCardToDeck(Card c){
+        deck.add(c);
+    }
 }

@@ -3,6 +3,7 @@ package core;
 import game.World;
 import game.card.Card;
 import game.managers.MessageManager;
+import game.managers.SelectionManager;
 import game.messages.FloatMessage;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
@@ -35,8 +36,8 @@ public class CardAcquire extends BasicGameState {
      @Override
      public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException
     {
-        addedCard = world.addNewCard();
-
+//        addedCard = world.addNewCard();
+        SelectionManager.generateSelections();
         // This code happens when you enter a gameState.
     }
 
@@ -46,18 +47,20 @@ public class CardAcquire extends BasicGameState {
      }
 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-
-        if(addedCard != null) {
-            addedCard.render(Main.getScreenWidth()/2, Main.getScreenHeight()/2, g);
-        }
-        g.drawString("press anywhere to return", Main.getScreenWidth()/2, 500);
-        g.drawString("you got a new card!", Main.getScreenWidth()/2, -500);
+//
+        SelectionManager.render(g);
+//        if(addedCard != null) {
+//            addedCard.render(Main.getScreenWidth()/2, Main.getScreenHeight()/2, g);
+//        }
+//        g.drawString("press anywhere to return", Main.getScreenWidth()/2, 500);
+//        g.drawString("you got a new card!", Main.getScreenWidth()/2, -500);
     }
 
     public void mousePressed(int button, int x, int y)
     {
-        if(button == 0) {
-            sbg.enterState(Main.GAME_ID);
-        }
+        SelectionManager.mousePressed(button, x, y);
+//        if(button == 0) {
+//            sbg.enterState(Main.GAME_ID);
+//        }
     }
 }

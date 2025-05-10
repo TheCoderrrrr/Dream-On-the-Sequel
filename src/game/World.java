@@ -6,6 +6,7 @@ import game.card.Card;
 import game.managers.CardManager;
 import game.managers.EntityManager;
 import game.managers.MessageManager;
+import game.managers.SelectionManager;
 import game.messages.FloatMessage;
 import game.ui.buttons.EndTurnButton;
 import org.newdawn.slick.*;
@@ -16,6 +17,7 @@ public class World {
     private static int round;
     private final CardManager cardManager;
     private static EntityManager entityManager;
+    private SelectionManager selectionManager;
 
     private static String gameStage;
     private static Image background;
@@ -28,6 +30,7 @@ public class World {
 
         entityManager = new EntityManager(gc);
         cardManager = new CardManager(gc);
+        selectionManager = new SelectionManager(sbg, gc);
         gameStage = "My Turn";
         background = Images.HAPPYBACKGROUND;
         round = 1;
