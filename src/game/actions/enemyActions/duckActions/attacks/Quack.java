@@ -11,8 +11,8 @@ import java.util.List;
 public class Quack extends Action implements Attacking {
     public Quack()
     {
-        super(new ArrayList<>(List.of(new Damage(10))));
-        description = "Does 10 damage";
+        super(new ArrayList<>(List.of(new Damage(5))));
+        description = "Does 5 damage";
         symbol = Images.ACTION_ATTACK;
     }
 }

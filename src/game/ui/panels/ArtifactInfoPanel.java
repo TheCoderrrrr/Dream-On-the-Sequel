@@ -1,4 +1,4 @@
-package game.ui;
+package game.ui.panels;
 
 import core.Main;
 import game.artifacts.Artifact;
@@ -7,7 +7,6 @@ import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import resources.Images;
 
-import java.awt.*;
 import java.util.ArrayList;
 
 public class ArtifactInfoPanel extends Panel{

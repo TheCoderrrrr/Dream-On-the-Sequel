@@ -1,4 +1,4 @@
-package game.ui;
+package game.ui.panels;
 
 import core.Main;
 import game.effects.Damage;

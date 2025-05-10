@@ -1,7 +1,6 @@
 package game.managers;
 
 import core.Main;
-import game.artifacts.Artifact;
 import game.card.Attacking;
 import game.card.Buffing;
 import game.card.Card;
@@ -17,8 +16,7 @@ import game.card.bearCards.single.debuff.CuddleCrush;
 import game.card.bearCards.single.debuff.CupidsArrow;
 import game.card.bearCards.single.debuff.MuffledRoar;
 import game.card.bearCards.single.debuff.StitchedSilence;
-import game.entity.player.Player;
-import game.ui.Panel;
+import game.ui.panels.Panel;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -27,6 +25,7 @@ import resources.Fonts;
 import java.util.ArrayList;
 
 public class CardManager {
+    private static GameContainer gc;
     private static final int HAND_SIZE = 5;
     private static boolean selectionMode;
     private static int totalCardWidth;
@@ -42,6 +41,7 @@ public class CardManager {
     public CardManager(GameContainer gc) {
         Card.setGC(gc);
         Panel.setGC(gc);
+        CardManager.gc = gc;
         hand = new ArrayList<>();
         deck = new ArrayList<>();
         addableCards = new ArrayList<>();
@@ -97,17 +97,31 @@ public class CardManager {
                 deck.add(hand.remove(i));
             }
         }
+        overCard();
         updateTotalCardWidth();
         initializeHand();
     }
+    public static void overCard(){
+        for (Card c : hand) {
+            if (c.isOver(gc.getInput().getMouseX(), gc.getInput().getMouseY()) || c.isDragging()) {
+                c.hoveredPos();
+            } else {
+                c.defaultPos();
+            }
+        }
+    }
 
-    public static void addNewCard() {
+    public static Card addNewCard() {
         if(!addableCards.isEmpty()) {
             Card c = addableCards.get((int) (Math.random() * addableCards.size()));
 
             addableCards.remove(c);
             deck.add(c);
+
+            return c;
         }
+
+        return null;
     }
 
     public static void render(Graphics g) {
@@ -134,11 +148,14 @@ public class CardManager {
         for (Card c : hand) {
             c.renderEffectsPanel(g, hand);
         }
+        renderEnergy(g);
+    }
+    public static void renderEnergy(Graphics g){
         g.setColor(new Color(255, 255, 255, 255));
-        g.fillRoundRect((float) Main.getScreenWidth() / 3.94f, (float) Main.getScreenHeight() * .868f , 100, Fonts.DOGICAPIXEL.getHeight(g, curEnergy + " / " + totalEnergy, 100, 30), 10);
+        float width = Main.getScreenWidth() * .05f;
+        g.fillRoundRect((float) Main.getScreenWidth() * .16f, (float) Main.getScreenHeight() * .868f , (float) (width * 1.32), Fonts.DOGICAPIXEL.getHeight(g, curEnergy + " / " + totalEnergy, 100, (float) (width * 0.38)), 10);
         g.setColor(Color.black);
-        Fonts.DOGICAPIXEL.drawString(g, curEnergy + " / " + totalEnergy, (float) Main.getScreenWidth() / 3.95f, (float) Main.getScreenHeight() * .875f , 30);
-
+        Fonts.DOGICAPIXEL.drawString(g, curEnergy + " / " + totalEnergy, (float) Main.getScreenWidth() * .162f, (float) Main.getScreenHeight() * .88f , (float) (width * 0.365));
     }
 
     public static void resetHand() {
@@ -153,7 +170,10 @@ public class CardManager {
     }
 
     public static void updateTotalCardWidth() {
-        totalCardWidth = Card.getCardWidth() * hand.size();
+        totalCardWidth = 0;
+        for(Card c : hand){
+            totalCardWidth += c.getCardWidth();
+        }
     }
 
     public static void spendEnergy(int energy) {
@@ -170,8 +190,10 @@ public class CardManager {
     public static void initializeHand() {
         int zeroPos = Main.getScreenWidth() / 2;
         int firstCardX = zeroPos - totalCardWidth / 2;
-        for (int i = 0; i < hand.size(); i++) {
-            hand.get(i).initializePosition(firstCardX + i * Card.getCardWidth(), (int) (Main.getScreenHeight() - Card.getCardLength()));
+        int curCardPosX = 0;
+        for (Card card : hand) {
+            card.initializePosition(firstCardX + curCardPosX, (int) (Main.getScreenHeight() - card.getCardLength()));
+            curCardPosX += card.getCardWidth();
         }
     }
 
@@ -222,5 +244,8 @@ public class CardManager {
 
         resetHand();
         resetEnergy();
+    }
+    public static void addCardToDeck(Card c){
+        deck.add(c);
     }
 }

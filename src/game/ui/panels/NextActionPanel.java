@@ -1,12 +1,10 @@
-package game.ui;
+package game.ui.panels;
 
 import game.actions.Action;
 import game.effects.Damage;
 import game.effects.Effect;
-import game.managers.HitBox;
+import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
-
-import java.awt.*;
 
 public class NextActionPanel extends Panel{
     private Action nextAction;
@@ -28,6 +26,7 @@ public class NextActionPanel extends Panel{
         g.drawImage(nextAction.getSymbol(), x, y);
         for(Effect e : nextAction.getEffects()){
             if(e instanceof Damage){
+                g.setColor(Color.white);
                 g.drawString(((Damage) e).getDamage() + "", x + 5, y + 5);
             }
         }

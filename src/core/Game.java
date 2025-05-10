@@ -1,6 +1,5 @@
 package core;
 
-import game.managers.EntityManager;
 import game.managers.MessageManager;
 import game.World;
 import game.messages.FloatMessage;
@@ -29,7 +28,8 @@ public class Game extends BasicGameState
 		gc.setShowFPS(false);
 
 		world = new World(gc, sbg);
-		Win.setWorld(world);
+		CardAcquire.setWorld(world);
+		ArtifactAcquire.setWorld(world);
 		TitleScreen.setWorld(world);
 
 		MessageManager.init();

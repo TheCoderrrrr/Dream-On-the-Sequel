@@ -10,7 +10,7 @@ public class Weaken extends Effect{
         this.multiplier = multiplier;
         name = "Weakened";
         symbol = Images.WEAKENED;
-        description = "Reduces the damage the enemy deals to the player.";
+        description = "Reduces damage taken.";
     }
 
     public Weaken copy() {

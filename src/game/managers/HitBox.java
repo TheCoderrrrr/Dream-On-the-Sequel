@@ -74,6 +74,7 @@ public class HitBox {
     }
     public void renderHitBox(Graphics g) {
         g.setColor(curColor);
+        g.setLineWidth(4);
         g.drawRect(x - OFFSET, y - OFFSET, entity.getImage().getWidth() + OFFSET, entity.getImage().getHeight() + OFFSET);
     }
     public void chroma(){

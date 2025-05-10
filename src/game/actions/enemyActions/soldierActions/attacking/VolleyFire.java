@@ -11,8 +11,8 @@ import java.util.List;
 public class VolleyFire extends Action implements Attacking {
     public VolleyFire()
     {
-        super(new ArrayList<>(List.of(new Damage(20))));
-        description = "Does 20 damage";
+        super(new ArrayList<>(List.of(new Damage(15))));
+        description = "Does 15 damage";
         symbol = Images.ACTION_ATTACK;
     }
 }

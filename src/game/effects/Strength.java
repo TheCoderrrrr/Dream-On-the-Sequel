@@ -12,7 +12,7 @@ public class Strength extends Effect{
         this.attackMultiplier = attackMultiplier;
         name = "StrengthBoost";
         symbol = Images.STRENGTH;
-        description = "Temporarily increases the damage of the attacks.";
+        description = "Temporarily increases the damage of attacks.";
     }
 
     public Strength copy() {

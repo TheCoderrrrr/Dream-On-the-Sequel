@@ -10,7 +10,7 @@ public class Vulnerable extends Effect{
         this.multiplier = multiplier;
         name = "Vulnerable";
         symbol = Images.VULNERABLE;
-        description = "Increases the damage taken by the affected enemy.";
+        description = "Affected enemy/player takes increased damage.";
     }
 
     public Vulnerable copy() {

@@ -1,10 +1,14 @@
 package game;
 
 import core.Main;
+import game.artifacts.Artifact;
+import game.card.Card;
 import game.managers.CardManager;
 import game.managers.EntityManager;
 import game.managers.MessageManager;
+import game.managers.SelectionManager;
 import game.messages.FloatMessage;
+import game.ui.buttons.EndTurnButton;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;
 import resources.Images;
@@ -12,32 +16,36 @@ import resources.Images;
 public class World {
     private static int round;
     private final CardManager cardManager;
-    private final EntityManager entityManager;
+    private static EntityManager entityManager;
+    private SelectionManager selectionManager;
 
     private static String gameStage;
     private static Image background;
 
     private static StateBasedGame sbg;
+    private static EndTurnButton endTurnButton;
 
     public World(GameContainer gc, StateBasedGame sbg) {
         World.sbg = sbg;
 
-        entityManager = new EntityManager();
+        entityManager = new EntityManager(gc);
         cardManager = new CardManager(gc);
+        selectionManager = new SelectionManager(sbg, gc);
         gameStage = "My Turn";
         background = Images.HAPPYBACKGROUND;
         round = 1;
 
         cardManager.setEntityManager(entityManager);
+        endTurnButton = new EndTurnButton((int) (Main.getScreenWidth() - Main.getScreenWidth() * 0.1), (int) (Main.getScreenHeight() - Main.getScreenHeight() * 0.1), (int) (Main.getScreenWidth() * 0.1), (int) (Main.getScreenHeight() * 0.1));
     }
 
-    public void addNewCard() {
-        CardManager.addNewCard();
+    public Card addNewCard() {
+        return CardManager.addNewCard();
     }
 
 
-    public void addNewRelic() {
-        entityManager.addNewRelic();
+    public Artifact addNewRelic() {
+       return entityManager.addNewRelic();
     }
 
     public void keyPressed(int key, char c) {
@@ -60,7 +68,7 @@ public class World {
         entityManager.myTurn();
     }
 
-    public void startEnemyTurn() {
+    public static void startEnemyTurn() {
         gameStage = "Enemy Turn";
         entityManager.enemyTurn();
     }
@@ -78,17 +86,21 @@ public class World {
             startMyTurn();
         }
         gameEnd();
+//        System.out.println(gameStage);
     }
 
     public void render(Graphics g) {
         g.drawImage(background.getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight()),0, 0);
         CardManager.render(g);
         entityManager.render(g);
-        drawButton(g);
+//        drawButton(g);
+        endTurnButton.render(g);
     }
     public void mousePressed(int button, int x, int y){
         cardManager.mousePressed(button, x, y);
-        endTurnButton(button, x, y);
+//        endTurnButton(button, x, y);
+        endTurnButton.mousePressed(button, x, y);
+        entityManager.mousePressed(button, x, y);
     }
     public void mouseReleased(int button, int x, int y){
         cardManager.mouseReleased(button, x, y);
@@ -108,15 +120,22 @@ public class World {
         background = Images.CREEPYBACKGROUND;
         round = 1;
     }
+
     public static int getRound(){
         return round;
     }
+
     public static void nextRound(){
         round++;
         CardManager.resetHand();
         CardManager.resetEnergy();
+//        reset enemies?
+    }
+
+    public static void enterCardSelectionScreen(){
         sbg.enterState(Main.WIN_ID);
     }
+
     public void endTurnButton(int button, int x, int y){
         int width = (int) (Main.getScreenWidth() * 0.1);
         int height = (int) (Main.getScreenHeight() * 0.1);

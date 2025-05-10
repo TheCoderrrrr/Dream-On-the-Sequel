@@ -5,7 +5,7 @@ import game.card.Card;
 import game.card.SingleTarget;
 import game.effects.Effect;
 import game.effects.Heal;
-import game.ui.CardEffectsPanel;
+import game.ui.panels.CardEffectsPanel;
 import resources.Images;
 import game.entity.Entity;
 

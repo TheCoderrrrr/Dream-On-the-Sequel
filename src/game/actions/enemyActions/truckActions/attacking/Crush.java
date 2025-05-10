@@ -11,8 +11,8 @@ import java.util.List;
 public class Crush extends Action implements Attacking {
     public Crush()
     {
-        super(new ArrayList<>(List.of(new Damage(25))));
-        description = "Does 25 damage";
+        super(new ArrayList<>(List.of(new Damage(20))));
+        description = "Does 20 damage";
         symbol = Images.ACTION_ATTACK;
     }
 }

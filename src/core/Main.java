@@ -29,7 +29,7 @@ public class Main extends StateBasedGame
 
 		title = new TitleScreen(TITLE_ID);
 		game = new Game(GAME_ID);
-		win = new Win(WIN_ID);
+		win = new CardAcquire(WIN_ID);
 		tutorial = new Tutorial(TUTORIAL_ID);
 		lose = new Lose(LOSE_ID);
 	}

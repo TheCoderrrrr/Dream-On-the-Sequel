@@ -12,7 +12,7 @@ public class TotemSpin extends Action implements Attacking {
     public TotemSpin()
     {
         super(new ArrayList<>(List.of(new Damage(15))));
-        description = "Does 15 damage";
+        description = "Does 10 damage";
         symbol = Images.ACTION_ATTACK;
     }
 }

@@ -13,8 +13,8 @@ import java.util.List;
 public class CargoCover extends Action implements Attacking, Buffing {
     public CargoCover()
     {
-        super(new ArrayList<>(List.of(new Damage(15), new Shield(.3f, 2))));
-        description = "Does 15 damage and 'Shield' effect is applied";
+        super(new ArrayList<>(List.of(new Damage(10), new Shield(.3f, 2))));
+        description = "Does 10 damage and 'Shield' effect is applied";
         symbol = Images.ACTION_SHIELD;
     }
 }

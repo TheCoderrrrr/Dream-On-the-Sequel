@@ -5,12 +5,10 @@ import game.artifacts.Artifact;
 import game.artifacts.Bulwark;
 import game.artifacts.ManaStone;
 import game.effects.Effect;
-import game.effects.Shield;
 import game.entity.Entity;
-import game.managers.HitBox;
 import game.managers.MessageManager;
 import game.messages.FloatMessage;
-import game.ui.ArtifactInfoPanel;
+import game.ui.panels.ArtifactInfoPanel;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import resources.Fonts;
@@ -40,14 +38,17 @@ public class Player extends Entity {
 
     }
 
-    public void addNewRelic() {
+    public Artifact addNewRelic() {
         if (!addableArtifacts.isEmpty()) {
             Artifact a = addableArtifacts.get((int) (Math.random() * addableArtifacts.size()));
 
             addableArtifacts.remove(a);
             artifacts.add(a);
             artifactInfoPanel.updateArtifacts(artifacts);
+
+            return a;
         }
+        return null;
     }
 
     @Override
