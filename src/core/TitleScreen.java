@@ -54,7 +54,7 @@ public class TitleScreen extends BasicGameState {
 
     public void keyPressed(int key, char c)
     {
-        if(key == Input.KEY_SPACE){
+        if(Input.MOUSE_LEFT_BUTTON == 0){
             sbg.enterState(Main.GAME_ID);
         }else if(key == Input.KEY_T) sbg.enterState(Main.TUTORIAL_ID);
     }

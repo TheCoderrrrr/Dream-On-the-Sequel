@@ -97,7 +97,7 @@ public class Images {
     {
         try
         {
-            TITLESCREEN_BACKGROUND = new Image("res/images/backgrounds/TitleScreen.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
+            TITLESCREEN_BACKGROUND = new Image("res/images/backgrounds/FinalTitleScreen.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
 
             TUTORIALSCREEN_BACKGROUND = new Image("res/images/backgrounds/TutorialScreen.png");
 
@@ -121,10 +121,10 @@ public class Images {
             ACTION_BURN = new Image("res/images/actions/burn.png");
 //            ACTION_MARK = new Image("res/images/actions/mark.png").getScaledCopy((int) (Main.getScreenWidth() * 0.05), (int) (Main.getScreenHeight() * 0.05));
 
-            ENEMY1 = new Image("res/images/entity/enemy/Green_Army_Soldier.png");
-            ENEMY2 = new Image("res/images/entity/enemy/Rolling_Horse.png");
-            STACKENEMY = new Image("res/images/entity/enemy/miniboss/stack.png");
-            TRUCKENEMY = new Image("res/images/entity/enemy/miniboss/truck.png");
+            ENEMY1 = new Image("res/images/entity/enemy/Green_Army_Soldier2.png");
+            ENEMY2 = new Image("res/images/entity/enemy/Rolling_Horse2.png");
+            STACKENEMY = new Image("res/images/entity/enemy/miniboss/Stack (2).png");
+            TRUCKENEMY = new Image("res/images/entity/enemy/miniboss/Truck (2).png");
             GODZILLA = new Image("res/images/entity/enemy/boss/godzilla.png").getScaledCopy(3);
             JACK = new Image("res/images/entity/enemy/miniboss/jack.png");
             DUCK = new Image("res/images/entity/enemy/miniboss/duck.png");
