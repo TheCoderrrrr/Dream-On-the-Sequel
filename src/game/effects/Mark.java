@@ -11,7 +11,7 @@ public class Mark extends Effect{
         this.multiplier = multiplier;
         name = "Marked";
         symbol = Images.MARKED;
-        description = "Makes the affected enemy take additional damage when attacked.";
+        description = "Affected enemy/player takes increased damage.";
     }
 
     public Mark copy() {

@@ -11,8 +11,8 @@ import java.util.List;
 public class Scratch extends Action implements Attacking {
     public Scratch()
     {
-        super(new ArrayList<>(List.of(new Damage(25))));
-        description = "Does 25 damage";
+        super(new ArrayList<>(List.of(new Damage(15))));
+        description = "Does 15 damage";
         symbol = Images.ACTION_ATTACK;
     }
 }

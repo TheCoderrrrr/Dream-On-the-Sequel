@@ -12,8 +12,8 @@ import java.util.List;
 public class TurboTakedown extends Action implements Attacking {
     public TurboTakedown()
     {
-        super(new ArrayList<>(List.of(new Damage(30))));
-        description = "Does 30 damage";
+        super(new ArrayList<>(List.of(new Damage(25))));
+        description = "Does 25 damage";
         symbol = Images.ACTION_ATTACK;
     }
 }

@@ -12,8 +12,8 @@ import java.util.List;
 public class Boing extends Action implements Attacking {
     public Boing()
     {
-        super(new ArrayList<>(List.of(new Damage(30), new Burn(5,2))));
-        description = "Does 30 damage and 'Burn' affect is applied";
+        super(new ArrayList<>(List.of(new Damage(40), new Burn(5,2))));
+        description = "Does 40 damage and 'Burn' affect is applied";
         symbol = Images.ACTION_BURN;
     }
 }

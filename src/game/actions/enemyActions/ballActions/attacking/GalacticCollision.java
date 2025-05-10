@@ -11,8 +11,8 @@ import java.util.List;
 public class GalacticCollision extends Action implements Attacking {
     public GalacticCollision()
     {
-        super(new ArrayList<>(List.of(new Damage(20))));
-        description = "Does 20 damage";
+        super(new ArrayList<>(List.of(new Damage(7))));
+        description = "Does 7 damage";
         symbol = Images.ACTION_ATTACK;
     }
 }

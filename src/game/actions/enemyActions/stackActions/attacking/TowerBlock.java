@@ -12,8 +12,8 @@ import java.util.List;
 public class TowerBlock extends Action implements Attacking {
     public TowerBlock()
     {
-        super(new ArrayList<>(List.of(new Damage(10), new Shield(.25f, 3))));
-        description = "Does 10 damage and 'Shield' effect is applied";
+        super(new ArrayList<>(List.of(new Damage(5), new Shield(.25f, 3))));
+        description = "Does 5 damage and 'Shield' effect is applied";
         symbol = Images.ACTION_SHIELD;
     }
 }

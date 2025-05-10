@@ -11,8 +11,8 @@ import java.util.List;
 public class OrbitalStrike extends Action implements Attacking {
     public OrbitalStrike()
     {
-        super(new ArrayList<>(List.of(new Damage(10))));
-        description = "Does 10 damage";
+        super(new ArrayList<>(List.of(new Damage(3))));
+        description = "Does 3 damage";
         symbol = Images.ACTION_ATTACK;
     }
 }
