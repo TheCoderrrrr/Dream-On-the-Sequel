@@ -42,6 +42,9 @@ abstract public class Card {
     protected float scaler = 1;
 
     public Card() {
+        ArrayList<Effect> actions = new ArrayList<>();
+        action = new Action(actions);
+        effectsPanel = new CardEffectsPanel(actions);
         energyCost = 0;
         dragging = false;
         isUsed = false;
