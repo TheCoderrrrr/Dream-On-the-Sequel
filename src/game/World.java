@@ -12,6 +12,7 @@ import game.ui.buttons.EndTurnButton;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;
 import resources.Images;
+import resources.Sounds;
 
 public class World {
     private static int round;
@@ -34,6 +35,8 @@ public class World {
         gameStage = "My Turn";
         background = Images.HAPPYBACKGROUND;
         round = 1;
+
+        Sounds.BGMUSIC1.loop(1F, .2F);
 
         cardManager.setEntityManager(entityManager);
         endTurnButton = new EndTurnButton((int) (Main.getScreenWidth() - Main.getScreenWidth() * 0.1), (int) (Main.getScreenHeight() - Main.getScreenHeight() * 0.1), (int) (Main.getScreenWidth() * 0.1), (int) (Main.getScreenHeight() * 0.1));
@@ -130,6 +133,14 @@ public class World {
         CardManager.resetHand();
         CardManager.resetEnergy();
 //        reset enemies?
+
+        if (round == 5 || round == 10 || round == 15)
+        {
+            Sounds.BOSSMUSIC.loop(1F, .2F);
+        }
+        else if (round == 6 || round == 11){
+            Sounds.BGMUSIC1.loop(1F, .2F);
+        }
     }
 
     public static void enterCardSelectionScreen(){

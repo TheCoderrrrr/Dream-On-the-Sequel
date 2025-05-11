@@ -25,6 +25,7 @@ public class Tutorial extends BasicGameState {
         Fonts.loadFonts();
         this.sbg = sbg;
         background = Images.TUTORIALSCREEN_BACKGROUND.getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
+//        Sounds.BGMUSIC2.loop(1F, .2F);
     }
 
     public int getID() {
