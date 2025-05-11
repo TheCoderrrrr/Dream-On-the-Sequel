@@ -23,7 +23,7 @@ public class GetRelicButton extends Button{
     public void action() {
         if(!used){
             used = true;
-            World.enterCardSelectionScreen();
+            World.enterGetArtifactScreen();
             System.out.println("given relic");
         }
         System.out.println("given relic");

@@ -1,5 +1,6 @@
 package game.ui.buttons;
 
+import game.World;
 import game.managers.EntityManager;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
@@ -22,6 +23,7 @@ public class NextRoundButton extends Button{
     @Override
     public void action() {
         entityManager.newRound();
+        World.roundBeginMode();
         System.out.println("NEXT ROUND CALLED");
     }
 }

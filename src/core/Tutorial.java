@@ -1,5 +1,6 @@
 package core;
 
+import game.ui.buttons.ToTitleScreenButton;
 import net.java.games.input.Component;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.BasicGameState;
@@ -11,7 +12,8 @@ import resources.Sounds;
 public class Tutorial extends BasicGameState {
     private int id;
     private Image background;
-    private StateBasedGame sbg;
+    private static StateBasedGame sbg;
+    private ToTitleScreenButton toTitleScreenButton;
 
     public Tutorial(int id){
         this.id = id;
@@ -23,6 +25,7 @@ public class Tutorial extends BasicGameState {
         Images.loadImages();
         Images.loadSymbols();
         Fonts.loadFonts();
+        toTitleScreenButton = new ToTitleScreenButton(0, 0, (int) (Main.getScreenWidth() * 0.1), (int) (Main.getScreenHeight() * 0.06));
         this.sbg = sbg;
         background = Images.TUTORIALSCREEN_BACKGROUND.getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
     }
@@ -33,6 +36,7 @@ public class Tutorial extends BasicGameState {
 
     public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
         g.drawImage(background, 0, 0);
+        toTitleScreenButton.render(g);
     }
 
     public void update(GameContainer gc, StateBasedGame sbg, int i) throws SlickException {
@@ -55,5 +59,9 @@ public class Tutorial extends BasicGameState {
 
     public void mousePressed(int button, int x, int y)
     {
+        toTitleScreenButton.mousePressed(button, x, y);
+    }
+    public static void enterTitle(){
+        sbg.enterState(Main.TITLE_ID);
     }
 }

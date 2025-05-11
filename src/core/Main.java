@@ -15,13 +15,16 @@ public class Main extends StateBasedGame
 	public static final int TITLE_ID = 0;
 	public static final int TUTORIAL_ID = 2;
 	public static final int LOSE_ID = 3;
-	public static final int WIN_ID = 4;
+	public static final int GETCARD_ID = 4;
+	public static final int GETARTIFACT_ID = 5;
+
 
 	private BasicGameState title;
 	private BasicGameState game;
-	private BasicGameState win;
+	private BasicGameState getCard;
 	private BasicGameState tutorial;
 	private BasicGameState lose;
+	private BasicGameState getArtifact;
 
 	public Main(String name) 
 	{
@@ -29,7 +32,8 @@ public class Main extends StateBasedGame
 
 		title = new TitleScreen(TITLE_ID);
 		game = new Game(GAME_ID);
-		win = new CardAcquire(WIN_ID);
+		getCard = new CardAcquire(GETCARD_ID);
+		getArtifact = new ArtifactAcquire(GETARTIFACT_ID);
 		tutorial = new Tutorial(TUTORIAL_ID);
 		lose = new Lose(LOSE_ID);
 	}
@@ -49,8 +53,9 @@ public class Main extends StateBasedGame
 	{
 		addState(title);
 		addState(game);
-		addState(win);
+		addState(getCard);
 		addState(tutorial);
+		addState(getArtifact);
 		addState(lose);
 	}
 
