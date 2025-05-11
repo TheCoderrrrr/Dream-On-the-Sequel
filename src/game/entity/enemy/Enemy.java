@@ -72,6 +72,9 @@ public abstract class Enemy extends game.entity.Entity {
 //        }
 
         renderHealth(g, x , y);
+        for(Effect e : activeEffects){
+            g.drawString(e.getName(), x + image.getWidth(), y);
+        }
     }
     public void renderHealth(Graphics g, int x, int y){
         if(image != null){

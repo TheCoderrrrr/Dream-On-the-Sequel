@@ -5,9 +5,7 @@ import game.artifacts.Artifact;
 import game.card.Card;
 import game.managers.CardManager;
 import game.managers.EntityManager;
-import game.managers.MessageManager;
 import game.managers.SelectionManager;
-import game.messages.FloatMessage;
 import game.ui.buttons.EndTurnButton;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;
@@ -25,6 +23,7 @@ public class World {
 
     private static StateBasedGame sbg;
     private static EndTurnButton endTurnButton;
+    private static boolean roundEnd;
 
     public World(GameContainer gc, StateBasedGame sbg) {
         World.sbg = sbg;
@@ -53,7 +52,7 @@ public class World {
 
     public void keyPressed(int key, char c) {
         if(key == Input.KEY_SPACE) {
-            if(isMyTurn()) {
+            if(isMyTurn() && !roundEnd) {
                 startEnemyTurn();
             }
         }
@@ -100,9 +99,11 @@ public class World {
         endTurnButton.render(g);
     }
     public void mousePressed(int button, int x, int y){
-        cardManager.mousePressed(button, x, y);
+        if(!roundEnd){
+            cardManager.mousePressed(button, x, y);
 //        endTurnButton(button, x, y);
-        endTurnButton.mousePressed(button, x, y);
+            endTurnButton.mousePressed(button, x, y);
+        }
         entityManager.mousePressed(button, x, y);
     }
     public void mouseReleased(int button, int x, int y){
@@ -144,7 +145,10 @@ public class World {
     }
 
     public static void enterCardSelectionScreen(){
-        sbg.enterState(Main.WIN_ID);
+        sbg.enterState(Main.GETCARD_ID);
+    }
+    public static void enterGetArtifactScreen(){
+        sbg.enterState(Main.GETARTIFACT_ID);
     }
 
     public void endTurnButton(int button, int x, int y){
@@ -193,5 +197,11 @@ public class World {
     }
     public void killeverything(){
         entityManager.killEverything();
+    }
+    public static void roundEndMode(){
+        roundEnd = true;
+    }
+    public static void roundBeginMode(){
+        roundEnd = false;
     }
 }

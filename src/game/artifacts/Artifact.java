@@ -79,5 +79,8 @@ public abstract class Artifact {
     public Image getImage(){
         return image;
     }
+    public String getDescription(){
+        return description;
+    }
 
 }
