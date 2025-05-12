@@ -52,7 +52,7 @@ public class HitBox {
     }
 
     public boolean isMouseOver(int mouseX, int mouseY) {
-        return hasEntity() && mouseX < x + width && mouseX > x - OFFSET && mouseY < y + height + OFFSET && mouseY > y - OFFSET;
+        return hasEntity() && mouseX < x + width && mouseX > x - OFFSET && mouseY < y + height + OFFSET - entity.getImage().getHeight() && mouseY > y - OFFSET - entity.getImage().getHeight();
     }
 
     public void useCard(Card c) {
@@ -75,7 +75,7 @@ public class HitBox {
     public void renderHitBox(Graphics g) {
         g.setColor(curColor);
         g.setLineWidth(4);
-        g.drawRect(x - OFFSET, y - OFFSET, entity.getImage().getWidth() + OFFSET, entity.getImage().getHeight() + OFFSET);
+        g.drawRect(x - OFFSET, y - OFFSET - entity.getImage().getHeight(), entity.getImage().getWidth() + OFFSET, entity.getImage().getHeight() + OFFSET);
     }
     public void chroma(){
         if(curColorNumber  > 3000){

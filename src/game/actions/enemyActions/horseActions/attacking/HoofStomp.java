@@ -9,7 +9,7 @@ import resources.Images;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HoofStomp extends Action implements Attacking {
+public class HoofStomp extends Action implements Attacking{
     public HoofStomp()
     {
         super(new ArrayList<>(List.of(new Damage(5))));

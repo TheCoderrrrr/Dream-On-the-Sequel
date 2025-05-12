@@ -8,7 +8,7 @@ import resources.Images;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Slash extends Action implements Attacking {
+public class Slash extends Action implements Attacking{
     public Slash()
     {
         super(new ArrayList<>(List.of(new Damage(20))));

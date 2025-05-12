@@ -8,7 +8,7 @@ import resources.Images;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Bite extends Action implements Attacking {
+public class Bite extends Action implements Attacking{
     public Bite()
     {
         super(new ArrayList<>(List.of(new Damage(15))));

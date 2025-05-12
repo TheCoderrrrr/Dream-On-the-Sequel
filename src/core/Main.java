@@ -17,6 +17,7 @@ public class Main extends StateBasedGame
 	public static final int LOSE_ID = 3;
 	public static final int GETCARD_ID = 4;
 	public static final int GETARTIFACT_ID = 5;
+	public static final int WIN_ID = 6;
 
 
 	private BasicGameState title;
@@ -25,6 +26,7 @@ public class Main extends StateBasedGame
 	private BasicGameState tutorial;
 	private BasicGameState lose;
 	private BasicGameState getArtifact;
+	private BasicGameState win;
 
 	public Main(String name) 
 	{
@@ -36,6 +38,7 @@ public class Main extends StateBasedGame
 		getArtifact = new ArtifactAcquire(GETARTIFACT_ID);
 		tutorial = new Tutorial(TUTORIAL_ID);
 		lose = new Lose(LOSE_ID);
+		win	= new Win(WIN_ID);
 	}
 
 	public static int getScreenWidth()
@@ -57,6 +60,7 @@ public class Main extends StateBasedGame
 		addState(tutorial);
 		addState(getArtifact);
 		addState(lose);
+		addState(win);
 	}
 
 	public static void main(String[] args) 

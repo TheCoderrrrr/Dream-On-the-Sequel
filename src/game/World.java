@@ -1,11 +1,14 @@
 package game;
 
 import core.Main;
+import core.Win;
 import game.artifacts.Artifact;
 import game.card.Card;
 import game.managers.CardManager;
 import game.managers.EntityManager;
+import game.managers.MessageManager;
 import game.managers.SelectionManager;
+import game.messages.FloatMessage;
 import game.ui.buttons.EndTurnButton;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.StateBasedGame;
@@ -123,6 +126,7 @@ public class World {
         gameStage = "My Turn";
         background = Images.CREEPYBACKGROUND;
         round = 1;
+        Sounds.BGMUSIC1.loop(1F, .2F);
     }
 
     public static int getRound(){
@@ -142,6 +146,11 @@ public class World {
         else if (round == 6 || round == 11){
             Sounds.BGMUSIC1.loop(1F, .2F);
         }
+        MessageManager.addMessage(new FloatMessage("ROUND : " + World.getRound(), Main.getScreenWidth() / 2, Main.getScreenHeight() / 4, Color.black, 120));
+        if(round == 16){
+            sbg.enterState(Main.WIN_ID);
+        }
+
     }
 
     public static void enterCardSelectionScreen(){

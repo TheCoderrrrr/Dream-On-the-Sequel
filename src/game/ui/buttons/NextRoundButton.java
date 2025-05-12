@@ -4,6 +4,7 @@ import game.World;
 import game.managers.EntityManager;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
+import resources.Fonts;
 
 public class NextRoundButton extends Button{
     EntityManager entityManager;
@@ -15,9 +16,10 @@ public class NextRoundButton extends Button{
     @Override
     public void render(Graphics g) {
         g.setColor(Color.red);
-        g.fillRoundRect(x, y, width, height, 2, 2);
-        g.setColor(Color.lightGray);
-        g.drawString("next round", x, y);
+        g.fillRect(x, y, width, height);
+        g.setColor(Color.black);
+        g.drawRect(x, y, width, height);
+        Fonts.DOGICAPIXEL.drawStringCentered(g, "Next Round", x + width / 2, y + height / 2, 30);
     }
 
     @Override

@@ -63,15 +63,15 @@ public abstract class Enemy extends game.entity.Entity {
 
     @Override
     public void render(Graphics g, int x, int y) {
-        g.drawImage(image, x, y);
+        g.drawImage(image, x, y - image.getHeight());
 //        g.drawString(this.getClass().getSimpleName(), x, y);
 
-        nextActionPanel.render(g, x, y - 30);
+        nextActionPanel.render(g, x + image.getWidth() / 2, (y - image.getHeight() - 60));
 //        for (int i = 0; i < nextMoves.size(); i++) {
 //            g.drawString(nextMoves.get(i).getClass().getSimpleName(), x + 100, y - 20 * (i + 1));
 //        }
 
-        renderHealth(g, x , y);
+        renderHealth(g, x , (int) (y + image.getHeight() * 0.05));
         for(Effect e : activeEffects){
             g.drawString(e.getName(), x + image.getWidth(), y);
         }
@@ -80,14 +80,14 @@ public abstract class Enemy extends game.entity.Entity {
         if(image != null){
             float barWidth = (float) (image.getWidth() * 1.5);
             g.setColor(Color.black);
-            g.fillRect((float) (x - barWidth / 5), (float) (y + image.getHeight() * 0.75),barWidth, (float) (Main.getScreenHeight() * 0.012));
+            g.fillRect((float) (x - barWidth / 5), y,barWidth, (float) (Main.getScreenHeight() * 0.012));
             g.setColor(Color.red);
-            g.fillRect((float) (x - barWidth / 5), (float) (y + image.getHeight() * 0.75), barWidth * getPercentHealthLeft(), (float) (Main.getScreenHeight() * 0.012));
+            g.fillRect((float) (x - barWidth / 5), y, barWidth * getPercentHealthLeft(), (float) (Main.getScreenHeight() * 0.012));
             g.setColor(Color.white);
-            Fonts.REGULAR.drawStringCentered(g , health + " / " + maxHealth, (float) x + image.getWidth() / 2, (float) (y + image.getHeight() * 0.78), 22);
+            Fonts.REGULAR.drawStringCentered(g , health + " / " + maxHealth, (float) x + image.getWidth() / 2, (float)(y + Main.getScreenHeight() * 0.005), 22);
 
             //ik this looks stupid to put in here but its so much easier
-            effectsPanel.render(g, (int) (x - barWidth / 5), (int) (y + image.getHeight() * 0.84));
+            effectsPanel.render(g, (int) (x - barWidth / 5),y);
         }
     }
 

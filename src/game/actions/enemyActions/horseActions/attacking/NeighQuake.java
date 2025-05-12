@@ -8,7 +8,7 @@ import resources.Images;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NeighQuake extends Action implements Attacking {
+public class NeighQuake extends Action implements Attacking{
     public NeighQuake()
     {
         super(new ArrayList<>(List.of(new Damage(10))));

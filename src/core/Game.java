@@ -58,7 +58,6 @@ public class Game extends BasicGameState
 	
 	public void enter(GameContainer gc, StateBasedGame sbg) throws SlickException 
 	{
-		MessageManager.addMessage(new FloatMessage("ROUND : " + world.getRound(), Main.getScreenWidth() / 2, Main.getScreenHeight() / 4, Color.black, 120));
 
 		// This code happens when you enter a gameState.
 	}

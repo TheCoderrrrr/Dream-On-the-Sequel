@@ -8,7 +8,7 @@ import resources.Images;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ManeDash extends Action implements Attacking {
+public class ManeDash extends Action implements Attacking{
     public ManeDash()
     {
         super(new ArrayList<>(List.of(new Damage(8))));

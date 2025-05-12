@@ -8,7 +8,7 @@ import resources.Images;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Fortitude extends Action implements Buffing {
+public class Fortitude extends Action implements Buffing{
     public Fortitude()
     {
         super(new ArrayList<>(List.of(new Shield(0.1f, 2))));

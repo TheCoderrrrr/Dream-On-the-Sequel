@@ -21,16 +21,16 @@ public class NextActionPanel extends Panel{
         int height = nextAction.getSymbol().getHeight();
 
         g.setColor(new org.newdawn.slick.Color(0, 0, 0, 150));
-        g.fillRoundRect(x - 5, y - 5, width + 10, height + 10, 10);
+        g.fillRoundRect(x - 5 - width / 2, y - 5, width + 10, height + 10, 10);
 
-        g.drawImage(nextAction.getSymbol(), x, y);
+        g.drawImage(nextAction.getSymbol(), x - width / 2, y);
         for(Effect e : nextAction.getEffects()){
             if(e instanceof Damage){
                 g.setColor(Color.white);
-                g.drawString(((Damage) e).getDamage() + "", x + 5, y + 5);
+                g.drawString(((Damage) e).getDamage() + "", x + 5 - width / 2, y + 5);
             }
         }
-        if(gc.getInput().getMouseX() > x && gc.getInput().getMouseX() < x + nextAction.getSymbol().getWidth() && gc.getInput().getMouseY() > y && gc.getInput().getMouseY() < y + nextAction.getSymbol().getHeight()){
+        if(gc.getInput().getMouseX() > x - width / 2 && gc.getInput().getMouseX() < x + nextAction.getSymbol().getWidth() - width / 2 && gc.getInput().getMouseY() > y && gc.getInput().getMouseY() < y + nextAction.getSymbol().getHeight()){
             tooltip.render(g, gc.getInput().getMouseX(), gc.getInput().getMouseY(), nextAction.getDescription());
         }
 //        g.drawString(nextAction.getName(),x - 50, y);

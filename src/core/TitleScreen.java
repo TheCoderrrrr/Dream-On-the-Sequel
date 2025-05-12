@@ -31,8 +31,8 @@ public class TitleScreen extends BasicGameState {
         Images.loadImages();
         Images.loadSymbols();
         Fonts.loadFonts();
-        toGameButton = new ToGameButton((int) (Main.getScreenWidth() * 0.1), (int) (Main.getScreenHeight() * 0.3), (int) (Main.getScreenWidth() * 0.1), (int) (Main.getScreenHeight() * 0.06));
-        tutorialButton = new TutorialButton((int) (Main.getScreenWidth() * 0.9), (int) (Main.getScreenHeight() * 0.3), (int) (Main.getScreenWidth() * 0.1), (int) (Main.getScreenHeight() * 0.06));
+        toGameButton = new ToGameButton((int) (Main.getScreenWidth() * 0.1), (int) (Main.getScreenHeight() * 0.5), (int) (Main.getScreenWidth() * 0.23), (int) (Main.getScreenHeight() * 0.06));
+        tutorialButton = new TutorialButton((int) (Main.getScreenWidth() * 0.67), (int) (Main.getScreenHeight() * 0.5), (int) (Main.getScreenWidth() * 0.23), (int) (Main.getScreenHeight() * 0.06));
         this.sbg = sbg;
         background = Images.TITLESCREEN_BACKGROUND.getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
     }
@@ -62,9 +62,9 @@ public class TitleScreen extends BasicGameState {
 
     public void keyPressed(int key, char c)
     {
-        if(Input.MOUSE_LEFT_BUTTON == 0){
-            sbg.enterState(Main.GAME_ID);
-        }else if(key == Input.KEY_T) sbg.enterState(Main.TUTORIAL_ID);
+//        if(Input.MOUSE_LEFT_BUTTON == 0){
+//            sbg.enterState(Main.GAME_ID);
+//        }else if(key == Input.KEY_T) sbg.enterState(Main.TUTORIAL_ID);
     }
 
     public void mousePressed(int button, int x, int y)

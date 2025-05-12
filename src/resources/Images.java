@@ -93,13 +93,17 @@ public class Images {
     public static Image RELIC1;
     public static Image RELIC2;
 
+    public static Image WIN_SCREEN;
+
     public static void loadImages()
     {
         try
         {
-            TITLESCREEN_BACKGROUND = new Image("res/images/backgrounds/FinalTitleScreen.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
+            TITLESCREEN_BACKGROUND = new Image("res/images/backgrounds/TitleScreen_5.png").getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
 
-            TUTORIALSCREEN_BACKGROUND = new Image("res/images/backgrounds/TutorialScreen.png");
+            TUTORIALSCREEN_BACKGROUND = new Image("res/images/backgrounds/TitleScreen_6.png");
+
+            WIN_SCREEN = new Image("res/images/backgrounds/WinScreen.png");
 
             LOSE_SCREEN = new Image("res/images/backgrounds/Lose.png");
 
@@ -125,7 +129,7 @@ public class Images {
             ENEMY2 = new Image("res/images/entity/enemy/Rolling_Horse2.png");
             STACKENEMY = new Image("res/images/entity/enemy/miniboss/Stack (2).png");
             TRUCKENEMY = new Image("res/images/entity/enemy/miniboss/Truck (2).png");
-            GODZILLA = new Image("res/images/entity/enemy/boss/godzilla.png").getScaledCopy(3);
+            GODZILLA = new Image("res/images/entity/enemy/boss/godzilla2.png").getScaledCopy(3);
             JACK = new Image("res/images/entity/enemy/miniboss/jack.png");
             DUCK = new Image("res/images/entity/enemy/miniboss/duck.png");
             DOLL = new Image("res/images/entity/enemy/miniboss/doll.png");

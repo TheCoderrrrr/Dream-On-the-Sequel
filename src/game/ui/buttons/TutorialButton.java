@@ -13,10 +13,10 @@ public class TutorialButton extends Button{
 
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.red);
+        g.setColor(new Color(255, 170, 170));
         g.fillRoundRect(x, y, width, height, 2, 2);
-        g.setColor(Color.lightGray);
-        Fonts.DOGICAPIXEL.drawString(g, "Click For Tutorial",x , y, 40);
+        g.setColor(Color.black);
+        Fonts.DOGICAPIXEL.drawStringCentered(g, "Click For Tutorial",x + width / 2, y + height / 2, 40);
     }
 
     @Override

@@ -82,5 +82,8 @@ public abstract class Artifact {
     public String getDescription(){
         return description;
     }
+    public String getName(){
+        return name;
+    }
 
 }

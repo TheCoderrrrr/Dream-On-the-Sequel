@@ -3,6 +3,7 @@ package game.ui.buttons;
 import game.World;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
+import resources.Fonts;
 
 public class CardSelectionButton extends Button{
     public CardSelectionButton(int x, int y, int width, int height) {
@@ -17,9 +18,15 @@ public class CardSelectionButton extends Button{
         }else{
             g.setColor(Color.green);
         }
-        g.fillRoundRect(x, y, width, height, 2, 2);
-        g.setColor(Color.lightGray);
-        g.drawString("new card", x, y);
+        g.fillRect(x, y, width, height);
+        if(!used){
+            g.setColor(Color.black);
+        }else{
+            g.setColor(Color.white);
+        }
+        g.drawRect(x, y, width, height);
+        Fonts.DOGICAPIXEL.drawStringCentered(g, "Obtain A New Card", x + width / 2, y + height / 2, 30);
+
     }
 
     @Override

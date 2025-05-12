@@ -1,6 +1,7 @@
 package game.ui.panels;
 
 import core.Main;
+import game.World;
 import game.managers.EntityManager;
 import game.ui.buttons.CardSelectionButton;
 import game.ui.buttons.GetRelicButton;
@@ -8,6 +9,7 @@ import game.ui.buttons.NextRoundButton;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import resources.Fonts;
 
 public class RoundEndPanel extends Panel{
     private boolean getRelic = false;
@@ -24,15 +26,12 @@ public class RoundEndPanel extends Panel{
         height = (int) (Main.getScreenHeight() * 0.4f);
         this.getRelic = getRelic;
         this.getCard = getCard;
-        if(getCard && cardSelectionButton == null) cardSelectionButton = new CardSelectionButton(x, (int) (y + height * 0.1), width, (int) (height * 0.2));
+        if(getCard && cardSelectionButton == null) cardSelectionButton = new CardSelectionButton(x, (int) (y + height * 0.2), width, (int) (height * 0.2));
         if(getRelic) getRelicButton = new GetRelicButton(x, (int) (y+ height * 0.4), width, (int) (height * 0.2));
         nextRoundButton = new NextRoundButton(x, (int) (y + height - height * 0.2), width, (int) (height * 0.2), entityManager);
     }
     public void render(Graphics g){
-        g.setColor(new Color(237,232,208, 200));
-        g.fillRoundRect(x, y, width, height, 2, 3);
-        g.setColor(Color.black);
-        g.drawRoundRect(x, y, width, height, 2, 3);
+        renderBackground(g);
         if(cardSelectionButton != null){
             cardSelectionButton.render(g);
         }
@@ -53,5 +52,14 @@ public class RoundEndPanel extends Panel{
         if(nextRoundButton != null){
             nextRoundButton.mousePressed(button, x ,y);
         }
+    }
+    public void renderBackground(Graphics g){
+        g.setColor(new Color(0, 0, 0, 150));
+        g.fillRect(0,0, Main.getScreenWidth(), Main.getScreenHeight());
+        g.setColor(new Color(237,232,208, 200));
+        g.fillRoundRect(x, y, width, height, 2, 3);
+        g.setColor(Color.black);
+        g.drawRoundRect(x, y, width, height, 2, 3);
+        Fonts.DOGICAPIXEL.drawStringCentered(g, "Round " + World.getRound() + " Cleared", x + width/2, y + height / 10, 40);
     }
 }

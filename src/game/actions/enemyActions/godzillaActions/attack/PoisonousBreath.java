@@ -8,7 +8,7 @@ import resources.Images;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PoisonousBreath extends Action  implements Attacking {
+public class PoisonousBreath extends Action implements Attacking{
     public PoisonousBreath()
     {
         super(new ArrayList<>(List.of(new Damage(15), new Poison(5, 3))));

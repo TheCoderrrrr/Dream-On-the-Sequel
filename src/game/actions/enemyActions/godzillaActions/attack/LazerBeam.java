@@ -8,7 +8,7 @@ import resources.Images;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LazerBeam extends Action implements Attacking {
+public class LazerBeam extends Action implements Attacking{
     public LazerBeam()
     {
         super(new ArrayList<>(List.of(new Damage(30))));

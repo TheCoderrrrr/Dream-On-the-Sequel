@@ -9,7 +9,7 @@ import resources.Images;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Rapture  extends Action implements Attacking {
+public class Rapture extends Action implements Attacking{
     public Rapture()
     {
         super(new ArrayList<>(List.of(new Damage(20), new Vulnerable(.75f, 2))));

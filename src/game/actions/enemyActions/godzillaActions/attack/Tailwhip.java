@@ -8,7 +8,7 @@ import resources.Images;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Tailwhip extends Action implements Attacking {
+public class Tailwhip extends Action implements Attacking{
     public Tailwhip()
     {
         super(new ArrayList<>(List.of(new Damage(15))));

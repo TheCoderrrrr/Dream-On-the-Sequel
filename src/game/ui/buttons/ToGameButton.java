@@ -13,10 +13,10 @@ public class ToGameButton extends Button{
 
     @Override
     public void render(Graphics g) {
-        g.setColor(Color.red);
+        g.setColor(new Color(210, 216, 84));
         g.fillRoundRect(x, y, width, height, 2, 2);
-        g.setColor(Color.lightGray);
-        Fonts.DOGICAPIXEL.drawString(g, "Click to Start", (float) (x + width * 0.1), y + (float) height / 3, 40);
+        g.setColor(Color.black);
+        Fonts.DOGICAPIXEL.drawStringCentered(g, "Click to Start", (float) (x + width / 2), y + height / 2, 40);
     }
 
     @Override

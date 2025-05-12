@@ -8,7 +8,7 @@ import resources.Images;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlasmaRay extends Action implements Attacking {
+public class PlasmaRay extends Action implements Attacking{
     public PlasmaRay()
     {
         super(new ArrayList<>(List.of(new Damage(30), new Mark(1.5f, 2))));

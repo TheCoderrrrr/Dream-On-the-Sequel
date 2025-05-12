@@ -25,7 +25,7 @@ public class Tutorial extends BasicGameState {
         Images.loadImages();
         Images.loadSymbols();
         Fonts.loadFonts();
-        toTitleScreenButton = new ToTitleScreenButton(0, 0, (int) (Main.getScreenWidth() * 0.1), (int) (Main.getScreenHeight() * 0.06));
+        toTitleScreenButton = new ToTitleScreenButton(0, 0, (int) (Main.getScreenWidth() * 0.23), (int) (Main.getScreenHeight() * 0.06));
         this.sbg = sbg;
         background = Images.TUTORIALSCREEN_BACKGROUND.getScaledCopy(Main.getScreenWidth(), Main.getScreenHeight());
 //        Sounds.BGMUSIC2.loop(1F, .2F);
@@ -53,9 +53,9 @@ public class Tutorial extends BasicGameState {
 
     public void keyPressed(int key, char c)
     {
-        if(key == Input.KEY_T){
-            sbg.enterState(Main.TITLE_ID);
-        }
+//        if(key == Input.KEY_T){
+//            sbg.enterState(Main.TITLE_ID);
+//        }
     }
 
     public void mousePressed(int button, int x, int y)

@@ -60,7 +60,6 @@ public class SelectionManager {
         cards.add(MuffledRoar.class);
         cards.add(StitchedSilence.class);
 
-
     }
     //call this method when all enemies have been defeated
     public static void generateSelections() {

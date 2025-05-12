@@ -30,9 +30,7 @@ public class Player extends Entity {
 
         addableArtifacts.add(new Bulwark());
         addableArtifacts.add(new ManaStone());
-        artifacts.add(new Bulwark());
-        artifacts.add(new ManaStone());
-        artifactInfoPanel.updateArtifacts(artifacts);
+
         image = Images.BEAR_HERO;
     }
 
@@ -87,22 +85,9 @@ public class Player extends Entity {
 
     @Override
     public void render(Graphics g, int x, int y) {
-        g.drawImage(image, x, y);
-        Fonts.REGULAR.drawString(g, blockPercent + ": block", x, y + 40, 25);
-
-        int e = 800;
-        for (Artifact a : artifacts) {
-            g.drawString(a.toString(), 100, e);
-            e += 50;
-        }
-
-        e = 800;
-        for (Effect effect : activeEffects) {
-            g.drawString(effect.getClass().getSimpleName() + " duration: " + effect.getDurationLeft(), 500, e);
-            e += 50;
-        }
-
-        renderHealth(g, x, y);
+        g.drawImage(image, x, y - image.getHeight());
+        Fonts.REGULAR.drawString(g, blockPercent + ": block", x, y + 40 - image.getHeight(), 25);
+        renderHealth(g, x, y - image.getHeight());
         artifactInfoPanel.render(g, 0, 0);
     }
 
