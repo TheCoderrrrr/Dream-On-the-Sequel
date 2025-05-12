@@ -18,7 +18,7 @@ public class ButtonBarrage extends Card implements MultiTarget, Attacking {
     public ButtonBarrage()
     {
         super();
-        energyCost = 1;
+        energyCost = 2;
         name = "Button Barrage";
         cardImage = Images.BUTTON_BARRAGE;
         description = "Attacks with buttons among 3 enemies dealing 20 dmg";

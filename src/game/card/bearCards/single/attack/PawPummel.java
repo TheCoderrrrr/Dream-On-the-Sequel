@@ -15,10 +15,10 @@ import java.util.ArrayList;
 public class PawPummel extends Card implements SingleTarget, Attacking {
     public PawPummel(){
         super();
-        energyCost = 1;
+        energyCost = 2;
         name = "Paw Pummel";
         cardImage = Images.PAW_PUMMEL;
-        description = "25 dmg to selected target";
+        description = "35 dmg to selected target";
         ArrayList<Effect> actions = new ArrayList<>();
         actions.add(new Damage(25));
         action = new Action(actions);

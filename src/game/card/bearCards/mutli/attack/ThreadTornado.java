@@ -18,7 +18,7 @@ public class ThreadTornado extends Card implements MultiTarget, Attacking {
     public ThreadTornado()
     {
         super();
-        energyCost = 1;
+        energyCost = 3;
         name = "Thread Tornado";
         description = "25 dmg to all enemies";
         cardImage = Images.THREAD_TORNADO;

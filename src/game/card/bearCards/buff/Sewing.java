@@ -16,7 +16,7 @@ public class Sewing extends Card implements SingleTarget, Buffing {
     {
         super();
         cardImage = Images.SEWING;
-        energyCost = 3;
+        energyCost = 2;
         name = "Sewing";
         description = "Heal 30 HP";
         ArrayList<Effect> actions = new ArrayList<>();

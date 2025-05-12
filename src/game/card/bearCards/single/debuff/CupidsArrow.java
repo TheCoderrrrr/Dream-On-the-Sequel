@@ -9,7 +9,7 @@ public class CupidsArrow extends Card implements SingleTarget, Attacking {
     public CupidsArrow()
     {
         super();
-        energyCost = 3;
+        energyCost = 1;
         name = "Cupid's Arrow";
         cardImage = Images.CUPIDS_ARROW;
         description = "Decrease Enemy Attack by 10%";

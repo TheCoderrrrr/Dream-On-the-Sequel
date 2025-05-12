@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class PawCrush extends Card implements SingleTarget, Attacking {
     public PawCrush(){
         super();
-        energyCost = 2;
+        energyCost = 3;
         name = "Paw Crush";
         cardImage = Images.PAW_CRUSH;
         description = "50 dmg to selected target and burn effect applied";

@@ -15,12 +15,12 @@ import java.util.ArrayList;
 public class Smash extends Card implements SingleTarget, Attacking {
     public Smash(){
         super();
-        energyCost = 1;
+        energyCost = 2;
         name = "Smash";
         cardImage = Images.SMASH;
         description = "25 dmg to selected target";
         ArrayList<Effect> actions = new ArrayList<>();
-        actions.add(new Damage(25));
+        actions.add(new Damage(30));
         action = new Action(actions);
         effectsPanel = new CardEffectsPanel(actions);
     }
