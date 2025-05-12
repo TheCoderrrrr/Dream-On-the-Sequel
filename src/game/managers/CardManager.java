@@ -53,8 +53,7 @@ public class CardManager {
         deck.add(new BearBite());
         deck.add(new BearHug());
         deck.add(new BearsYearning());
-        deck.add(new PlushPerfection());
-        deck.add(new Sewing());
+        deck.add(new WarmEmbrace());
         deck.add(new NeedleToss());
         deck.add(new PrimalRage());
 
@@ -63,7 +62,7 @@ public class CardManager {
         addableCards.add(new ButtonBomb());
         addableCards.add(new ExtraStuffing());
         addableCards.add(new FallacyOfReturn());
-        addableCards.add(new WarmEmbrace());
+        addableCards.add(new PlushPerfection());
         addableCards.add(new ButtonBarrage());
         addableCards.add(new ThreadTornado());
         addableCards.add(new ButtonBomb());
@@ -79,6 +78,7 @@ public class CardManager {
         addableCards.add(new CupidsArrow());
         addableCards.add(new MuffledRoar());
         addableCards.add(new StitchedSilence());
+        addableCards.add(new WarmEmbrace());
 
 
 
