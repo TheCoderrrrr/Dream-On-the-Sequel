@@ -19,17 +19,33 @@ public class ArtifactInfoPanel extends Panel{
     public void updateArtifacts(ArrayList<Artifact> artifacts){
         this.artifacts = artifacts;
     }
-    public void render(Graphics g, int x, int y){
+    public void render(Graphics g, int x, int y) {
         g.setColor(Color.black);
-        g.fillRect(x, y, Main.getScreenWidth(), Images.ENERGY0.getHeight());
-        for(int i = 0; i < artifacts.size() - 1; i++){
-            Artifact artifact = artifacts.get(i);
-            renderSingleArtifact(g, x + i * artifact.getImage().getWidth() + padding, y, artifact);
+        g.fillRect(x, y, Main.getScreenWidth(), (float) (Main.getScreenHeight() * 0.05));
+
+        int currentX = x + padding;
+
+        for (Artifact artifact : artifacts) {
+            int artifactX = currentX;
+            int artifactY = y + padding;
+            int artifactWidth = artifact.getImage().getWidth();
+            int artifactHeight = artifact.getImage().getHeight();
+
+            // Draw the artifact image
+            renderSingleArtifact(g, artifactX, artifactY, artifact);
+
+            // Check for mouse hover
+            int mouseX = gc.getInput().getMouseX();
+            int mouseY = gc.getInput().getMouseY();
+            if (mouseX >= artifactX && mouseX <= artifactX + artifactWidth &&
+                    mouseY >= artifactY && mouseY <= artifactY + artifactHeight) {
+                tooltip.render(g, mouseX, mouseY, artifact.getDescription());
+            }
+
+            currentX += artifactWidth + padding;
         }
     }
     public void renderSingleArtifact(Graphics g, int x, int y, Artifact artifact){
         g.drawImage(artifact.getImage(), x, y);
-
-
     }
 }

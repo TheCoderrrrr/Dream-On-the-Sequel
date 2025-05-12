@@ -168,6 +168,7 @@ public class EntityManager {
             }else{
                 roundEndPanel = new RoundEndPanel(gc, false, true, this);
             }
+            World.roundEndMode();
         }
     }
 

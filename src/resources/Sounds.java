@@ -8,6 +8,7 @@ public class Sounds {
     public static Music BGMUSIC1;
     public static Music BGMUSIC2;
     public static Music BOSSMUSIC;
+    public static Music DREAMON;
     public static Sound REEEEEEEEE;
     public static Sound GOOFY;
     public static Sound MUSICATTACK;
@@ -53,6 +54,7 @@ public class Sounds {
             BGMUSIC1 = new Music("res/music/bgmusic1.ogg");
             BGMUSIC2 = new Music("res/music/funMusic.ogg");
             BOSSMUSIC = new Music("res/music/bossMusic.ogg");
+            DREAMON = new Music("res/music/dreamon.ogg");
         }
         catch (SlickException e)
         {

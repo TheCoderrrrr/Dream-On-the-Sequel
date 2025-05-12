@@ -30,6 +30,9 @@ public class Player extends Entity {
 
         addableArtifacts.add(new Bulwark());
         addableArtifacts.add(new ManaStone());
+        artifacts.add(new Bulwark());
+        artifacts.add(new ManaStone());
+        artifactInfoPanel.updateArtifacts(artifacts);
         image = Images.BEAR_HERO;
     }
 

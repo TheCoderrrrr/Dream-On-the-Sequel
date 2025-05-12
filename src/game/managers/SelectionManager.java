@@ -1,6 +1,7 @@
 package game.managers;
 
 import core.Main;
+import game.World;
 import game.card.Card;
 import game.card.bearCards.buff.*;
 import game.card.bearCards.mutli.attack.NeedleToss;
@@ -16,6 +17,8 @@ import game.card.bearCards.single.debuff.CuddleCrush;
 import game.card.bearCards.single.debuff.CupidsArrow;
 import game.card.bearCards.single.debuff.MuffledRoar;
 import game.card.bearCards.single.debuff.StitchedSilence;
+import game.effects.Effect;
+import game.effects.Heal;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -63,12 +66,60 @@ public class SelectionManager {
         cardSelection = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             try {
-                cardSelection.add(cards.get((int) (Math.random() * cards.size())).getDeclaredConstructor().newInstance());
+                Card card = null;
+
+                if (World.getRound() < 5) {
+                    // Loop until a card without Heal is found
+                    boolean valid = false;
+                    while (!valid) {
+                        card = cards.get((int) (Math.random() * cards.size())).getDeclaredConstructor().newInstance();
+                        boolean containsHeal = false;
+                        for (Effect e : card.getEffects()) {
+                            if (e instanceof Heal) {
+                                containsHeal = true;
+                                break;
+                            }
+                        }
+                        boolean energyCostOkay = card.getEnergyCost() <= 3;
+
+                        if (!containsHeal && energyCostOkay) {
+                            valid = true;
+                        }
+                    }
+                } else {
+                    card = cards.get((int) (Math.random() * cards.size())).getDeclaredConstructor().newInstance();
+                }
+
+                cardSelection.add(card);
+                System.out.println("Added");
                 cardSelection.getLast().initializePosition(250 + i * Main.getScreenWidth() / 3, Main.getScreenHeight() / 2);
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
+
+
+//        while(cardSelection.size() < 3){
+//            int i = cardSelection.size();
+//            try {
+//                Card card = cards.get((int) (Math.random() * cards.size())).getDeclaredConstructor().newInstance();
+//                if(World.getRound() < 5){
+//                    for(Effect e : card.getEffects()){
+//                        if(e instanceof Heal){
+//                            continue;
+//                        }else{
+//                            cardSelection.add(card);
+//                            cardSelection.getLast().initializePosition(250 + i * Main.getScreenWidth() / 3, Main.getScreenHeight() / 2);
+//                        }
+//                    }
+//                }
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//        }
+
+
     }
 
     public static void update() {
