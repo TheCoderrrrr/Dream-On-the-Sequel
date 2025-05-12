@@ -15,6 +15,8 @@ public class ManaStone extends Artifact{
     public ManaStone() {
         super(null, null, null);
         image = Images.RELIC2;
+        name = "Mana Stone";
+        description = "Gain +1 energy for each turn.";
     }
 
     public void turnStartEffects(Player p) {

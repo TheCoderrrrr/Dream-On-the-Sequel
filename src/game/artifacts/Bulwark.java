@@ -12,6 +12,8 @@ public class Bulwark extends Artifact{
     public Bulwark() {
         super(null, new ArrayList<>(List.of(new Shield(0.1f, 1))), null);
         image = Images.RELIC1;
+        name = "Bulwark";
+        description = "Increases block by 10% per each hit taken.";
     }
 
 }
